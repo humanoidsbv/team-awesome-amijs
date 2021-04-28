@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
+    <header class="header"> 
         <h1 class="header__title">team awesome</h1>
-        <img class="header__button" src="assets/shape.svg" onclick="myFunction()">
+        <button class="header__button">
+            <img class="button__image--close" src="assets/shape.svg">
+            <img class="button__image--open header__button--invisible" src="assets/group.svg">
+        </button>
+        
         <nav class="header__nav">
             <ul class="header__menu">
                 <li class="header__li header__li--active">Timesheets</li>
@@ -23,4 +27,20 @@
         </nav>
     </header>
 </body>
+
+<script>
+    const toggleButton = document.querySelector('.header__button');
+
+    const navigation = document.querySelector('.header__menu');
+    const navBar = document.querySelector('.header');
+    const buttonClose = document.querySelector('.button__image--close');
+    const buttonOpen = document.querySelector('.button__image--open');
+
+    toggleButton.addEventListener('click', () => {
+        navigation.classList.toggle('header__menu--collapsed');
+        navBar.classList.toggle('header--collapsed');
+        buttonClose.classList.toggle('header__button--invisible');
+        buttonOpen.classList.toggle('header__button--invisible');
+    });
+</script>
 </html>

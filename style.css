@@ -9,22 +9,33 @@
 }
 
 body {
-    background-color: #4f88ef;
     margin: 0;
     padding: 0;
 }
 
 .header {
+    background-color: #4f88ef;
     height: 100vh;
     width: 100vw;
 }
 
+.header--collapsed {
+    height: 50px;
+}
+
 .header__button {
+    background: rgba(0, 0, 0, 0);
+    border: none;
     height: 20px;
+    padding: 0;
     position: absolute;
     right: 15px;
     top: 15px;
     width: 20px;
+}
+
+.header__button--invisible {
+    display: none;
 }
 
 .header__title {
@@ -47,6 +58,10 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.header__menu--collapsed {
+    display: none;
 }
 
 .header__li {

@@ -14,12 +14,12 @@ body {
     padding: 0;
 }
 
-header {
+.header {
     height: 100vh;
     width: 100vw;
 }
 
-.header-button {
+.header__button {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -27,17 +27,17 @@ header {
     height: 20px;
 }
 
-.header-title {
+.header__title {
     font-family: Bello-Script;
     font-size: 26px;
     color: #ffffff;
     text-align: center;
     margin: 0;
-    padding: 12px 0px;
+    padding: 12px 0 70px 0;
 }
 
-.mobile-menu {
-    height: 60vh;
+.header__menu {
+    list-style: none;
     padding: 0;
     margin: 0;
     color: #ffffff;
@@ -47,14 +47,13 @@ header {
     flex-direction: column;
     align-content: flex-start;
     align-items: center;
-    justify-content: space-evenly;
 }
 
-.mobile-menu li {
-    list-style: none;
+.header__li {
+    margin: 0 0 43px 0; 
 }
 
-.item-active {
+.header__li--active {
     background-color: #1166a5;
     padding: 5px 10px;
     border-radius: 4px;

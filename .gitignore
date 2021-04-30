@@ -1,1 +1,7 @@
 .DS_Store
+node_modules
+.next
+pages
+src
+package-lock.json
+package.json

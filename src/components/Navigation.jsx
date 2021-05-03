@@ -1,10 +1,10 @@
 import * as Styled from './Navigation.styled'
 
-function Navigation() {
+function Navigation({isOpen}) {
   return (
     
       <nav>
-        <Styled.NavList>
+        <Styled.NavList isOpen={isOpen}>
           <Styled.ListItem active>Timesheets</Styled.ListItem>
           <Styled.ListItem>Team members</Styled.ListItem>
           <Styled.ListItem>Projects</Styled.ListItem>

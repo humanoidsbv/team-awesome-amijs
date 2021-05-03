@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
 export const NavList = styled.ul`
+  display: ${props => props.isOpen ? 'none' : 'flex'};
+
   align-content: flex-start;
   align-items: center;
   color: #ffffff;
-  display: flex;
   flex-direction: column;
   font-size: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
+
+  transition: display 0.2s;
 `;
 
 export const ListItem = styled.li`

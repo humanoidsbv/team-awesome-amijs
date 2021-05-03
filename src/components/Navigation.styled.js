@@ -1,18 +1,11 @@
 import styled from 'styled-components';
 
-export const MobileHeader = styled.header`
-  background-color: #4f88ef;
-  height: 100vh;
-  width: 100vw;
-`;
-
 export const NavList = styled.ul`
   align-content: flex-start;
   align-items: center;
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  font-family: ProximaNova;
   font-size: 24px;
   list-style: none;
   margin: 0;

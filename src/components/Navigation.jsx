@@ -1,6 +1,6 @@
-import * as Styled from './MobileHeader.styled'
+import * as Styled from './Navigation.styled'
 
-function MobileHeader() {
+function Navigation() {
   return (
     
       <nav>
@@ -17,4 +17,4 @@ function MobileHeader() {
   )
 }
 
-export default MobileHeader;
+export default Navigation;

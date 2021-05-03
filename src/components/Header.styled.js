@@ -6,7 +6,7 @@ export const Header = styled.header`
     width: 100vw;
 `;
 
-export const HeaderButton = styled.button`
+export const Button = styled.button`
     background: rgba(0, 0, 0, 0);
     border: none;
     height: 20px;
@@ -17,7 +17,7 @@ export const HeaderButton = styled.button`
     width: 20px;
 `
 
-export const HeaderTitle = styled.h1`
+export const Title = styled.h1`
     color: #ffffff;
     font-family: 'Bello Script';
     font-size: 26px;

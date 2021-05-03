@@ -5,10 +5,10 @@ import * as Styled from '../components/Header.styled';
 function Header() {
     return(
         <Styled.Header>
-            <Styled.HeaderTitle>team awesome</Styled.HeaderTitle>
-            <Styled.HeaderButton>
+            <Styled.Title>team awesome</Styled.Title>
+            <Styled.Button>
                 <img src="../assets/shape.svg" />
-            </Styled.HeaderButton>
+            </Styled.Button>
             <Navigation />
         </Styled.Header>
     );

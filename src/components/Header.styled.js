@@ -5,6 +5,13 @@ export const Header = styled.header`
     height: ${props => props.isOpen ? '50px' : '100vh'};
     width: 100vw;
     transition: height 0.2s;
+
+    @media screen and (min-width: 1024px) {
+        display: flex;
+        height: 70px;
+        justify-content: space-between;
+        align-items: center;
+    }
 `;
 
 export const Button = styled.button`
@@ -16,14 +23,10 @@ export const Button = styled.button`
     right: 15px;
     top: 15px;
     width: 20px;
-`
 
-export const Cross = styled.img`
-    display: ${props => props.isOpen ? 'none' : 'block'};
-`
-
-export const Hamburger = styled.img` 
-    display: ${props => props.isOpen ? 'block' : 'none'};
+    @media screen and (min-width: 1024px) {
+    display: none;
+    }
 `
 
 export const Title = styled.h1`
@@ -33,4 +36,8 @@ export const Title = styled.h1`
     margin: 0;
     padding: 12px 0 70px 0;
     text-align: center;
+
+    @media screen and (min-width: 1024px) {
+    display: none;
+    }
 `;

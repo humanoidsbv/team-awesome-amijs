@@ -12,7 +12,11 @@ export const NavList = styled.ul`
   margin: 0;
   padding: 0;
 
-  transition: display 0.2s;
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    font-size: 14px;
+    height: 70px;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -23,5 +27,18 @@ export const ListItem = styled.li`
   padding: 5px 10px; 
   &:first-child {
     margin: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin: 0 0 0 14px;
+    padding: 7px 18px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:first-child {
+      margin: 0 0 0 12px;
+    }
   }
 `;

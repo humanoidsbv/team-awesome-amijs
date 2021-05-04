@@ -18,10 +18,12 @@ export const Entry = styled.div`
     }
 
     ${(props) => props.firstEntry && `
+        border-bottom: none;
         border-radius: 4px 4px 0 0;
     `}
 
     ${(props) => props.middleEntry && `
+        border-bottom: none;
         border-radius: 0;
         margin: 0 16px;
     `}

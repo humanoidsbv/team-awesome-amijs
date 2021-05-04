@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const EntryWrapper = styled.div`
-    margin: 32px 16px 0 16px;
-
-    &:last-child {
-        margin: 32px 16px;
-    }
-`
-
 export const Entry = styled.div`
     align-items: center;
     background-color: #ffffff;
@@ -18,10 +10,24 @@ export const Entry = styled.div`
     font-size: 16px;
     height: 82px;
     justify-content: space-between;
+    margin: 16px 16px 0 16px;
     padding: 0 16px;
-`
 
-export const EntryDate = styled.div`
-    font-size: 16px;
-    color: #7f8fa4;
+    &:last-child {
+        margin: 16px 16px 32px 16px;
+    }
+
+    ${(props) => props.firstEntry && `
+        border-radius: 4px 4px 0 0;
+    `}
+
+    ${(props) => props.middleEntry && `
+        border-radius: 0;
+        margin: 0 16px;
+    `}
+
+    ${(props) => props.lastEntry && `
+        border-radius: 0 0 4px 4px;
+        margin-top: 0;
+    `}
 `

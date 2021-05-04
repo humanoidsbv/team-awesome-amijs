@@ -1,16 +1,10 @@
 import * as Styled from '../components/TimeEntry.styled'
 
-function TimeEntry() {
+function TimeEntry(props) {
     return (
-        <Styled.EntryWrapper>
-            <Styled.EntryDate>
-                <p>04-05-2021</p>
-            </Styled.EntryDate>
-            <Styled.Entry>
-                <p>Port of Rotterdam</p>
-                <p>09:00 - 17:00</p>
-            </Styled.Entry>
-        </Styled.EntryWrapper>
+        <Styled.Entry firstEntry={props.firstEntry} middleEntry={props.middleEntry} lastEntry={props.lastEntry}>
+            {props.children}
+        </Styled.Entry>
     )
 };
 

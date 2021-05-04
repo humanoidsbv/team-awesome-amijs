@@ -4,10 +4,10 @@ import PlusIcon from '../../public/assets/plus-icon.svg';
 
 function AddTimeEntry () {
     return (
-        <Styled.NewEntryButton>
+        <Styled.NewEntrySection>
             <PlusIcon />
             <p>New time entry</p>
-        </Styled.NewEntryButton>
+        </Styled.NewEntrySection>
     );
 }
 

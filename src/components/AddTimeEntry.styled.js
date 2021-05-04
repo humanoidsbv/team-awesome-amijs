@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NewEntryButton = styled.div`
+export const NewEntrySection = styled.div`
     align-items: center;
     background-image: linear-gradient(to bottom, #39b54a, #34aa44 98%);
     border-radius: 4px;

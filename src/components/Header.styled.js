@@ -15,7 +15,7 @@ export const Header = styled.header`
 `;
 
 export const Button = styled.button`
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
     border: none;
     height: 20px;
     padding: 0;

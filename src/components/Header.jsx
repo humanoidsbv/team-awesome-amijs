@@ -8,14 +8,14 @@ import CrossIcon from '../../public/assets/shape.svg';
 
 function Header() {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const handleClick = () => setIsOpen(!isOpen);
 
     return(
         <Styled.Header isOpen={isOpen}>
             <Styled.Title>team awesome</Styled.Title>
             <Styled.Button onClick={handleClick}>
-                {isOpen ? <CrossIcon /> : <HamburgerIcon />}
+                {isOpen ? <HamburgerIcon /> : <CrossIcon /> }
             </Styled.Button>
             <Navigation isOpen={isOpen} />
             <AccountButton />

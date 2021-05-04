@@ -4,8 +4,8 @@ export const AccountWrapper = styled.div`
     display: none;
     
     @media screen and (min-width: 1024px) {
-        display: flex;
         align-items: center;
+        display: flex;
         margin: 0 30px 0 0;
 
         &:hover {
@@ -15,35 +15,29 @@ export const AccountWrapper = styled.div`
 `
 
 export const AccountButton = styled.div`
-    @media screen and (min-width: 1024px) {
-        align-items: center;
-        background-color: #ffffff;
-        border-radius: 18px;
-        display: flex;
-        height: 36px;
-        justify-content: space-between;
-        width: 135px;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 18px;
+    display: flex;
+    height: 36px;
+    justify-content: space-between;
+    width: 135px;
 
-        > svg {
-            height: 10px;
-            width: 75px;
-            margin: 0 0 0 12px;
-        }
+    > svg {
+        height: 10px;
+        margin: 0 0 0 12px;
+        width: 75px;
     }
 `
 
 export const AccountPicture = styled.img`
-    @media screen and (min-width: 1024px) {
-        border-radius: 16px;
-        height: 32px;
-        width: 32px;
-        margin: 0 2px 0 0;
-    }
+    border-radius: 16px;
+    height: 32px;
+    margin: 0 2px 0 0;
+    width: 32px;
 `
 
 export const AccountArrow = styled.div`
-    @media screen and (min-width: 1024px) {
-        border-radius: 0.5px;
-        margin: 0 0 0 10px;
-    }
+    border-radius: 0.5px;
+    margin: 0 0 0 10px;
 `

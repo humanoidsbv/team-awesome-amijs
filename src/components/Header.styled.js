@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const Header = styled.header`
     background-color: #4f88ef;
     height: ${props => props.isOpen ? '50px' : '100vh'};
-    width: 100vw;
     transition: height 0.2s;
+    width: 100vw;
 
     @media screen and (min-width: 1024px) {
+        align-items: center;
         display: flex;
         height: 70px;
         justify-content: space-between;
-        align-items: center;
     }
 `;
 
@@ -25,7 +25,7 @@ export const Button = styled.button`
     width: 20px;
 
     @media screen and (min-width: 1024px) {
-    display: none;
+        display: none;
     }
 `
 
@@ -38,6 +38,6 @@ export const Title = styled.h1`
     text-align: center;
 
     @media screen and (min-width: 1024px) {
-    display: none;
+        display: none;
     }
 `;

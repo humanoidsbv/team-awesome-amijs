@@ -6,7 +6,6 @@ interface TimeEntryProps {
   firstEntry?: boolean;
   middleEntry?: boolean;
   lastEntry?: boolean;
-
   startTime: string;
   endTime: string;
   client: string;

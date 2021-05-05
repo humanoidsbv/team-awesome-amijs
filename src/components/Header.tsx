@@ -8,7 +8,7 @@ import Navigation from "./Navigation";
 import AccountButton from "./AccountButton";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   const handleClick = () => setIsOpen(!isOpen);
 
   return (

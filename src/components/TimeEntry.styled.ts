@@ -13,10 +13,6 @@ export const Entry = styled.div`
   margin: 16px 16px 0 16px;
   padding: 0 16px;
 
-  &:last-child {
-    margin: 16px 16px 32px 16px;
-  }
-
   ${(props) =>
     props.firstEntry &&
     `

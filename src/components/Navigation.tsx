@@ -2,7 +2,11 @@ import React from "react";
 
 import * as Styled from "./Navigation.styled";
 
-function Navigation({ isOpen }) {
+interface NavigationProps {
+  isOpen: boolean;
+}
+
+function Navigation({ isOpen }: NavigationProps): React.ReactElement {
   return (
     <nav>
       <Styled.NavList isOpen={isOpen}>

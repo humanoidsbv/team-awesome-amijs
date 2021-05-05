@@ -1,7 +1,7 @@
 module.exports = {
-    extends: "@humanoids/eslint-config",
-    rules: {
+  extends: "@humanoids/eslint-config",
+  rules: {
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
-    },
+  },
 };

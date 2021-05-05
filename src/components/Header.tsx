@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Navigation from "./Navigation";
-import AccountButton from "./AccountButton";
 
-import * as Styled from "./Header.styled";
 import HamburgerIcon from "../../public/assets/group.svg";
 import CrossIcon from "../../public/assets/shape.svg";
+
+import * as Styled from "./Header.styled";
+import Navigation from "./Navigation";
+import AccountButton from "./AccountButton";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(true);

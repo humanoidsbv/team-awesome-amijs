@@ -1,7 +1,8 @@
 import React from "react";
-import * as Styled from "./AddTimeEntry.styled";
 
 import PlusIcon from "../../public/assets/plus-icon.svg";
+
+import * as Styled from "./AddTimeEntry.styled";
 
 function AddTimeEntry() {
   return (

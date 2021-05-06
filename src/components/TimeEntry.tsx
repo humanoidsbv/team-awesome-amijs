@@ -9,6 +9,8 @@ interface TimeEntryProps {
   startTime: string;
   endTime: string;
   client: string;
+  id: number;
+  deleteTimeEntry: Function;
 }
 
 function TimeEntry({
@@ -18,11 +20,16 @@ function TimeEntry({
   startTime,
   endTime,
   client,
+  id,
+  deleteTimeEntry,
 }: TimeEntryProps): React.ReactElement {
   return (
     <Styled.Entry firstEntry={firstEntry} middleEntry={middleEntry} lastEntry={lastEntry}>
       <p>{client}</p>
       <p>{`${startTime} - ${endTime}`}</p>
+      <button type="button" onClick={() => deleteTimeEntry(id)}>
+        delete
+      </button>
     </Styled.Entry>
   );
 }

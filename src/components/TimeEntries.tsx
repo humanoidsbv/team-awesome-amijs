@@ -10,20 +10,20 @@ function TimeEntries() {
   return (
     <Styled.TimeEntries>
       {mockData.timeEntries.map((timeEntry, index) => {
-        const timeObject = new Date(timeEntry.startTimestamp);
-        const hours = timeObject.toLocaleTimeString("nl-NL", {
+        const startTimeObject = new Date(timeEntry.startTimestamp);
+        const startTime = startTimeObject.toLocaleTimeString("nl-NL", {
           hour: "2-digit",
           minute: "2-digit",
         });
 
-        const timeObjectStop = new Date(timeEntry.stopTimestamp);
-        const hoursStop = timeObjectStop.toLocaleTimeString("nl-NL", {
+        const endTimeObject = new Date(timeEntry.stopTimestamp);
+        const endTime = endTimeObject.toLocaleTimeString("nl-NL", {
           hour: "2-digit",
           minute: "2-digit",
         });
 
         const dateObject = new Date(timeEntry.startTimestamp);
-        const date = dateObject.toLocaleDateString("nl-NL");
+        const currentDate = dateObject.toLocaleDateString("nl-NL");
 
         const nextTimeEntry = mockData?.timeEntries[index + 1];
         const nextDateObject = new Date(nextTimeEntry?.startTimestamp);
@@ -33,26 +33,26 @@ function TimeEntries() {
         const previousDateObject = new Date(previousTimeEntry?.startTimestamp);
         const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
 
-        if (index >= 1 && date === previousDate) {
+        if (index >= 1 && currentDate === previousDate) {
           return (
             <TimeEntry
-              middleEntry={date === nextDate}
-              lastEntry={date !== nextDate}
+              middleEntry={currentDate === nextDate}
+              lastEntry={currentDate !== nextDate}
               client={timeEntry.client}
-              startTime={hours}
-              endTime={hoursStop}
+              startTime={startTime}
+              endTime={endTime}
             />
           );
         }
 
         return (
           <>
-            <EntryDate date={date} />
+            <EntryDate date={currentDate} />
             <TimeEntry
-              firstEntry={date === nextDate}
+              firstEntry={currentDate === nextDate}
               client={timeEntry.client}
-              startTime={hours}
-              endTime={hoursStop}
+              startTime={startTime}
+              endTime={endTime}
             />
           </>
         );

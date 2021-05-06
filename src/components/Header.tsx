@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import HamburgerIcon from "../../public/assets/group.svg";
 import CrossIcon from "../../public/assets/shape.svg";
@@ -7,8 +7,12 @@ import * as Styled from "./Header.styled";
 import Navigation from "./Navigation";
 import AccountButton from "./AccountButton";
 
-function Header() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+interface HeaderProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Header({ isOpen, setIsOpen }: HeaderProps) {
   const handleClick = () => setIsOpen(!isOpen);
 
   return (

@@ -2,24 +2,59 @@ import React from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
+import { mockData } from "../../mockData";
 
 function TimeEntries() {
   return (
     <>
-      <EntryDate day="29" month="07" year="2021" />
-      <TimeEntry startTime="09:00" endTime="17:00" client="Port of Rotterdam" />
+      {mockData.timeEntries.map((timeEntry, index) => {
+        const timeObject = new Date(timeEntry.startTimestamp);
+        const hours = timeObject.toLocaleTimeString("nl-NL", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
 
-      <EntryDate day="28" month="07" year="2021" />
-      <TimeEntry firstEntry startTime="09:00" endTime="12:00" client="Port of Rotterdam" />
-      <TimeEntry lastEntry startTime="13:00" endTime="18:00" client="HikeOne" />
+        const timeObjectStop = new Date(timeEntry.stopTimestamp);
+        const hoursStop = timeObjectStop.toLocaleTimeString("nl-NL", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
 
-      <EntryDate day="27" month="07" year="2021" />
-      <TimeEntry firstEntry startTime="09:00" endTime="12:00" client="Port of Rotterdam" />
-      <TimeEntry middleEntry startTime="13:00" endTime="15:00" client="Humanoids" />
-      <TimeEntry lastEntry startTime="15:00" endTime="18:00" client="HikeOne" />
+        const dateObject = new Date(timeEntry.startTimestamp);
+        const date = dateObject.toLocaleDateString("nl-NL");
 
-      <EntryDate day="26" month="07" year="2021" />
-      <TimeEntry startTime="09:00" endTime="17:00" client="Port of Rotterdam" />
+        const nextTimeEntry = mockData?.timeEntries[index + 1];
+        const nextDateObject = new Date(nextTimeEntry?.startTimestamp);
+        const nextDate = nextDateObject?.toLocaleDateString("nl-NL");
+
+        const previousTimeEntry = mockData?.timeEntries[index - 1];
+        const previousDateObject = new Date(previousTimeEntry?.startTimestamp);
+        const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
+
+        if (index >= 1 && date === previousDate) {
+          return (
+            <TimeEntry
+              middleEntry={date === nextDate}
+              lastEntry={date !== nextDate}
+              client={timeEntry.client}
+              startTime={hours}
+              endTime={hoursStop}
+            />
+          );
+        }
+
+        return (
+          <>
+            <EntryDate date={date} />
+            <TimeEntry
+              firstEntry={date === nextDate}
+              client={timeEntry.client}
+              startTime={hours}
+              endTime={hoursStop}
+            />
+          </>
+        );
+      })}
     </>
   );
 }

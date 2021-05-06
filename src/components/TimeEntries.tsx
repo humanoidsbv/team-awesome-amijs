@@ -2,25 +2,62 @@ import React from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
+import { mockData } from "../../mockData";
+
+import * as Styled from "./TimeEntries.styled";
 
 function TimeEntries() {
   return (
-    <>
-      <EntryDate day="29" month="07" year="2021" />
-      <TimeEntry startTime="09:00" endTime="17:00" client="Port of Rotterdam" />
+    <Styled.TimeEntries>
+      {mockData.timeEntries.map((timeEntry, index) => {
+        const startTimeObject = new Date(timeEntry.startTimestamp);
+        const startTime = startTimeObject.toLocaleTimeString("nl-NL", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
 
-      <EntryDate day="28" month="07" year="2021" />
-      <TimeEntry firstEntry startTime="09:00" endTime="12:00" client="Port of Rotterdam" />
-      <TimeEntry lastEntry startTime="13:00" endTime="18:00" client="HikeOne" />
+        const endTimeObject = new Date(timeEntry.stopTimestamp);
+        const endTime = endTimeObject.toLocaleTimeString("nl-NL", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
 
-      <EntryDate day="27" month="07" year="2021" />
-      <TimeEntry firstEntry startTime="09:00" endTime="12:00" client="Port of Rotterdam" />
-      <TimeEntry middleEntry startTime="13:00" endTime="15:00" client="Humanoids" />
-      <TimeEntry lastEntry startTime="15:00" endTime="18:00" client="HikeOne" />
+        const dateObject = new Date(timeEntry.startTimestamp);
+        const currentDate = dateObject.toLocaleDateString("nl-NL");
 
-      <EntryDate day="26" month="07" year="2021" />
-      <TimeEntry startTime="09:00" endTime="17:00" client="Port of Rotterdam" />
-    </>
+        const nextTimeEntry = mockData?.timeEntries[index + 1];
+        const nextDateObject = new Date(nextTimeEntry?.startTimestamp);
+        const nextDate = nextDateObject?.toLocaleDateString("nl-NL");
+
+        const previousTimeEntry = mockData?.timeEntries[index - 1];
+        const previousDateObject = new Date(previousTimeEntry?.startTimestamp);
+        const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
+
+        if (index >= 1 && currentDate === previousDate) {
+          return (
+            <TimeEntry
+              middleEntry={currentDate === nextDate}
+              lastEntry={currentDate !== nextDate}
+              client={timeEntry.client}
+              startTime={startTime}
+              endTime={endTime}
+            />
+          );
+        }
+
+        return (
+          <>
+            <EntryDate date={currentDate} />
+            <TimeEntry
+              firstEntry={currentDate === nextDate}
+              client={timeEntry.client}
+              startTime={startTime}
+              endTime={endTime}
+            />
+          </>
+        );
+      })}
+    </Styled.TimeEntries>
   );
 }
 

@@ -4,9 +4,11 @@ import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
 import { mockData } from "../../mockData";
 
+import * as Styled from "./TimeEntries.styled";
+
 function TimeEntries() {
   return (
-    <>
+    <Styled.TimeEntries>
       {mockData.timeEntries.map((timeEntry, index) => {
         const timeObject = new Date(timeEntry.startTimestamp);
         const hours = timeObject.toLocaleTimeString("nl-NL", {
@@ -55,7 +57,7 @@ function TimeEntries() {
           </>
         );
       })}
-    </>
+    </Styled.TimeEntries>
   );
 }
 

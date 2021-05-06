@@ -10,7 +10,6 @@ export const Entry = styled.div`
   font-size: 16px;
   height: 82px;
   justify-content: space-between;
-  margin: 16px 16px 0 16px;
   padding: 0 16px;
 
   ${(props) =>
@@ -25,7 +24,6 @@ export const Entry = styled.div`
     `
         border-bottom: none;
         border-radius: 0;
-        margin: 0 16px;
     `}
 
     ${(props) =>

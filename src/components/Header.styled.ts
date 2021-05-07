@@ -24,6 +24,10 @@ export const Button = styled.button`
   top: 15px;
   width: 20px;
 
+  svg {
+    fill: white;
+  }
+
   @media screen and (min-width: 1024px) {
     display: none;
   }

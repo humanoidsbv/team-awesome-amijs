@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NewEntryForm = styled.form`
+export const TimeEntryForm = styled.form`
   background-color: #f5f8fa;
   border-radius: 4px;
   border: solid 1px #e6eaee;
@@ -43,6 +43,10 @@ export const FormInput = styled.input`
 
   :focus {
     outline: none;
+  }
+
+  &[type="date"] {
+    padding: 0 10px 0 15px;
   }
 `;
 

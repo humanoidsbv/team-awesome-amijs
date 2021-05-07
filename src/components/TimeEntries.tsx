@@ -6,9 +6,12 @@ import { getTimeEntries } from "../services/getTimeEntries";
 
 import * as Styled from "./TimeEntries.styled";
 
-function TimeEntries() {
-  const [timeEntries, setTimeEntries] = React.useState([]);
+interface TimeEntriesProps {
+  timeEntries: any;
+  setTimeEntries: any;
+}
 
+function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
   async function fetchTimeEntries() {
     setTimeEntries(await getTimeEntries());
   }

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
-// import { mockData } from "../../mockData";
 import { getTimeEntries } from "../services/getTimeEntries";
 
 import * as Styled from "./TimeEntries.styled";

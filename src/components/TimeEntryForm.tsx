@@ -2,16 +2,15 @@ import React, { useState } from "react";
 
 import PlusIcon from "../../public/assets/plus-icon.svg";
 import CrossIcon from "../../public/assets/shape.svg";
-import * as Types from "../types";
+import { postTimeEntry } from "../services/postTimeEntries";
 
 import * as Styled from "./TimeEntryForm.styled";
 
 interface TimeEntryFormProps {
-  timeEntries: Types.TimeEntry[];
-  setTimeEntries: React.Dispatch<React.SetStateAction<Types.TimeEntry[]>>;
+  updateTimeEntries: Function;
 }
 
-function TimeEntryForm({ timeEntries, setTimeEntries }: TimeEntryFormProps) {
+function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
   const [isOpenForm, setIsOpenForm] = useState<boolean>(true);
   const openForm = () => setIsOpenForm(!isOpenForm);
 
@@ -23,16 +22,15 @@ function TimeEntryForm({ timeEntries, setTimeEntries }: TimeEntryFormProps) {
 
   const addTimeEntry = (event) => {
     event.preventDefault();
-    setTimeEntries([
-      ...timeEntries,
-      {
-        client: timeEntryClient,
-        id: timeEntries.length,
-        activity: timeEntryActivity,
-        startTime: new Date(`${timeEntryDate}T${timeEntryStartTime}:00.002`),
-        endTime: new Date(`${timeEntryDate}T${timeEntryEndTime}:00.002`),
-      },
-    ]);
+    postTimeEntry({
+      client: timeEntryClient,
+      id: null,
+      activity: timeEntryActivity,
+      startTime: new Date(`${timeEntryDate}T${timeEntryStartTime}:00.002`),
+      endTime: new Date(`${timeEntryDate}T${timeEntryEndTime}:00.002`),
+    });
+
+    updateTimeEntries();
 
     setTimeEntryClient("");
     setTimeEntryActivity("");
@@ -47,34 +45,37 @@ function TimeEntryForm({ timeEntries, setTimeEntries }: TimeEntryFormProps) {
         <CrossIcon />
         <Styled.FormInputName>EMPLOYER</Styled.FormInputName>
         <Styled.FormInput
-          placeholder="Type here"
-          value={timeEntryClient}
           onChange={(e) => setTimeEntryClient(e.target.value)}
+          type="text"
+          value={timeEntryClient}
         />
         <Styled.FormInputName>ACTIVITY</Styled.FormInputName>
         <Styled.FormInput
-          value={timeEntryActivity}
           onChange={(e) => setTimeEntryActivity(e.target.value)}
+          type="text"
+          value={timeEntryActivity}
         />
         <Styled.FormInputName>DATE</Styled.FormInputName>
         <Styled.FormInput
-          value={timeEntryDate}
-          type="date"
           onChange={(e) => setTimeEntryDate(e.target.value)}
+          type="date"
+          value={timeEntryDate}
         />
         <Styled.HourEntries>
           <div>
             <Styled.FormInputName>FROM</Styled.FormInputName>
             <Styled.FormInput
-              value={timeEntryStartTime}
               onChange={(e) => setTimeEntryStartTime(e.target.value)}
+              type="time"
+              value={timeEntryStartTime}
             />
           </div>
           <div>
             <Styled.FormInputName>TO</Styled.FormInputName>
             <Styled.FormInput
-              value={timeEntryEndTime}
               onChange={(e) => setTimeEntryEndTime(e.target.value)}
+              type="time"
+              value={timeEntryEndTime}
             />
           </div>
         </Styled.HourEntries>

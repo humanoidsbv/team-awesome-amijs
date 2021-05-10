@@ -2,35 +2,24 @@ import React, { useEffect } from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
-import { getTimeEntries } from "../services/getTimeEntries";
+import { deleteTimeEntry } from "../services/deleteTimeEntries";
 import * as Types from "../types";
 
 import * as Styled from "./TimeEntries.styled";
 
 interface TimeEntriesProps {
   timeEntries: Types.TimeEntry[];
-  setTimeEntries: React.Dispatch<React.SetStateAction<Types.TimeEntry[]>>;
+  updateTimeEntries: Function;
 }
 
-function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
-  async function fetchTimeEntries() {
-    setTimeEntries(await getTimeEntries());
-  }
-
-  async function deleteTimeEntry(id: number): Promise<[any]> {
-    const response = await fetch(`http://localhost:3004/time-entries/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    fetchTimeEntries();
-    return response.json();
+function TimeEntries({ timeEntries, updateTimeEntries }: TimeEntriesProps) {
+  async function deleteEntry(id: number) {
+    deleteTimeEntry(id);
+    updateTimeEntries();
   }
 
   useEffect(() => {
-    fetchTimeEntries();
+    updateTimeEntries();
   }, []);
 
   return (
@@ -68,7 +57,7 @@ function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
               startTime={startTime}
               endTime={endTime}
               id={timeEntry.id}
-              deleteTimeEntry={deleteTimeEntry}
+              deleteTimeEntry={deleteEntry}
               key={timeEntry.id}
             />
           );
@@ -83,7 +72,7 @@ function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
               startTime={startTime}
               endTime={endTime}
               id={timeEntry.id}
-              deleteTimeEntry={deleteTimeEntry}
+              deleteTimeEntry={deleteEntry}
             />
           </div>
         );

@@ -48,6 +48,10 @@ export const FormInput = styled.input`
   &[type="date"] {
     padding: 0 10px 0 15px;
   }
+
+  &[type="time"] {
+    padding: 0 10px 0 15px;
+  }
 `;
 
 export const FormButton = styled.button`

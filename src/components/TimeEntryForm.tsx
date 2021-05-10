@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import PlusIcon from "../../public/assets/plus-icon.svg";
 import CrossIcon from "../../public/assets/shape.svg";
@@ -32,6 +32,12 @@ function TimeEntryForm({ timeEntries, setTimeEntries }: TimeEntryFormProps) {
         endTime: new Date(`${timeEntryDate}T${timeEntryEndTime}:00.002`),
       },
     ]);
+
+    setTimeEntryClient("");
+    setTimeEntryActivity("");
+    setTimeEntryDate("");
+    setTimeEntryStartTime("");
+    setTimeEntryEndTime("");
   };
 
   return (

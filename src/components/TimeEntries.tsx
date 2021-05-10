@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
 import { getTimeEntries } from "../services/getTimeEntries";
+import * as Types from "../types";
 
 import * as Styled from "./TimeEntries.styled";
 
 interface TimeEntriesProps {
-  timeEntries: any;
-  setTimeEntries: any;
+  timeEntries: Types.TimeEntry[];
+  setTimeEntries: React.Dispatch<React.SetStateAction<Types.TimeEntry[]>>;
 }
 
 function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
@@ -68,12 +69,13 @@ function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
               endTime={endTime}
               id={timeEntry.id}
               deleteTimeEntry={deleteTimeEntry}
+              key={timeEntry.id}
             />
           );
         }
 
         return (
-          <>
+          <div key={timeEntry.id}>
             <EntryDate date={currentDate} />
             <TimeEntry
               firstEntry={currentDate === nextDate}
@@ -83,7 +85,7 @@ function TimeEntries({ timeEntries, setTimeEntries }: TimeEntriesProps) {
               id={timeEntry.id}
               deleteTimeEntry={deleteTimeEntry}
             />
-          </>
+          </div>
         );
       })}
     </Styled.TimeEntries>

@@ -1,13 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import PlusIcon from "../../public/assets/plus-icon.svg";
 import CrossIcon from "../../public/assets/shape.svg";
+import * as Types from "../types";
 
 import * as Styled from "./TimeEntryForm.styled";
 
 interface TimeEntryFormProps {
-  timeEntries: any;
-  setTimeEntries: any;
+  timeEntries: Types.TimeEntry[];
+  setTimeEntries: React.Dispatch<React.SetStateAction<Types.TimeEntry[]>>;
 }
 
 function TimeEntryForm({ timeEntries, setTimeEntries }: TimeEntryFormProps) {

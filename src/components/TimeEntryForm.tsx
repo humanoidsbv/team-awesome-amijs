@@ -8,13 +8,14 @@ import * as Styled from "./TimeEntryForm.styled";
 
 interface TimeEntryFormProps {
   updateTimeEntries: Function;
+  isLoading: boolean;
+  setIsLoading: Function;
 }
 
-function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
+function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [isFormValid, setIsFormValid] = useState(false);
-
   const handleChange = () => {
     setIsFormValid(formRef.current?.checkValidity());
   };
@@ -28,15 +29,20 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
   const [timeEntryStartTime, setTimeEntryStartTime] = useState("");
   const [timeEntryEndTime, setTimeEntryEndTime] = useState("");
 
-  const addTimeEntry = (event) => {
+  const addTimeEntry = async (event) => {
     event.preventDefault();
-    postTimeEntry({
+
+    setIsLoading(true);
+
+    await postTimeEntry({
       client: timeEntryClient,
       id: null,
       activity: timeEntryActivity,
       startTime: new Date(`${timeEntryDate}T${timeEntryStartTime}:00.002`),
       endTime: new Date(`${timeEntryDate}T${timeEntryEndTime}:00.002`),
     });
+
+    setIsLoading(false);
 
     updateTimeEntries();
 
@@ -102,7 +108,12 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
             />
           </div>
         </Styled.HourEntries>
-        <Styled.FormButton isFormValid={isFormValid} disabled={!isFormValid} onClick={addTimeEntry}>
+        <Styled.FormButton
+          isFormValid={isFormValid}
+          isLoading={isLoading}
+          disabled={!isFormValid}
+          onClick={addTimeEntry}
+        >
           {isFormValid ? <p>Add</p> : <p>Please complete form</p>}
         </Styled.FormButton>
       </Styled.TimeEntryForm>

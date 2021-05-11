@@ -1,32 +1,18 @@
 {
   "time-entries": [
     {
-      "client": "PoRs",
-      "id": 2,
-      "activity": "f",
-      "startTime": "1994-11-25T11:00:00.002Z",
-      "endTime": "1994-11-25T16:00:00.002Z"
-    },
-    {
-      "client": "PoRs",
-      "id": 3,
-      "activity": "f",
-      "startTime": "1994-11-25T11:00:00.002Z",
-      "endTime": "1994-11-25T16:00:00.002Z"
-    },
-    {
       "client": "Humanoids",
-      "id": 4,
-      "activity": "bla",
-      "startTime": "2021-05-12T07:00:00.002Z",
-      "endTime": "2021-05-12T15:00:00.002Z"
+      "id": 1,
+      "activity": "Front end-development",
+      "startTime": "2021-05-03T11:00:00.002Z",
+      "endTime": "2021-05-03T15:00:00.002Z"
     },
     {
-      "client": "dfsdf",
-      "id": 5,
-      "activity": "sdsf",
-      "startTime": "2021-05-12T08:05:00.002Z",
-      "endTime": "2021-05-12T09:05:00.002Z"
+      "client": "adss",
+      "id": 2,
+      "activity": "d",
+      "startTime": "2021-05-12T13:09:00.002Z",
+      "endTime": "2021-05-12T17:09:00.002Z"
     }
   ]
 }

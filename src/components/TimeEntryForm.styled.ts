@@ -62,7 +62,7 @@ export const FormInput = styled.input`
 
 export const FormButton = styled.button`
   align-items: center;
-  background-color: #35ac45;
+  background-color: ${(props) => (props.isLoading ? "orange" : "#35ac45")};
   border-radius: 4px;
   border: none;
   color: #ffffff;

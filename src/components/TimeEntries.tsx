@@ -2,31 +2,24 @@ import React, { useEffect } from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
-import { getTimeEntries } from "../services/getTimeEntries";
+import { deleteTimeEntry } from "../services/deleteTimeEntries";
+import * as Types from "../types";
 
 import * as Styled from "./TimeEntries.styled";
 
-function TimeEntries() {
-  const [timeEntries, setTimeEntries] = React.useState([]);
+interface TimeEntriesProps {
+  timeEntries: Types.TimeEntry[];
+  updateTimeEntries: Function;
+}
 
-  async function fetchTimeEntries() {
-    setTimeEntries(await getTimeEntries());
-  }
-
-  async function deleteTimeEntry(id: number): Promise<[any]> {
-    const response = await fetch(`http://localhost:3004/time-entries/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    fetchTimeEntries();
-    return response.json();
+function TimeEntries({ timeEntries, updateTimeEntries }: TimeEntriesProps) {
+  async function deleteEntry(id: number) {
+    deleteTimeEntry(id);
+    updateTimeEntries();
   }
 
   useEffect(() => {
-    fetchTimeEntries();
+    updateTimeEntries();
   }, []);
 
   return (
@@ -58,29 +51,30 @@ function TimeEntries() {
         if (index >= 1 && currentDate === previousDate) {
           return (
             <TimeEntry
-              middleEntry={currentDate === nextDate}
-              lastEntry={currentDate !== nextDate}
               client={timeEntry.client}
-              startTime={startTime}
+              deleteTimeEntry={deleteEntry}
               endTime={endTime}
               id={timeEntry.id}
-              deleteTimeEntry={deleteTimeEntry}
+              key={timeEntry.id}
+              lastEntry={currentDate !== nextDate}
+              middleEntry={currentDate === nextDate}
+              startTime={startTime}
             />
           );
         }
 
         return (
-          <>
+          <div key={timeEntry.id}>
             <EntryDate date={currentDate} />
             <TimeEntry
-              firstEntry={currentDate === nextDate}
               client={timeEntry.client}
-              startTime={startTime}
+              deleteTimeEntry={deleteEntry}
               endTime={endTime}
+              firstEntry={currentDate === nextDate}
               id={timeEntry.id}
-              deleteTimeEntry={deleteTimeEntry}
+              startTime={startTime}
             />
-          </>
+          </div>
         );
       })}
     </Styled.TimeEntries>

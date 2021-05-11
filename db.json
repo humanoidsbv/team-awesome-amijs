@@ -1,11 +1,18 @@
 {
   "time-entries": [
     {
-      "client": "Heineken",
-      "endTime": "2020-03-10T16:30:00.000Z",
+      "client": "Humanoids",
       "id": 1,
-      "startTime": "2020-03-10T09:30:00.000Z",
-      "activity": "Testing"
+      "activity": "Front end-development",
+      "startTime": "2021-05-03T11:00:00.002Z",
+      "endTime": "2021-05-03T15:00:00.002Z"
+    },
+    {
+      "client": "adss",
+      "id": 2,
+      "activity": "d",
+      "startTime": "2021-05-12T13:09:00.002Z",
+      "endTime": "2021-05-12T17:09:00.002Z"
     }
   ]
 }

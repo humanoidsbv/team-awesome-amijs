@@ -2,6 +2,8 @@ import React from "react";
 
 import * as Styled from "./TimeEntry.styled";
 
+import DeleteIcon from "../../public/assets/forbid.svg";
+
 interface TimeEntryProps {
   firstEntry?: boolean;
   middleEntry?: boolean;
@@ -27,9 +29,10 @@ function TimeEntry({
     <Styled.Entry firstEntry={firstEntry} middleEntry={middleEntry} lastEntry={lastEntry}>
       <p>{client}</p>
       <p>{`${startTime} - ${endTime}`}</p>
-      <button type="button" onClick={() => deleteTimeEntry(id)}>
+      <Styled.DeleteButton onClick={() => deleteTimeEntry(id)}>
+        <DeleteIcon />
         delete
-      </button>
+      </Styled.DeleteButton>
     </Styled.Entry>
   );
 }

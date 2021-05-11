@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import PlusIcon from "../../public/assets/plus-icon.svg";
 import CrossIcon from "../../public/assets/shape.svg";
@@ -11,6 +11,14 @@ interface TimeEntryFormProps {
 }
 
 function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setIsFormValid(formRef.current?.checkValidity());
+  };
+
   const [isOpenForm, setIsOpenForm] = useState<boolean>(true);
   const openForm = () => setIsOpenForm(!isOpenForm);
 
@@ -37,28 +45,41 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
     setTimeEntryDate("");
     setTimeEntryStartTime("");
     setTimeEntryEndTime("");
+
+    setIsOpenForm(true);
+    setIsFormValid(false);
   };
 
   return (
     <>
-      <Styled.TimeEntryForm openForm={isOpenForm} onSubmit={addTimeEntry}>
-        <CrossIcon />
+      <Styled.TimeEntryForm
+        ref={formRef}
+        openForm={isOpenForm}
+        onChange={handleChange}
+        onSubmit={addTimeEntry}
+      >
+        <Styled.CloseButton onClick={openForm}>
+          <CrossIcon />
+        </Styled.CloseButton>
         <Styled.FormInputName>EMPLOYER</Styled.FormInputName>
         <Styled.FormInput
           onChange={(e) => setTimeEntryClient(e.target.value)}
           type="text"
+          required
           value={timeEntryClient}
         />
         <Styled.FormInputName>ACTIVITY</Styled.FormInputName>
         <Styled.FormInput
           onChange={(e) => setTimeEntryActivity(e.target.value)}
           type="text"
+          required
           value={timeEntryActivity}
         />
         <Styled.FormInputName>DATE</Styled.FormInputName>
         <Styled.FormInput
           onChange={(e) => setTimeEntryDate(e.target.value)}
           type="date"
+          required
           value={timeEntryDate}
         />
         <Styled.HourEntries>
@@ -67,6 +88,7 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
             <Styled.FormInput
               onChange={(e) => setTimeEntryStartTime(e.target.value)}
               type="time"
+              required
               value={timeEntryStartTime}
             />
           </div>
@@ -75,12 +97,13 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
             <Styled.FormInput
               onChange={(e) => setTimeEntryEndTime(e.target.value)}
               type="time"
+              required
               value={timeEntryEndTime}
             />
           </div>
         </Styled.HourEntries>
-        <Styled.FormButton openForm={isOpenForm} onClick={addTimeEntry}>
-          <p>Add</p>
+        <Styled.FormButton isFormValid={isFormValid} disabled={!isFormValid} onClick={addTimeEntry}>
+          {isFormValid ? <p>Add</p> : <p>Please complete form</p>}
         </Styled.FormButton>
       </Styled.TimeEntryForm>
 

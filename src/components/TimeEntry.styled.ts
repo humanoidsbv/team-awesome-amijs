@@ -33,3 +33,18 @@ export const Entry = styled.div`
         margin-top: 0;
     `}
 `;
+
+export const DeleteButton = styled.button`
+  align-items: center;
+  background-color: #fb6375;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  display: flex;
+  font-family: ProximaNova;
+  padding: 6px 7px 7px;
+
+  svg {
+    padding: 0 5px 0 0;
+  }
+`;

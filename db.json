@@ -1,3 +1,18 @@
 {
-  "time-entries": []
+  "time-entries": [
+    {
+      "client": "PoRs",
+      "id": 2,
+      "activity": "f",
+      "startTime": "1994-11-25T11:00:00.002Z",
+      "endTime": "1994-11-25T16:00:00.002Z"
+    },
+    {
+      "client": "PoRs",
+      "id": 3,
+      "activity": "f",
+      "startTime": "1994-11-25T11:00:00.002Z",
+      "endTime": "1994-11-25T16:00:00.002Z"
+    }
+  ]
 }

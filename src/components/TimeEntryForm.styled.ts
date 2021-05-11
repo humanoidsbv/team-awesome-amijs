@@ -9,13 +9,19 @@ export const TimeEntryForm = styled.form`
   font-family: ProximaNova;
   margin: 24px 16px 0 16px;
   padding: 16px 16px 32px 16px;
+`;
+
+export const CloseButton = styled.div`
+  display: flex;
+  height: 8px;
+  position: absolute;
+  right: 32px;
+  width: 8px;
 
   > svg {
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    right: 32px;
     fill: #354052;
+    height: 8px;
+    width: 8px;
   }
 `;
 
@@ -65,6 +71,10 @@ export const FormButton = styled.button`
   height: 36px;
   justify-content: center;
   margin: 26px 0 0 0;
+
+  :disabled {
+    background-color: grey;
+  }
 `;
 
 export const NewEntryButton = styled.div`

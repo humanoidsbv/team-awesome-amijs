@@ -51,14 +51,14 @@ function TimeEntries({ timeEntries, updateTimeEntries }: TimeEntriesProps) {
         if (index >= 1 && currentDate === previousDate) {
           return (
             <TimeEntry
-              middleEntry={currentDate === nextDate}
-              lastEntry={currentDate !== nextDate}
               client={timeEntry.client}
-              startTime={startTime}
+              deleteTimeEntry={deleteEntry}
               endTime={endTime}
               id={timeEntry.id}
-              deleteTimeEntry={deleteEntry}
               key={timeEntry.id}
+              lastEntry={currentDate !== nextDate}
+              middleEntry={currentDate === nextDate}
+              startTime={startTime}
             />
           );
         }
@@ -67,12 +67,12 @@ function TimeEntries({ timeEntries, updateTimeEntries }: TimeEntriesProps) {
           <div key={timeEntry.id}>
             <EntryDate date={currentDate} />
             <TimeEntry
-              firstEntry={currentDate === nextDate}
               client={timeEntry.client}
-              startTime={startTime}
-              endTime={endTime}
-              id={timeEntry.id}
               deleteTimeEntry={deleteEntry}
+              endTime={endTime}
+              firstEntry={currentDate === nextDate}
+              id={timeEntry.id}
+              startTime={startTime}
             />
           </div>
         );

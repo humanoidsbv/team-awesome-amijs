@@ -15,7 +15,7 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
 
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => {
     setIsFormValid(formRef.current?.checkValidity());
   };
 
@@ -46,7 +46,7 @@ function TimeEntryForm({ updateTimeEntries }: TimeEntryFormProps) {
     setTimeEntryStartTime("");
     setTimeEntryEndTime("");
 
-    setIsOpenForm(true);
+    setIsOpenForm(!isOpenForm);
     setIsFormValid(false);
   };
 

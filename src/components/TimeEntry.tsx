@@ -29,7 +29,7 @@ function TimeEntry({
     <Styled.Entry firstEntry={firstEntry} middleEntry={middleEntry} lastEntry={lastEntry}>
       <p>{client}</p>
       <p>{`${startTime} - ${endTime}`}</p>
-      <Styled.DeleteButton type="button" onClick={() => deleteTimeEntry(id)}>
+      <Styled.DeleteButton onClick={() => deleteTimeEntry(id)}>
         <DeleteIcon />
         delete
       </Styled.DeleteButton>

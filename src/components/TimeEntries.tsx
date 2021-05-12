@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
 import { deleteTimeEntry } from "../services/deleteTimeEntries";
-import * as Types from "../types";
+import { StoreContext } from "../stores/StoreProvider";
 
 import * as Styled from "./TimeEntries.styled";
 
 interface TimeEntriesProps {
-  timeEntries: Types.TimeEntry[];
   updateTimeEntries: Function;
 }
 
-function TimeEntries({ timeEntries, updateTimeEntries }: TimeEntriesProps) {
+function TimeEntries({ updateTimeEntries }: TimeEntriesProps) {
+  const state = useContext(StoreContext);
+  const [timeEntries] = state.timeEntries;
+
   async function deleteEntry(id: number) {
     deleteTimeEntry(id);
     updateTimeEntries();

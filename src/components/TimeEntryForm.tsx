@@ -108,12 +108,7 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
             />
           </div>
         </Styled.HourEntries>
-        <Styled.FormButton
-          isFormValid={isFormValid}
-          isLoading={isLoading}
-          disabled={!isFormValid}
-          onClick={addTimeEntry}
-        >
+        <Styled.FormButton isLoading={isLoading} disabled={!isFormValid} onClick={addTimeEntry}>
           {isFormValid ? <p>Add</p> : <p>Please complete form</p>}
         </Styled.FormButton>
       </Styled.TimeEntryForm>

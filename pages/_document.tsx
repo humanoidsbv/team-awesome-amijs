@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React from "react";
+
 import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import GlobalStyle from "../src/styling/global";

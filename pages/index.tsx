@@ -3,10 +3,11 @@ import React, { useContext, useState } from "react";
 import TimeEntryForm from "../src/components/TimeEntryForm";
 import Header from "../src/components/Header";
 import TimeEntries from "../src/components/TimeEntries";
-import { StoreContext } from "../src/stores/StoreProvider";
 
 import * as Styled from "../src/components/PageContainer.styled";
+
 import { getTimeEntries } from "../src/services/getTimeEntries";
+import { StoreContext } from "../src/stores/StoreProvider";
 
 function HomePage() {
   const [isOpen, setIsOpen] = useState<boolean>(true);

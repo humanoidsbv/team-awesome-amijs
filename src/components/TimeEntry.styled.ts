@@ -40,6 +40,7 @@ export const DeleteButton = styled.button`
   border-radius: 4px;
   border: none;
   color: white;
+  cursor: pointer;
   display: flex;
   font-family: ProximaNova;
   padding: 6px 7px 7px;

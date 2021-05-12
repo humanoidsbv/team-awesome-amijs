@@ -17,6 +17,7 @@ export const Header = styled.header`
 export const Button = styled.button`
   background: transparent;
   border: none;
+  cursor: pointer;
   height: 20px;
   padding: 0;
   position: absolute;

@@ -1,3 +1,11 @@
 {
-  "time-entries": []
+  "time-entries": [
+    {
+      "client": "Humanoids",
+      "id": 1,
+      "activity": "bla",
+      "startTime": "2021-05-13T09:00:00.002Z",
+      "endTime": "2021-05-13T14:00:00.002Z"
+    }
+  ]
 }

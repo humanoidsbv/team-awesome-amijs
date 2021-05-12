@@ -17,6 +17,7 @@ export const CloseButton = styled.div`
   position: absolute;
   right: 32px;
   width: 8px;
+  cursor: pointer;
 
   > svg {
     fill: #354052;
@@ -36,12 +37,14 @@ export const FormInputName = styled.p`
   font-size: 12px;
   margin: 0;
   opacity: 0.5;
+  width: max-content;
 `;
 
 export const FormInput = styled.input`
   background-image: linear-gradient(to top, #f2f4f7, #ffffff);
   border-radius: 4px;
-  border: solid 1px #ced0da;
+  border: ${(props) => (props.isInputValid ? "solid 1px #ced0da" : "solid 1px #fb6375")};
+  cursor: text;
   font-family: ProximaNova;
   height: 36px;
   margin: 12px 0 16px 0;
@@ -53,10 +56,16 @@ export const FormInput = styled.input`
 
   &[type="date"] {
     padding: 0 10px 0 15px;
+    ::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
   }
 
   &[type="time"] {
     padding: 0 10px 0 15px;
+    ::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -66,6 +75,7 @@ export const FormButton = styled.button`
   border-radius: 4px;
   border: none;
   color: #ffffff;
+  cursor: pointer;
   display: flex;
   font-family: ProximaNova;
   height: 36px;
@@ -83,6 +93,7 @@ export const NewEntryButton = styled.div`
   border-radius: 4px;
   border: solid 1px #249533;
   color: #ffffff;
+  cursor: pointer;
   display: ${(props) => (props.openForm ? "flex" : "none")};
   font-family: ProximaNova;
   height: 36px;

@@ -20,15 +20,29 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
     setIsFormValid(formRef.current?.checkValidity());
   };
 
-  const [isOpenForm, setIsOpenForm] = useState<boolean>(true);
+  const [isInputValid, setIsInputValid] = useState({
+    client: true,
+    activity: true,
+    entryDate: true,
+    startTime: true,
+    endTime: true,
+  });
+
+  const handleBlur = (event) => {
+    const validation = { ...isInputValid, [event.target.name]: event.target.checkValidity() };
+    setIsInputValid(validation);
+    console.log(event.target.name);
+  };
+
+  const [isOpenForm, setIsOpenForm] = useState(true);
   const openForm = () => setIsOpenForm(!isOpenForm);
 
   const [formInput, setFormInput] = useState({
     client: "",
     activity: "",
-    entryDate: "",
-    startTime: "",
-    endTime: "",
+    entryDate: new Date().toISOString().substr(0, 10),
+    startTime: "09:00",
+    endTime: "17:00",
   });
 
   const addTimeEntry = async (event) => {
@@ -77,6 +91,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
           type="text"
           required
           value={formInput.client}
+          isInputValid={isInputValid.client}
+          onBlur={handleBlur}
+          name="client"
         />
         <Styled.FormInputName>ACTIVITY</Styled.FormInputName>
         <Styled.FormInput
@@ -84,6 +101,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
           type="text"
           required
           value={formInput.activity}
+          isInputValid={isInputValid.activity}
+          onBlur={handleBlur}
+          name="activity"
         />
         <Styled.FormInputName>DATE</Styled.FormInputName>
         <Styled.FormInput
@@ -91,15 +111,23 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
           type="date"
           required
           value={formInput.entryDate}
+          isInputValid={isInputValid.entryDate}
+          onBlur={handleBlur}
+          name="entryDate"
         />
         <Styled.HourEntries>
           <div>
             <Styled.FormInputName>FROM</Styled.FormInputName>
             <Styled.FormInput
-              onChange={(e) => setFormInput({ ...formInput, startTime: e.target.value })}
+              onChange={(e) => {
+                setFormInput({ ...formInput, startTime: e.target.value });
+              }}
               type="time"
               required
               value={formInput.startTime}
+              isInputValid={isInputValid.startTime}
+              onBlur={handleBlur}
+              name="startTime"
             />
           </div>
           <div>
@@ -109,6 +137,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
               type="time"
               required
               value={formInput.endTime}
+              isInputValid={isInputValid.endTime}
+              onBlur={handleBlur}
+              name="endTime"
             />
           </div>
         </Styled.HourEntries>

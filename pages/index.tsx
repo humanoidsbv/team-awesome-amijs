@@ -24,12 +24,14 @@ function HomePage() {
   return (
     <Styled.PageContainer isOpen={isOpen}>
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      <TimeEntryForm
-        updateTimeEntries={updateTimeEntries}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-      />
-      <TimeEntries updateTimeEntries={updateTimeEntries} />
+      <Styled.TimeEntryWrapper>
+        <TimeEntryForm
+          updateTimeEntries={updateTimeEntries}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
+        <TimeEntries updateTimeEntries={updateTimeEntries} />
+      </Styled.TimeEntryWrapper>
     </Styled.PageContainer>
   );
 }

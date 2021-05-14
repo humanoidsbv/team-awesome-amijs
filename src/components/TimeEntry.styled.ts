@@ -34,6 +34,11 @@ export const Entry = styled.div`
     `}
 `;
 
+export const ClientWrapper = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
 export const DeleteButton = styled.button`
   align-items: center;
   background-color: #fb6375;
@@ -43,9 +48,14 @@ export const DeleteButton = styled.button`
   cursor: pointer;
   display: flex;
   font-family: ProximaNova;
+  margin: 0 0 0 32px;
   padding: 6px 7px 7px;
 
   svg {
     padding: 0 5px 0 0;
   }
+`;
+
+export const Timestamp = styled.p`
+  margin-left: auto;
 `;

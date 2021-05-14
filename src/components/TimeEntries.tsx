@@ -39,6 +39,14 @@ function TimeEntries({ updateTimeEntries }: TimeEntriesProps) {
           minute: "2-digit",
         });
 
+        const today = new Date();
+        const yesterday = new Date(today);
+
+        yesterday.setDate(yesterday.getDate() - 1);
+
+        const todayObject = today.toLocaleDateString("nl-NL");
+        const yesterdayObject = yesterday.toLocaleDateString("nl-NL");
+
         const dateObject = new Date(timeEntry.startTime);
         const currentDate = dateObject.toLocaleDateString("nl-NL");
 
@@ -65,9 +73,56 @@ function TimeEntries({ updateTimeEntries }: TimeEntriesProps) {
           );
         }
 
+        if (todayObject === currentDate) {
+          return (
+            <div key={timeEntry.id}>
+              <EntryDate
+                weekday={dateObject.toLocaleDateString("nl-NL", { weekday: "long" })}
+                date={dateObject.toLocaleDateString("nl-NL", { day: "numeric" })}
+                month={dateObject.toLocaleDateString("nl-NL", { month: "numeric" })}
+                displayToday="(Vandaag)"
+              />
+              <TimeEntry
+                client={timeEntry.client}
+                deleteTimeEntry={deleteEntry}
+                endTime={endTime}
+                firstEntry={currentDate === nextDate}
+                id={timeEntry.id}
+                startTime={startTime}
+              />
+            </div>
+          );
+        }
+
+        if (yesterdayObject === currentDate) {
+          return (
+            <div key={timeEntry.id}>
+              <EntryDate
+                weekday={dateObject.toLocaleDateString("nl-NL", { weekday: "long" })}
+                date={dateObject.toLocaleDateString("nl-NL", { day: "numeric" })}
+                month={dateObject.toLocaleDateString("nl-NL", { month: "numeric" })}
+                displayToday="(Gisteren)"
+              />
+              <TimeEntry
+                client={timeEntry.client}
+                deleteTimeEntry={deleteEntry}
+                endTime={endTime}
+                firstEntry={currentDate === nextDate}
+                id={timeEntry.id}
+                startTime={startTime}
+              />
+            </div>
+          );
+        }
+
         return (
           <div key={timeEntry.id}>
-            <EntryDate date={currentDate} />
+            <EntryDate
+              weekday={dateObject.toLocaleDateString("nl-NL", { weekday: "long" })}
+              date={dateObject.toLocaleDateString("nl-NL", { day: "numeric" })}
+              month={dateObject.toLocaleDateString("nl-NL", { month: "numeric" })}
+              displayToday=""
+            />
             <TimeEntry
               client={timeEntry.client}
               deleteTimeEntry={deleteEntry}

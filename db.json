@@ -3,44 +3,23 @@
     {
       "client": "Humanoids",
       "id": 1,
-      "activity": "Bla",
-      "startTime": "2021-05-14T07:00:00.002Z",
-      "endTime": "2021-05-14T15:00:00.002Z"
+      "activity": "dev",
+      "startTime": "2021-05-17T07:00:00.002Z",
+      "endTime": "2021-05-17T11:00:00.002Z"
     },
     {
       "client": "MijnING",
       "id": 2,
-      "activity": "Bla",
-      "startTime": "2021-05-14T07:00:00.002Z",
-      "endTime": "2021-05-14T15:00:00.002Z"
+      "activity": "dev",
+      "startTime": "2021-05-17T11:00:00.002Z",
+      "endTime": "2021-05-17T15:00:00.002Z"
     },
     {
-      "client": "Hallo",
-      "id": 4,
-      "activity": "hallo",
-      "startTime": "2021-05-12T07:00:00.002Z",
-      "endTime": "2021-05-12T15:00:00.002Z"
-    },
-    {
-      "client": "Doei",
-      "id": 5,
-      "activity": "joe",
-      "startTime": "2021-05-12T07:00:00.002Z",
-      "endTime": "2021-05-12T15:00:00.002Z"
-    },
-    {
-      "client": "???",
-      "id": 6,
-      "activity": "???",
-      "startTime": "2021-05-12T07:00:00.002Z",
-      "endTime": "2021-05-12T15:00:00.002Z"
-    },
-    {
-      "client": "Bla",
-      "id": 7,
+      "client": "bla",
+      "id": 3,
       "activity": "bla",
-      "startTime": "2021-05-13T07:00:00.002Z",
-      "endTime": "2021-05-13T15:00:00.002Z"
+      "startTime": "2021-05-16T07:00:00.002Z",
+      "endTime": "2021-05-16T15:00:00.002Z"
     }
   ]
 }

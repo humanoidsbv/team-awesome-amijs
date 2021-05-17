@@ -44,8 +44,8 @@ function TimeEntries({ updateTimeEntries }: TimeEntriesProps) {
 
         yesterday.setDate(yesterday.getDate() - 1);
 
-        const dateIsToday = today.toLocaleDateString("nl-NL");
-        const dateIsYesterday = yesterday.toLocaleDateString("nl-NL");
+        const dateStringToday = today.toLocaleDateString("nl-NL");
+        const dateStringYesterday = yesterday.toLocaleDateString("nl-NL");
 
         const dateObject = new Date(timeEntry.startTime);
         const currentDate = dateObject.toLocaleDateString("nl-NL");
@@ -59,12 +59,12 @@ function TimeEntries({ updateTimeEntries }: TimeEntriesProps) {
         const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
 
         function isSameDay() {
-          if (currentDate === dateIsToday) {
-            return "Today";
+          if (currentDate === dateStringToday) {
+            return "(Today)";
           }
 
-          if (currentDate === dateIsYesterday) {
-            return "Yesterday";
+          if (currentDate === dateStringYesterday) {
+            return "(Yesterday)";
           }
 
           return "";

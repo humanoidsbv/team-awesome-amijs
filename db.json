@@ -3,16 +3,23 @@
     {
       "client": "Humanoids",
       "id": 1,
-      "activity": "Front end-development",
-      "startTime": "2021-05-03T11:00:00.002Z",
-      "endTime": "2021-05-03T15:00:00.002Z"
+      "activity": "dev",
+      "startTime": "2021-05-17T07:00:00.002Z",
+      "endTime": "2021-05-17T11:00:00.002Z"
     },
     {
-      "client": "adss",
+      "client": "MijnING",
       "id": 2,
-      "activity": "d",
-      "startTime": "2021-05-12T13:09:00.002Z",
-      "endTime": "2021-05-12T17:09:00.002Z"
+      "activity": "dev",
+      "startTime": "2021-05-17T11:00:00.002Z",
+      "endTime": "2021-05-17T15:00:00.002Z"
+    },
+    {
+      "client": "bla",
+      "id": 3,
+      "activity": "bla",
+      "startTime": "2021-05-16T07:00:00.002Z",
+      "endTime": "2021-05-16T15:00:00.002Z"
     }
   ]
 }

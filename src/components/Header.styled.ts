@@ -6,7 +6,7 @@ export const Header = styled.header`
   transition: height 0.2s;
   width: 100vw;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;
     height: 70px;
@@ -17,6 +17,7 @@ export const Header = styled.header`
 export const Button = styled.button`
   background: transparent;
   border: none;
+  cursor: pointer;
   height: 20px;
   padding: 0;
   position: absolute;
@@ -28,7 +29,7 @@ export const Button = styled.button`
     fill: white;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: none;
   }
 `;
@@ -41,7 +42,7 @@ export const Title = styled.h1`
   padding: 12px 0 70px 0;
   text-align: center;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: none;
   }
 `;

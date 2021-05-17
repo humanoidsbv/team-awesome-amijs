@@ -10,9 +10,10 @@ interface TimeEntryFormProps {
   updateTimeEntries: Function;
   isLoading: boolean;
   setIsLoading: Function;
+  isOpen: boolean;
 }
 
-function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntryFormProps) {
+function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: TimeEntryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -20,14 +21,29 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
     setIsFormValid(formRef.current?.checkValidity());
   };
 
-  const [isOpenForm, setIsOpenForm] = useState<boolean>(true);
+  const [isInputValid, setIsInputValid] = useState({
+    client: true,
+    activity: true,
+    entryDate: true,
+    startTime: true,
+    endTime: true,
+  });
+
+  const handleBlur = (event) => {
+    const validation = { ...isInputValid, [event.target.name]: event.target.checkValidity() };
+    setIsInputValid(validation);
+  };
+
+  const [isOpenForm, setIsOpenForm] = useState(true);
   const openForm = () => setIsOpenForm(!isOpenForm);
 
-  const [timeEntryClient, setTimeEntryClient] = useState("");
-  const [timeEntryActivity, setTimeEntryActivity] = useState("");
-  const [timeEntryDate, setTimeEntryDate] = useState("");
-  const [timeEntryStartTime, setTimeEntryStartTime] = useState("");
-  const [timeEntryEndTime, setTimeEntryEndTime] = useState("");
+  const [formInput, setFormInput] = useState({
+    client: "",
+    activity: "",
+    entryDate: new Date().toISOString().substr(0, 10),
+    startTime: "09:00",
+    endTime: "17:00",
+  });
 
   const addTimeEntry = async (event) => {
     event.preventDefault();
@@ -35,22 +51,24 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
     setIsLoading(true);
 
     await postTimeEntry({
-      client: timeEntryClient,
+      client: formInput.client,
       id: null,
-      activity: timeEntryActivity,
-      startTime: new Date(`${timeEntryDate}T${timeEntryStartTime}:00.002`),
-      endTime: new Date(`${timeEntryDate}T${timeEntryEndTime}:00.002`),
+      activity: formInput.activity,
+      startTime: new Date(`${formInput.entryDate}T${formInput.startTime}:00.002`),
+      endTime: new Date(`${formInput.entryDate}T${formInput.endTime}:00.002`),
     });
 
     setIsLoading(false);
 
     updateTimeEntries();
 
-    setTimeEntryClient("");
-    setTimeEntryActivity("");
-    setTimeEntryDate("");
-    setTimeEntryStartTime("");
-    setTimeEntryEndTime("");
+    setFormInput({
+      client: "",
+      activity: "",
+      entryDate: new Date().toISOString().substr(0, 10),
+      startTime: "09:00",
+      endTime: "17:00",
+    });
 
     setIsOpenForm(!isOpenForm);
     setIsFormValid(false);
@@ -64,56 +82,74 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
         onChange={handleChange}
         onSubmit={addTimeEntry}
       >
-        <Styled.CloseButton onClick={openForm}>
+        <Styled.CloseButton isOpen={isOpen} onClick={openForm}>
           <CrossIcon />
         </Styled.CloseButton>
-        <Styled.FormInputName>EMPLOYER</Styled.FormInputName>
-        <Styled.FormInput
-          onChange={(e) => setTimeEntryClient(e.target.value)}
-          type="text"
-          required
-          value={timeEntryClient}
-        />
-        <Styled.FormInputName>ACTIVITY</Styled.FormInputName>
-        <Styled.FormInput
-          onChange={(e) => setTimeEntryActivity(e.target.value)}
-          type="text"
-          required
-          value={timeEntryActivity}
-        />
-        <Styled.FormInputName>DATE</Styled.FormInputName>
-        <Styled.FormInput
-          onChange={(e) => setTimeEntryDate(e.target.value)}
-          type="date"
-          required
-          value={timeEntryDate}
-        />
+        <Styled.InputWrapper>
+          <Styled.FormInputName>EMPLOYER</Styled.FormInputName>
+          <Styled.FormInput
+            onChange={(e) => setFormInput({ ...formInput, client: e.target.value })}
+            type="text"
+            required
+            value={formInput.client}
+            isInputValid={isInputValid.client}
+            onBlur={handleBlur}
+            name="client"
+          />
+        </Styled.InputWrapper>
+        <Styled.InputWrapper>
+          <Styled.FormInputName>ACTIVITY</Styled.FormInputName>
+          <Styled.FormInput
+            onChange={(e) => setFormInput({ ...formInput, activity: e.target.value })}
+            type="text"
+            required
+            value={formInput.activity}
+            isInputValid={isInputValid.activity}
+            onBlur={handleBlur}
+            name="activity"
+          />
+        </Styled.InputWrapper>
+        <Styled.InputWrapper>
+          <Styled.FormInputName>DATE</Styled.FormInputName>
+          <Styled.FormInput
+            onChange={(e) => setFormInput({ ...formInput, entryDate: e.target.value })}
+            type="date"
+            required
+            value={formInput.entryDate}
+            isInputValid={isInputValid.entryDate}
+            onBlur={handleBlur}
+            name="entryDate"
+          />
+        </Styled.InputWrapper>
         <Styled.HourEntries>
-          <div>
+          <Styled.InputWrapper>
             <Styled.FormInputName>FROM</Styled.FormInputName>
             <Styled.FormInput
-              onChange={(e) => setTimeEntryStartTime(e.target.value)}
+              onChange={(e) => {
+                setFormInput({ ...formInput, startTime: e.target.value });
+              }}
               type="time"
               required
-              value={timeEntryStartTime}
+              value={formInput.startTime}
+              isInputValid={isInputValid.startTime}
+              onBlur={handleBlur}
+              name="startTime"
             />
-          </div>
-          <div>
+          </Styled.InputWrapper>
+          <Styled.InputWrapper>
             <Styled.FormInputName>TO</Styled.FormInputName>
             <Styled.FormInput
-              onChange={(e) => setTimeEntryEndTime(e.target.value)}
+              onChange={(e) => setFormInput({ ...formInput, endTime: e.target.value })}
               type="time"
               required
-              value={timeEntryEndTime}
+              value={formInput.endTime}
+              isInputValid={isInputValid.endTime}
+              onBlur={handleBlur}
+              name="endTime"
             />
-          </div>
+          </Styled.InputWrapper>
         </Styled.HourEntries>
-        <Styled.FormButton
-          isFormValid={isFormValid}
-          isLoading={isLoading}
-          disabled={!isFormValid}
-          onClick={addTimeEntry}
-        >
+        <Styled.FormButton isLoading={isLoading} disabled={!isFormValid} onClick={addTimeEntry}>
           {isFormValid ? <p>Add</p> : <p>Please complete form</p>}
         </Styled.FormButton>
       </Styled.TimeEntryForm>

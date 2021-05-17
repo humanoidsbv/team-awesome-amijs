@@ -11,7 +11,7 @@ export const NavList = styled.ul`
   margin: 0;
   padding: 0;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: flex;
     flex-direction: row;
     font-size: 14px;
@@ -29,7 +29,7 @@ export const ListItem = styled.li`
     margin: 0;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     margin: 0 0 0 14px;
     padding: 7px 18px;
 

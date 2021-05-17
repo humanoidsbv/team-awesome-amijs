@@ -4,4 +4,5 @@ export const EntryDate = styled.div`
   color: #7f8fa4;
   font-size: 16px;
   margin-top: 32px;
+  text-transform: capitalize;
 `;

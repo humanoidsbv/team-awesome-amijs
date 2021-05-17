@@ -8,11 +8,21 @@ export const TimeEntryForm = styled.form`
   flex-direction: column;
   font-family: ProximaNova;
   margin: 24px 16px 0 16px;
+  max-width: 1108px;
   padding: 16px 16px 32px 16px;
+  width: -webkit-fill-available;
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding: 12px 31px 16px 31px;
+  }
 `;
 
 export const CloseButton = styled.div`
-  display: flex;
+  cursor: pointer;
+  display: ${(props) => (props.isOpen ? "flex" : "none")};
   height: 8px;
   position: absolute;
   right: 32px;
@@ -23,12 +33,28 @@ export const CloseButton = styled.div`
     height: 8px;
     width: 8px;
   }
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    > svg {
+      display: none;
+    }
+  } ;
 `;
 
 export const HourEntries = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  > div {
+    :first-child {
+      margin: 0 6px 0 0;
+    }
+
+    :last-child {
+      margin: 0 0 0 6px;
+    }
+  }
 `;
 
 export const FormInputName = styled.p`
@@ -36,27 +62,41 @@ export const FormInputName = styled.p`
   font-size: 12px;
   margin: 0;
   opacity: 0.5;
+  width: max-content;
+`;
+
+export const InputWrapper = styled.div`
+  width: -webkit-fill-available;
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    margin: 0 13px 0 0;
+    width: auto;
+  }
 `;
 
 export const FormInput = styled.input`
   background-image: linear-gradient(to top, #f2f4f7, #ffffff);
   border-radius: 4px;
-  border: solid 1px #ced0da;
+  border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
+  cursor: text;
   font-family: ProximaNova;
   height: 36px;
   margin: 12px 0 16px 0;
-  padding: 0 0 0 15px;
+  width: -webkit-fill-available;
 
   :focus {
     outline: none;
   }
 
-  &[type="date"] {
+  :only-of-type {
     padding: 0 10px 0 15px;
+    ::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
   }
 
-  &[type="time"] {
-    padding: 0 10px 0 15px;
+  @media screen and (${({ theme }) => theme.desktop}) {
+    margin: 12px 0 0 0;
   }
 `;
 
@@ -66,6 +106,7 @@ export const FormButton = styled.button`
   border-radius: 4px;
   border: none;
   color: #ffffff;
+  cursor: pointer;
   display: flex;
   font-family: ProximaNova;
   height: 36px;
@@ -74,7 +115,13 @@ export const FormButton = styled.button`
 
   :disabled {
     background-color: grey;
+    cursor: not-allowed;
   }
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    margin: 0 0 0 auto;
+    padding: 10px 32px;
+  } ;
 `;
 
 export const NewEntryButton = styled.div`
@@ -83,6 +130,7 @@ export const NewEntryButton = styled.div`
   border-radius: 4px;
   border: solid 1px #249533;
   color: #ffffff;
+  cursor: pointer;
   display: ${(props) => (props.openForm ? "flex" : "none")};
   font-family: ProximaNova;
   height: 36px;
@@ -92,4 +140,8 @@ export const NewEntryButton = styled.div`
   > svg {
     margin: 0 15px 0 0;
   }
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    display: none;
+  } ;
 `;

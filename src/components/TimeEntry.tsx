@@ -27,12 +27,14 @@ function TimeEntry({
 }: TimeEntryProps): React.ReactElement {
   return (
     <Styled.Entry firstEntry={firstEntry} middleEntry={middleEntry} lastEntry={lastEntry}>
-      <p>{client}</p>
-      <p>{`${startTime} - ${endTime}`}</p>
-      <Styled.DeleteButton onClick={() => deleteTimeEntry(id)}>
-        <DeleteIcon />
-        delete
-      </Styled.DeleteButton>
+      <Styled.ClientWrapper>
+        <p>{client}</p>
+        <Styled.DeleteButton onClick={() => deleteTimeEntry(id)}>
+          <DeleteIcon />
+          Delete
+        </Styled.DeleteButton>
+      </Styled.ClientWrapper>
+      <Styled.Timestamp>{`${startTime} - ${endTime}`}</Styled.Timestamp>
     </Styled.Entry>
   );
 }

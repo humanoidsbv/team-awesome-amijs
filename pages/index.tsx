@@ -29,6 +29,7 @@ function HomePage() {
           updateTimeEntries={updateTimeEntries}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
+          isOpen={isOpen}
         />
         <TimeEntries updateTimeEntries={updateTimeEntries} />
       </Styled.TimeEntryWrapper>

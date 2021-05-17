@@ -15,13 +15,6 @@
       "endTime": "2021-05-14T15:00:00.002Z"
     },
     {
-      "client": "Port of Rotterdam",
-      "id": 3,
-      "activity": "bla",
-      "startTime": "2021-05-13T07:00:00.002Z",
-      "endTime": "2021-05-13T15:00:00.002Z"
-    },
-    {
       "client": "Hallo",
       "id": 4,
       "activity": "hallo",

@@ -10,9 +10,10 @@ interface TimeEntryFormProps {
   updateTimeEntries: Function;
   isLoading: boolean;
   setIsLoading: Function;
+  isOpen: boolean;
 }
 
-function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntryFormProps) {
+function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: TimeEntryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -81,7 +82,7 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading }: TimeEntry
         onChange={handleChange}
         onSubmit={addTimeEntry}
       >
-        <Styled.CloseButton onClick={openForm}>
+        <Styled.CloseButton isOpen={isOpen} onClick={openForm}>
           <CrossIcon />
         </Styled.CloseButton>
         <Styled.InputWrapper>

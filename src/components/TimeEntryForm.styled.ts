@@ -12,7 +12,7 @@ export const TimeEntryForm = styled.form`
   padding: 16px 16px 32px 16px;
   width: -webkit-fill-available;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -22,7 +22,7 @@ export const TimeEntryForm = styled.form`
 
 export const CloseButton = styled.div`
   cursor: pointer;
-  display: flex;
+  display: ${(props) => (props.isOpen ? "flex" : "none")};
   height: 8px;
   position: absolute;
   right: 32px;
@@ -34,7 +34,7 @@ export const CloseButton = styled.div`
     width: 8px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     > svg {
       display: none;
     }
@@ -45,6 +45,16 @@ export const HourEntries = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  > div {
+    :first-child {
+      margin: 0 6px 0 0;
+    }
+
+    :last-child {
+      margin: 0 0 0 6px;
+    }
+  }
 `;
 
 export const FormInputName = styled.p`
@@ -58,7 +68,7 @@ export const FormInputName = styled.p`
 export const InputWrapper = styled.div`
   width: -webkit-fill-available;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     margin: 0 13px 0 0;
     width: auto;
   }
@@ -67,50 +77,26 @@ export const InputWrapper = styled.div`
 export const FormInput = styled.input`
   background-image: linear-gradient(to top, #f2f4f7, #ffffff);
   border-radius: 4px;
-  border: ${(props) => (props.isInputValid ? "solid 1px #ced0da" : "solid 1px #fb6375")};
+  border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
   cursor: text;
   font-family: ProximaNova;
   height: 36px;
   margin: 12px 0 16px 0;
-  padding: 0 0 0 15px;
   width: -webkit-fill-available;
 
   :focus {
     outline: none;
   }
 
-  &[type="date"] {
+  :only-of-type {
     padding: 0 10px 0 15px;
     ::-webkit-calendar-picker-indicator {
       cursor: pointer;
     }
   }
 
-  &[type="time"] {
-    padding: 0 10px 0 15px;
-    ::-webkit-calendar-picker-indicator {
-      cursor: pointer;
-    }
-  }
-
-  &[name="startTime"] {
-    margin: 12px 6px 16px 0;
-  }
-
-  &[name="endTime"] {
-    margin: 12px 0 16px 6px;
-  }
-
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     margin: 12px 0 0 0;
-
-    &[name="startTime"] {
-      margin: 12px 0 0 0;
-    }
-
-    &[name="endTime"] {
-      margin: 12px 0 0 0;
-    }
   }
 `;
 
@@ -132,7 +118,7 @@ export const FormButton = styled.button`
     cursor: not-allowed;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     margin: 0 0 0 auto;
     padding: 10px 32px;
   } ;
@@ -155,7 +141,7 @@ export const NewEntryButton = styled.div`
     margin: 0 15px 0 0;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: none;
   } ;
 `;

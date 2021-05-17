@@ -6,13 +6,13 @@ interface EntryDateProps {
   date: string;
   weekday: string;
   month: string;
-  displayToday: string;
+  weekdayName: string;
 }
 
-function EntryDate({ date, weekday, month, displayToday }: EntryDateProps): React.ReactElement {
+function EntryDate({ date, weekday, month, weekdayName }: EntryDateProps): React.ReactElement {
   return (
     <Styled.EntryDate>
-      <p>{`${weekday} ${date}-${month} ${displayToday}`}</p>
+      <p>{`${weekday} ${date}-${month} ${weekdayName}`}</p>
     </Styled.EntryDate>
   );
 }

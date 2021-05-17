@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 import * as Types from "../types/types";
 
 interface StoreProviderProps {
-  children: React.ReactNode;
+  children;
 }
 
 interface StoreContextProps {

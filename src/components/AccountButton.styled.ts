@@ -3,14 +3,11 @@ import styled from "styled-components";
 export const AccountWrapper = styled.div`
   display: none;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
+    cursor: pointer;
     display: flex;
     margin: 0 30px 0 0;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 `;
 

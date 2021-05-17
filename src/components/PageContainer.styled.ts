@@ -6,7 +6,7 @@ export const PageContainer = styled.div`
 `;
 
 export const TimeEntryWrapper = styled.div`
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;
     flex-direction: column;

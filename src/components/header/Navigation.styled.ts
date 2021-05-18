@@ -20,8 +20,8 @@ export const NavList = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  background-color: ${(props) => (props.active ? "#1166a5" : "transparent")};
-  border-radius: ${(props) => (props.active ? "4px" : "0")};
+  background-color: ${(props) => (props.isActive ? "#1166a5" : "transparent")};
+  border-radius: ${(props) => (props.isActive ? "4px" : "0")};
   margin: 43px 0 0 0;
   padding: 5px 10px;
 

@@ -10,9 +10,10 @@ import AccountButton from "./AccountButton";
 interface HeaderProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  page: "team-members" | "index";
 }
 
-function Header({ isOpen, setIsOpen }: HeaderProps) {
+function Header({ isOpen, setIsOpen, page }: HeaderProps) {
   const handleClick = () => setIsOpen(!isOpen);
 
   return (
@@ -21,7 +22,7 @@ function Header({ isOpen, setIsOpen }: HeaderProps) {
       <Styled.Button onClick={handleClick}>
         {isOpen ? <HamburgerIcon /> : <CrossIcon />}
       </Styled.Button>
-      <Navigation isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Navigation page={page} isOpen={isOpen} />
       <AccountButton />
     </Styled.Header>
   );

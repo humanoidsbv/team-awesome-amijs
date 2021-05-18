@@ -14,5 +14,39 @@
       "startTime": "2021-05-17T11:00:00.002Z",
       "endTime": "2021-05-17T15:00:00.002Z"
     }
+  ],
+  "team-members": [
+    {
+      "firstName": "Antje",
+      "lastName": "bla",
+      "jobFunction": "bla",
+      "employer": "bla",
+      "startingDate": "2021-05-17T11:00:00.002Z",
+      "id": 1
+    },
+    {
+      "firstName": "Amijs",
+      "lastName": "Breunesse",
+      "jobFunction": "Front-end developer",
+      "employer": "Humanoids",
+      "startingDate": "",
+      "id": 2
+    },
+    {
+      "firstName": "Job",
+      "lastName": "Bonk",
+      "jobFunction": "webdeveloper",
+      "employer": "humanoids",
+      "startingDate": "",
+      "id": 3
+    },
+    {
+      "firstName": "rwer",
+      "lastName": "wer",
+      "jobFunction": "wer",
+      "employer": "wer",
+      "startingDate": "",
+      "id": 4
+    }
   ]
 }

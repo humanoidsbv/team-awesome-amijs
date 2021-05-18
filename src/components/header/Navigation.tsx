@@ -5,18 +5,19 @@ import * as Styled from "./Navigation.styled";
 
 interface NavigationProps {
   isOpen: boolean;
+  page: "team-members" | "index";
 }
 
-function Navigation({ isOpen }: NavigationProps): React.ReactElement {
+function Navigation({ isOpen, page }: NavigationProps): React.ReactElement {
   return (
     <nav>
       <Styled.NavList isOpen={isOpen}>
-        <Styled.ListItem>
+        <Styled.ListItem isActive={page === "index"}>
           <Link href="/" passHref>
             <a>Timesheets</a>
           </Link>
         </Styled.ListItem>
-        <Styled.ListItem>
+        <Styled.ListItem isActive={page === "team-members"}>
           <Link href="/team-members" passHref>
             <a>Team members</a>
           </Link>

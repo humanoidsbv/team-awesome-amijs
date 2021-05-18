@@ -130,7 +130,7 @@ export const NewEntryButton = styled.div`
   border: solid 1px #249533;
   color: #ffffff;
   cursor: pointer;
-  display: ${(props) => (props.isOpenForm ? "flex" : "none")};
+  display: ${(props) => (props.openForm ? "flex" : "none")};
   font-family: ProximaNova;
   height: 36px;
   justify-content: center;

@@ -21,7 +21,7 @@ function HomePage() {
 
   return (
     <Styled.PageContainer isOpen={isOpen}>
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Header page="index" isOpen={isOpen} setIsOpen={setIsOpen} />
       <Styled.EntryWrapper>
         <TimeEntryForm updateTimeEntries={updateTimeEntries} isOpen={isOpen} />
         <TimeEntries updateTimeEntries={updateTimeEntries} />

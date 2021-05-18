@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 
 import * as Styled from "./TeamMember.styled";
+import * as Types from "../../types/types";
 
 import ArrowDownIcon from "../../../public/assets/arrow2-down.svg";
 import ArrowUpIcon from "../../../public/assets/arrow2-up.svg";
 
-function TeamMember() {
+function TeamMember({
+  firstName,
+  lastName,
+  jobFunction,
+  employer,
+  startingDate,
+}: Types.TeamMember) {
   const [isOpenEntry, setIsOpenEntry] = useState(false);
   const openEntry = () => setIsOpenEntry(!isOpenEntry);
 
@@ -15,8 +22,8 @@ function TeamMember() {
         <Styled.MemberWrapper>
           <Styled.MemberAvatar src="/assets/antje.jpg" alt="" />
           <div>
-            <Styled.MemberName>Antje Adriaens</Styled.MemberName>
-            <Styled.MemberFunction>UX Designer</Styled.MemberFunction>
+            <Styled.MemberName>{`${firstName} ${lastName}`}</Styled.MemberName>
+            <Styled.MemberFunction>{jobFunction}</Styled.MemberFunction>
           </div>
         </Styled.MemberWrapper>
         <Styled.MemberButton onClick={openEntry}>
@@ -25,15 +32,15 @@ function TeamMember() {
       </Styled.BasicMemberInformation>
       <Styled.ExtraMemberInformation isOpenEntry={isOpenEntry}>
         <Styled.DetailedInformation>
-          <p>Detailed information about Antje</p>
+          <p>{`Detailed information about ${firstName}`}</p>
         </Styled.DetailedInformation>
 
         <Styled.Details>
-          <p>Port of Rotterdam</p>
+          <p>{employer}</p>
           <Styled.Description>Current employer</Styled.Description>
         </Styled.Details>
         <Styled.Details>
-          <p>February 2018</p>
+          <p>{startingDate}</p>
           <Styled.Description>Starting date</Styled.Description>
         </Styled.Details>
       </Styled.ExtraMemberInformation>

@@ -8,15 +8,18 @@ export const TimeEntryForm = styled.form`
   flex-direction: column;
   font-family: ProximaNova;
   margin: 24px 16px 0 16px;
-  max-width: 1108px;
+  max-width: 1170px;
   padding: 16px 16px 32px 16px;
   width: -webkit-fill-available;
+  box-sizing: border-box;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;
     flex-direction: row;
     padding: 12px 31px 16px 31px;
+
+    ${(props) => props.desktop && `display: none`}
   }
 `;
 
@@ -57,14 +60,6 @@ export const HourEntries = styled.div`
   }
 `;
 
-export const FormInputName = styled.p`
-  color: #68768c;
-  font-size: 12px;
-  margin: 0;
-  opacity: 0.5;
-  width: max-content;
-`;
-
 export const InputWrapper = styled.div`
   width: -webkit-fill-available;
 
@@ -72,6 +67,13 @@ export const InputWrapper = styled.div`
     margin: 0 13px 0 0;
     width: auto;
   }
+`;
+
+export const FormInputName = styled.p`
+  color: #68768c;
+  font-size: 12px;
+  opacity: 0.5;
+  width: max-content;
 `;
 
 export const FormInput = styled.input`
@@ -82,17 +84,14 @@ export const FormInput = styled.input`
   font-family: ProximaNova;
   height: 36px;
   margin: 12px 0 16px 0;
+  padding: 0 10px 0 15px;
   width: -webkit-fill-available;
 
   :focus {
     outline: none;
   }
-
-  :only-of-type {
-    padding: 0 10px 0 15px;
-    ::-webkit-calendar-picker-indicator {
-      cursor: pointer;
-    }
+  ::-webkit-calendar-picker-indicator {
+    cursor: pointer;
   }
 
   @media screen and (${({ theme }) => theme.desktop}) {
@@ -131,7 +130,7 @@ export const NewEntryButton = styled.div`
   border: solid 1px #249533;
   color: #ffffff;
   cursor: pointer;
-  display: ${(props) => (props.openForm ? "flex" : "none")};
+  display: ${(props) => (props.isOpenForm ? "flex" : "none")};
   font-family: ProximaNova;
   height: 36px;
   justify-content: center;

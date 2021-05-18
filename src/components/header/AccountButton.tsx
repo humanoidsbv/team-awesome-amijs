@@ -1,7 +1,7 @@
 import React from "react";
 
-import ArrowIcon from "../../public/assets/arrow-down.svg";
-import HumanoidsLogo from "../../public/assets/humanoids-logo.svg";
+import ArrowIcon from "../../../public/assets/arrow-down.svg";
+import HumanoidsLogo from "../../../public/assets/humanoids-logo.svg";
 
 import * as Styled from "./AccountButton.styled";
 

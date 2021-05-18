@@ -15,22 +15,22 @@ export const Entry = styled.div`
   ${(props) =>
     props.firstEntry &&
     `
-        border-bottom: none;
-        border-radius: 4px 4px 0 0;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
     `}
 
   ${(props) =>
     props.middleEntry &&
     `
-        border-bottom: none;
-        border-radius: 0;
+      border-bottom: none;
+      border-radius: 0;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.lastEntry &&
     `
-        border-radius: 0 0 4px 4px;
-        margin-top: 0;
+      border-radius: 0 0 4px 4px;
+      margin-top: 0;
     `}
 `;
 

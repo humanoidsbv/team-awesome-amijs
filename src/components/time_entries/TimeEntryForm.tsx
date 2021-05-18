@@ -1,19 +1,17 @@
 import React, { useRef, useState } from "react";
 
-import PlusIcon from "../../public/assets/plus-icon.svg";
-import CrossIcon from "../../public/assets/shape.svg";
-import { postTimeEntry } from "../services/postTimeEntries";
+import PlusIcon from "../../../public/assets/plus-icon.svg";
+import CrossIcon from "../../../public/assets/shape.svg";
+import { postTimeEntry } from "../../services/postTimeEntries";
 
 import * as Styled from "./TimeEntryForm.styled";
 
 interface TimeEntryFormProps {
   updateTimeEntries: Function;
-  isLoading: boolean;
-  setIsLoading: Function;
   isOpen: boolean;
 }
 
-function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: TimeEntryFormProps) {
+function TimeEntryForm({ updateTimeEntries, isOpen }: TimeEntryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -33,6 +31,8 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
     const validation = { ...isInputValid, [event.target.name]: event.target.checkValidity() };
     setIsInputValid(validation);
   };
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [isOpenForm, setIsOpenForm] = useState(true);
   const openForm = () => setIsOpenForm(!isOpenForm);

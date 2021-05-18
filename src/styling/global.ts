@@ -21,6 +21,23 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		
+		a {
+			text-decoration: none;
+
+			:active {
+				color: inherit;
+			}
+
+			:visited {
+				color: inherit;
+			}
+		}
 `;
 
 export default GlobalStyle;

@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 
 import TimeEntry from "./TimeEntry";
 import EntryDate from "./EntryDate";
-import { deleteTimeEntry } from "../services/deleteTimeEntries";
-import { StoreContext } from "../stores/StoreProvider";
+import { deleteTimeEntry } from "../../services/deleteTimeEntries";
+import { StoreContext } from "../../stores/StoreProvider";
 
 import * as Styled from "./TimeEntries.styled";
 

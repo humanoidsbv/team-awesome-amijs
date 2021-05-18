@@ -25,7 +25,7 @@ export const ListItem = styled.li`
   margin: 43px 0 0 0;
   padding: 5px 10px;
 
-  &:first-child {
+  :first-child {
     margin: 0;
   }
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TimeEntryForm = styled.form`
   background-color: #f5f8fa;
   border-radius: 4px;
-  border: solid 1px #e6eaee;
+  border: ${({ theme }) => theme.borderPrimary};
   display: ${(props) => (props.openForm ? "none" : "flex")};
   flex-direction: column;
   font-family: ProximaNova;
@@ -69,14 +69,14 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const FormInputName = styled.p`
+export const InputLabel = styled.p`
   color: #68768c;
   font-size: 12px;
   opacity: 0.5;
   width: max-content;
 `;
 
-export const FormInput = styled.input`
+export const Input = styled.input`
   background-image: linear-gradient(to top, #f2f4f7, #ffffff);
   border-radius: 4px;
   border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
@@ -130,7 +130,7 @@ export const NewEntryButton = styled.div`
   border: solid 1px #249533;
   color: #ffffff;
   cursor: pointer;
-  display: ${(props) => (props.openForm ? "flex" : "none")};
+  display: ${(props) => (props.isFormVisible ? "flex" : "none")};
   font-family: ProximaNova;
   height: 36px;
   justify-content: center;

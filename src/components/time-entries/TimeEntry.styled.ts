@@ -4,7 +4,7 @@ export const Entry = styled.div`
   align-items: center;
   background-color: #ffffff;
   border-radius: 4px;
-  border: solid 1px #e6eaee;
+  border: ${({ theme }) => theme.borderPrimary};
   border-left: solid 4px #4f88ef;
   display: flex;
   font-size: 16px;

@@ -22,22 +22,22 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
-		p {
-			margin: 0;
-			padding: 0;
-		}
-		
-		a {
-			text-decoration: none;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    
+    a {
+      text-decoration: none;
 
-			:active {
-				color: inherit;
-			}
+      :active {
+        color: inherit;
+      }
 
-			:visited {
-				color: inherit;
-			}
-		}
+      :visited {
+        color: inherit;
+      }
+    }
 `;
 
 export default GlobalStyle;

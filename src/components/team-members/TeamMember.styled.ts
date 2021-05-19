@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MemberEntry = styled.div`
   background-color: #ffffff;
-  border: solid 1px #e6eaee;
+  border: ${({ theme }) => theme.borderPrimary};
   border-left: solid 4px #4f88ef;
   border-radius: 4px;
   font-size: 16px;
@@ -23,23 +23,17 @@ export const MemberWrapper = styled.div`
 export const MemberAvatar = styled.img`
   border-radius: 25px;
   height: 50px;
-  margin: 0 0 0 16px;
+  margin: ${(props) => (props.insideForm ? "0" : "0 0 0 16px")};
   width: 50px;
-
-  ${(props) =>
-    props.inForm &&
-    `
-      margin: 0;
-    `}
 
   @media screen and (${({ theme }) => theme.desktop}) {
     ${(props) =>
-      props.inForm &&
+      props.insideForm &&
       `
-				width: 100px;
-				height: 100px;
-				border-radius: 50px;
-			`}
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+      `}
   }
 `;
 
@@ -70,7 +64,7 @@ export const ExtraMemberInformation = styled.div`
 
 export const DetailedInformation = styled.div`
   background-color: #f5f8fa;
-  border: solid 1px #e6eaee;
+  border: ${({ theme }) => theme.borderPrimary};
   color: #7f8fa4;
   font-size: 14px;
   padding: 10px 30px;

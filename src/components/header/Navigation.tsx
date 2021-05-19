@@ -13,12 +13,12 @@ function Navigation({ isOpen, page }: NavigationProps): React.ReactElement {
     <nav>
       <Styled.NavList isOpen={isOpen}>
         <Styled.ListItem isActive={page === "index"}>
-          <Link href="/" passHref>
+          <Link href="/">
             <a>Timesheets</a>
           </Link>
         </Styled.ListItem>
         <Styled.ListItem isActive={page === "team-members"}>
-          <Link href="/team-members" passHref>
+          <Link href="/team-members">
             <a>Team members</a>
           </Link>
         </Styled.ListItem>

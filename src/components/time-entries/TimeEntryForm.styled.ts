@@ -60,6 +60,8 @@ export const HourEntries = styled.div`
 `;
 
 export const InputWrapper = styled.div`
+  width: 100%;
+
   @media screen and (${({ theme }) => theme.desktop}) {
     margin: 0 13px 0 0;
     width: auto;

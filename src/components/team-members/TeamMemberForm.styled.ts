@@ -20,6 +20,7 @@ export const TeamMemberForm = styled.form`
     font-family: ProximaNova;
     padding: 42px 32px;
     margin-top: 0;
+    width: calc(100% - 32px);
   }
 `;
 
@@ -30,8 +31,9 @@ export const MemberFormHeader = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin: 32px 16px 0 16px;
+    width: calc(100% - 32px);
     max-width: 1170px;
+    margin: 32px 16px 0 16px;
 
     h1 {
       font-size: 24px;
@@ -43,6 +45,8 @@ export const MemberFormHeader = styled.div`
 export const InputWrapper = styled.div`
   margin: 19px 0 0 0;
   position: relative;
+  flex-direction: column;
+  display: flex;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     :first-child {
@@ -66,6 +70,7 @@ export const Input = styled.input`
   height: 36px;
   margin: 7px 0 0 0;
   padding: 0 10px 0 15px;
+  width: 100%;
 
   :focus {
     outline: none;
@@ -79,6 +84,7 @@ export const Input = styled.input`
     props.twitter &&
     `
       padding-left: 53px;
+			border: solid 1px #ced0da;
     `}
 
   ${(props) =>
@@ -86,6 +92,7 @@ export const Input = styled.input`
     `
       margin-top: 10px;
       padding-left: 53px;
+			border: solid 1px #ced0da;
     `}
 `;
 
@@ -109,11 +116,11 @@ export const SocialIcon = styled.div`
   background-image: linear-gradient(to bottom, #2ea1f8 0%, #1a91ec 98%);
   border-radius: 4px;
   display: flex;
-  height: 38px;
+  height: 36px;
   justify-content: center;
   position: absolute;
-  top: 23px;
-  width: 38px;
+  top: 21px;
+  width: 36px;
 
   > svg {
     fill: #ffffff;
@@ -123,7 +130,7 @@ export const SocialIcon = styled.div`
     props.facebook &&
     `
       background-image: linear-gradient(to top, #137ece 98%, #288bd5 2%);
-      top: 71px;
+      top: 67px;
     `}
 `;
 
@@ -137,9 +144,10 @@ export const NameWrapper = styled.div`
 
   > div {
     margin: 0;
+    width: 50%;
 
     :first-child {
-      margin: 0 10px 0 0;
+      margin-right: 10px;
     }
   }
 `;
@@ -227,6 +235,7 @@ export const FliebelWrapper = styled.div`
     display: ${(props) => (props.isFormVisible ? "none" : "flex")};
     margin: 24px 16px 0 16px;
     max-width: 1170px;
+    width: calc(100% - 32px);
   }
 `;
 

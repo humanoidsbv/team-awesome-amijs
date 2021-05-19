@@ -53,6 +53,7 @@ export const DeleteButton = styled.button`
 
   svg {
     padding: 0 5px 0 0;
+    box-sizing: content-box;
   }
 `;
 

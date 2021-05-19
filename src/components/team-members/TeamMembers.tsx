@@ -42,5 +42,3 @@ function TeamMembers({ updateTeamMembers }: TeamMembersProps) {
     </Styled.TeamMembers>
   );
 }
-
-export default TeamMembers;

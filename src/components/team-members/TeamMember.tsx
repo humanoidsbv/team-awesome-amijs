@@ -12,6 +12,11 @@ function TeamMember({
   jobFunction,
   employer,
   startingDate,
+  bio,
+  address,
+  zipCode,
+  city,
+  email,
 }: Types.TeamMember) {
   const [isOpenEntry, setIsOpenEntry] = useState(false);
   const openEntry = () => setIsOpenEntry(!isOpenEntry);
@@ -35,14 +40,33 @@ function TeamMember({
           <p>{`Detailed information about ${firstName}`}</p>
         </Styled.DetailedInformation>
 
-        <Styled.Details>
-          <p>{employer}</p>
-          <Styled.Description>Current employer</Styled.Description>
-        </Styled.Details>
-        <Styled.Details>
-          <p>{startingDate}</p>
-          <Styled.Description>Starting date</Styled.Description>
-        </Styled.Details>
+        <Styled.DetailedInformationWrapper>
+          <Styled.InformationSection>
+            <Styled.Details>
+              <p>{employer}</p>
+              <Styled.Description>Current employer</Styled.Description>
+            </Styled.Details>
+            <Styled.Details>
+              <p>{startingDate}</p>
+              <Styled.Description>Starting date</Styled.Description>
+            </Styled.Details>
+            <Styled.Details>
+              <p>{bio}</p>
+              <Styled.Description>Bio</Styled.Description>
+            </Styled.Details>
+          </Styled.InformationSection>
+          <Styled.InformationSection>
+            <Styled.Details>
+              <p>{address}</p>
+              <p>{`${zipCode} ${city}`}</p>
+              <Styled.Description>Address</Styled.Description>
+            </Styled.Details>
+            <Styled.Details>
+              <p>{email}</p>
+              <Styled.Description>E-mail Address</Styled.Description>
+            </Styled.Details>
+          </Styled.InformationSection>
+        </Styled.DetailedInformationWrapper>
       </Styled.ExtraMemberInformation>
     </Styled.MemberEntry>
   );

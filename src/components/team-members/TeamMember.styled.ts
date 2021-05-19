@@ -85,3 +85,26 @@ export const Description = styled.p`
   font-size: 14px;
   margin: 4px 0 0 0;
 `;
+
+export const DetailedInformationWrapper = styled.div`
+  display: flex;
+  padding: 20px 0;
+`;
+
+export const InformationSection = styled.section`
+  flex: 1;
+  padding: 0 30px;
+
+  :last-of-type {
+    padding: 0 0 0 30px;
+    border-left: 1px solid #dfe3e9;
+    display: none;
+  }
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    :last-of-type {
+      padding: 0 0 0 30px;
+      display: block;
+    }
+  }
+`;

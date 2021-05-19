@@ -34,6 +34,11 @@ function TeamMemberForm({
     jobFunction: true,
     employer: true,
     startingDate: true,
+    address: true,
+    zipCode: true,
+    city: true,
+    email: true,
+    bio: true,
   });
 
   const [formInput, setFormInput] = useState({
@@ -42,6 +47,11 @@ function TeamMemberForm({
     jobFunction: "",
     employer: "",
     startingDate: new Date().toISOString().substr(0, 10),
+    address: "",
+    zipCode: "",
+    city: "",
+    email: "",
+    bio: "",
   });
 
   const openForm = () => setIsFormVisible(!isFormVisible);
@@ -51,8 +61,9 @@ function TeamMemberForm({
     setIsInputValid(validation);
   };
 
-  const handleChange = () => {
+  const handleChange = (event) => {
     setIsFormValid(formRef.current?.checkValidity());
+    setFormInput({ ...formInput, [event.target.name]: event.target.value });
   };
 
   const addTeamMember = async (event) => {
@@ -65,6 +76,11 @@ function TeamMemberForm({
       employer: formInput.employer,
       startingDate: new Date(`${formInput.startingDate}`),
       id: null,
+      address: formInput.address,
+      zipCode: formInput.zipCode,
+      city: formInput.city,
+      email: formInput.email,
+      bio: formInput.bio,
     });
 
     updateTeamMembers();
@@ -75,6 +91,11 @@ function TeamMemberForm({
       jobFunction: "",
       employer: "",
       startingDate: new Date().toISOString().substr(0, 10),
+      address: "",
+      zipCode: "",
+      city: "",
+      email: "",
+      bio: "",
     });
 
     setIsFormVisible(!isFormVisible);
@@ -123,7 +144,7 @@ function TeamMemberForm({
             <Styled.InputWrapper>
               <Styled.InputLabel>First Name</Styled.InputLabel>
               <Styled.Input
-                onChange={(e) => setFormInput({ ...formInput, firstName: e.target.value })}
+                onChange={handleChange}
                 value={formInput.firstName}
                 isInputValid={isInputValid.firstName}
                 required
@@ -134,7 +155,7 @@ function TeamMemberForm({
             <Styled.InputWrapper>
               <Styled.InputLabel>Last Name</Styled.InputLabel>
               <Styled.Input
-                onChange={(e) => setFormInput({ ...formInput, lastName: e.target.value })}
+                onChange={handleChange}
                 value={formInput.lastName}
                 required
                 isInputValid={isInputValid.lastName}
@@ -146,7 +167,7 @@ function TeamMemberForm({
           <Styled.InputWrapper>
             <Styled.InputLabel>Function</Styled.InputLabel>
             <Styled.Input
-              onChange={(e) => setFormInput({ ...formInput, jobFunction: e.target.value })}
+              onChange={handleChange}
               value={formInput.jobFunction}
               required
               isInputValid={isInputValid.jobFunction}
@@ -154,28 +175,88 @@ function TeamMemberForm({
               onBlur={handleBlur}
             />
           </Styled.InputWrapper>
+          <Styled.NameWrapper>
+            <Styled.InputWrapper>
+              <Styled.InputLabel>Current Employer</Styled.InputLabel>
+              <Styled.Input
+                onChange={handleChange}
+                value={formInput.employer}
+                required
+                isInputValid={isInputValid.employer}
+                name="employer"
+                onBlur={handleBlur}
+              />
+            </Styled.InputWrapper>
+            <Styled.InputWrapper>
+              <Styled.InputLabel>Starting Date</Styled.InputLabel>
+              <Styled.Input
+                onChange={handleChange}
+                value={formInput.startingDate}
+                type="date"
+                required
+                isInputValid={isInputValid.startingDate}
+                name="startingDate"
+                onBlur={handleBlur}
+              />
+            </Styled.InputWrapper>
+          </Styled.NameWrapper>
           <Styled.InputWrapper>
-            <Styled.InputLabel>Current Employer</Styled.InputLabel>
-            <Styled.Input
-              onChange={(e) => setFormInput({ ...formInput, employer: e.target.value })}
-              value={formInput.employer}
+            <Styled.InputLabel>Bio</Styled.InputLabel>
+            <Styled.TextArea
+              rows={5}
+              onChange={handleChange}
+              value={formInput.bio}
               required
-              isInputValid={isInputValid.employer}
-              name="employer"
+              isInputValid={isInputValid.bio}
+              name="bio"
               onBlur={handleBlur}
             />
           </Styled.InputWrapper>
         </Styled.FormSection>
-        <Styled.FormSection>
+        <Styled.FormSection personalSection>
           <Styled.InputWrapper>
-            <Styled.InputLabel>Starting Date</Styled.InputLabel>
+            <Styled.InputLabel>Address</Styled.InputLabel>
             <Styled.Input
-              onChange={(e) => setFormInput({ ...formInput, startingDate: e.target.value })}
-              value={formInput.startingDate}
-              type="date"
+              onChange={handleChange}
+              value={formInput.address}
               required
-              isInputValid={isInputValid.startingDate}
-              name="startingDate"
+              isInputValid={isInputValid.employer}
+              name="address"
+              onBlur={handleBlur}
+            />
+          </Styled.InputWrapper>
+          <Styled.NameWrapper>
+            <Styled.InputWrapper>
+              <Styled.InputLabel>ZIP code</Styled.InputLabel>
+              <Styled.Input
+                onChange={handleChange}
+                value={formInput.zipCode}
+                required
+                isInputValid={isInputValid.employer}
+                name="zipCode"
+                onBlur={handleBlur}
+              />
+            </Styled.InputWrapper>
+            <Styled.InputWrapper>
+              <Styled.InputLabel>City</Styled.InputLabel>
+              <Styled.Input
+                onChange={handleChange}
+                value={formInput.city}
+                required
+                isInputValid={isInputValid.employer}
+                name="city"
+                onBlur={handleBlur}
+              />
+            </Styled.InputWrapper>
+          </Styled.NameWrapper>
+          <Styled.InputWrapper>
+            <Styled.InputLabel>E-mail Address</Styled.InputLabel>
+            <Styled.Input
+              onChange={handleChange}
+              value={formInput.email}
+              required
+              isInputValid={isInputValid.employer}
+              name="email"
               onBlur={handleBlur}
             />
           </Styled.InputWrapper>

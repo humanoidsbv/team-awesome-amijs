@@ -31,6 +31,11 @@ function TeamMembers({ updateTeamMembers }: TeamMembersProps) {
             employer={teamMember.employer}
             startingDate={currentDate}
             id={teamMember.id}
+            bio={teamMember.bio}
+            address={teamMember.address}
+            zipCode={teamMember.zipCode}
+            city={teamMember.city}
+            email={teamMember.email}
           />
         );
       })}

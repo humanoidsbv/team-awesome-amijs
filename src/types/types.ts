@@ -12,5 +12,10 @@ export interface TeamMember {
   jobFunction: string;
   employer: string;
   startingDate: string | Date;
+  bio: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  email: string;
   id: number;
 }

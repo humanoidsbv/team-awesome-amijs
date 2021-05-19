@@ -10,8 +10,6 @@ export const TeamMemberForm = styled.form`
   margin: 24px 16px 0 16px;
   max-width: 1170px;
   padding: 16px 16px 32px 16px;
-  width: -webkit-fill-available;
-  box-sizing: border-box;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     background-color: #ffffff;
@@ -30,12 +28,10 @@ export const MemberFormHeader = styled.div`
 
   @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
-    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     margin: 32px 16px 0 16px;
     max-width: 1170px;
-    width: -webkit-fill-available;
 
     h1 {
       font-size: 24px;
@@ -47,6 +43,7 @@ export const MemberFormHeader = styled.div`
 export const InputWrapper = styled.div`
   margin: 19px 0 0 0;
   position: relative;
+
   @media screen and (${({ theme }) => theme.desktop}) {
     :first-child {
       margin: 0;
@@ -69,7 +66,6 @@ export const Input = styled.input`
   height: 36px;
   margin: 7px 0 0 0;
   padding: 0 10px 0 15px;
-  width: -webkit-fill-available;
 
   :focus {
     outline: none;
@@ -102,7 +98,6 @@ export const TextArea = styled.textarea`
   margin: 7px 0 0 0;
   padding: 10px 10px 6px 15px;
   resize: none;
-  width: -webkit-fill-available;
 
   :focus {
     outline: none;
@@ -141,7 +136,6 @@ export const NameWrapper = styled.div`
   }
 
   > div {
-    width: -webkit-fill-available;
     margin: 0;
 
     :first-child {
@@ -233,7 +227,6 @@ export const FliebelWrapper = styled.div`
     display: ${(props) => (props.isFormVisible ? "none" : "flex")};
     margin: 24px 16px 0 16px;
     max-width: 1170px;
-    width: -webkit-fill-available;
   }
 `;
 
@@ -256,7 +249,10 @@ export const Fliebel = styled.div`
 `;
 
 export const FormSection = styled.section`
+  display: ${(props) => (props.personalSection ? "none" : "block")};
+
   @media screen and (${({ theme }) => theme.desktop}) {
+    display: block;
     flex-grow: 1;
     padding: 0 30px;
 

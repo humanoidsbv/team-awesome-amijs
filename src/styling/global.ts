@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
         color: inherit;
       }
     }
+
+		* {
+			box-sizing: border-box;
+		}
 `;
 
 export default GlobalStyle;

@@ -17,36 +17,30 @@
   ],
   "team-members": [
     {
-      "firstName": "Antje",
-      "lastName": "bla",
-      "jobFunction": "bla",
-      "employer": "bla",
-      "startingDate": "2021-05-17T11:00:00.002Z",
-      "id": 1
-    },
-    {
-      "firstName": "asda",
-      "lastName": "sda",
-      "jobFunction": "sda",
-      "employer": "sd",
-      "startingDate": "2021-05-19T00:00:00.000Z",
-      "id": 2
-    },
-    {
-      "firstName": "asd",
-      "lastName": "asd",
-      "jobFunction": "asd",
-      "employer": "asd",
-      "startingDate": "2021-05-19T00:00:00.000Z",
-      "id": 3
-    },
-    {
       "firstName": "Amijs",
       "lastName": "Breunesse",
       "jobFunction": "Front-end developer",
       "employer": "Humanoids",
+      "startingDate": "2021-04-29T00:00:00.000Z",
+      "id": 1,
+      "address": "Eerste Tuindwarsstraat 19 ",
+      "zipCode": "1015RT",
+      "city": "Amsterdam",
+      "email": "amijs.breunesse@humanoids.nl",
+      "bio": "The <textarea> tag defines a multi-line text input control.\n\nThe <textarea> element is often used in a form, to collect user inputs like comments or reviews.\n\nA text area can hold an unlimited number of characters, and the text renders in a fixed-width font (usually Courier).\n\nThe size of a text area is specified by the <cols> and <rows> attributes (or with CSS).\n\nThe name attribute is needed to reference the form data after the form is submitted (if you omit the name attribute, no data from the text area will be submitted).\nThe id attribute is needed to associate the text area with a label. \nTip: Always add the <label> tag for best accessibility practices!"
+    },
+    {
+      "firstName": "Bla",
+      "lastName": "Bla",
+      "jobFunction": "bla",
+      "employer": "Bla",
       "startingDate": "2021-05-19T00:00:00.000Z",
-      "id": 4
+      "id": 2,
+      "address": "bla",
+      "zipCode": "bla",
+      "city": "bla",
+      "email": "bla",
+      "bio": "blablabla"
     }
   ]
 }

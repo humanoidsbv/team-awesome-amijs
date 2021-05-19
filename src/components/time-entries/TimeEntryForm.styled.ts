@@ -10,14 +10,13 @@ export const TimeEntryForm = styled.form`
   margin: 24px 16px 0 16px;
   max-width: 1170px;
   padding: 16px 16px 32px 16px;
-  width: -webkit-fill-available;
-  box-sizing: border-box;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;
     flex-direction: row;
     padding: 12px 31px 16px 31px;
+    width: calc(100% - 32px);
 
     ${(props) => props.desktop && `display: none`}
   }
@@ -61,8 +60,6 @@ export const HourEntries = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  width: -webkit-fill-available;
-
   @media screen and (${({ theme }) => theme.desktop}) {
     margin: 0 13px 0 0;
     width: auto;
@@ -85,7 +82,7 @@ export const Input = styled.input`
   height: 36px;
   margin: 12px 0 16px 0;
   padding: 0 10px 0 15px;
-  width: -webkit-fill-available;
+  width: 100%;
 
   :focus {
     outline: none;

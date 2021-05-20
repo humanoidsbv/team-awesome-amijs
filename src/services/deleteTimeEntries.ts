@@ -1,9 +1,12 @@
 export async function deleteTimeEntry(id: number): Promise<[any]> {
-  const response = await fetch(`http://localhost:3004/time-entries/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
+  const response = await fetch(
+    `https://my-json-server.typicode.com/humanoidsbv/team-awesome-amijs/time-entries/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     },
-  });
+  );
   return response.json();
 }

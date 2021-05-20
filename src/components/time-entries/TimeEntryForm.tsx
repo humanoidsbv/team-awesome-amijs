@@ -1,25 +1,20 @@
 import React, { useRef, useState } from "react";
 
-import PlusIcon from "../../public/assets/plus-icon.svg";
-import CrossIcon from "../../public/assets/shape.svg";
-import { postTimeEntry } from "../services/postTimeEntries";
+import PlusIcon from "../../../public/assets/plus-icon.svg";
+import CrossIcon from "../../../public/assets/shape.svg";
+import { postTimeEntry } from "../../services/postTimeEntries";
 
 import * as Styled from "./TimeEntryForm.styled";
 
 interface TimeEntryFormProps {
   updateTimeEntries: Function;
-  isLoading: boolean;
-  setIsLoading: Function;
   isOpen: boolean;
 }
 
-function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: TimeEntryFormProps) {
+function TimeEntryForm({ updateTimeEntries, isOpen }: TimeEntryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [isFormValid, setIsFormValid] = useState(false);
-  const handleChange = () => {
-    setIsFormValid(formRef.current?.checkValidity());
-  };
 
   const [isInputValid, setIsInputValid] = useState({
     client: true,
@@ -29,13 +24,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
     endTime: true,
   });
 
-  const handleBlur = (event) => {
-    const validation = { ...isInputValid, [event.target.name]: event.target.checkValidity() };
-    setIsInputValid(validation);
-  };
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [isOpenForm, setIsOpenForm] = useState(true);
-  const openForm = () => setIsOpenForm(!isOpenForm);
+  const [isFormVisible, setIsFormVisible] = useState(true);
 
   const [formInput, setFormInput] = useState({
     client: "",
@@ -44,6 +35,18 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
     startTime: "09:00",
     endTime: "17:00",
   });
+
+  const openForm = () => setIsFormVisible(!isFormVisible);
+
+  const handleBlur = (event) => {
+    const validation = { ...isInputValid, [event.target.name]: event.target.checkValidity() };
+    setIsInputValid(validation);
+  };
+
+  const handleChange = (event) => {
+    setIsFormValid(formRef.current?.checkValidity());
+    setFormInput({ ...formInput, [event.target.name]: event.target.value });
+  };
 
   const addTimeEntry = async (event) => {
     event.preventDefault();
@@ -70,7 +73,7 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
       endTime: "17:00",
     });
 
-    setIsOpenForm(!isOpenForm);
+    setIsFormVisible(!isFormVisible);
     setIsFormValid(false);
   };
 
@@ -78,7 +81,7 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
     <>
       <Styled.TimeEntryForm
         ref={formRef}
-        openForm={isOpenForm}
+        openForm={isFormVisible}
         onChange={handleChange}
         onSubmit={addTimeEntry}
       >
@@ -86,9 +89,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
           <CrossIcon />
         </Styled.CloseButton>
         <Styled.InputWrapper>
-          <Styled.FormInputName>EMPLOYER</Styled.FormInputName>
-          <Styled.FormInput
-            onChange={(e) => setFormInput({ ...formInput, client: e.target.value })}
+          <Styled.InputLabel>EMPLOYER</Styled.InputLabel>
+          <Styled.Input
+            onChange={handleChange}
             type="text"
             required
             value={formInput.client}
@@ -98,9 +101,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
           />
         </Styled.InputWrapper>
         <Styled.InputWrapper>
-          <Styled.FormInputName>ACTIVITY</Styled.FormInputName>
-          <Styled.FormInput
-            onChange={(e) => setFormInput({ ...formInput, activity: e.target.value })}
+          <Styled.InputLabel>ACTIVITY</Styled.InputLabel>
+          <Styled.Input
+            onChange={handleChange}
             type="text"
             required
             value={formInput.activity}
@@ -110,9 +113,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
           />
         </Styled.InputWrapper>
         <Styled.InputWrapper>
-          <Styled.FormInputName>DATE</Styled.FormInputName>
-          <Styled.FormInput
-            onChange={(e) => setFormInput({ ...formInput, entryDate: e.target.value })}
+          <Styled.InputLabel>DATE</Styled.InputLabel>
+          <Styled.Input
+            onChange={handleChange}
             type="date"
             required
             value={formInput.entryDate}
@@ -123,11 +126,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
         </Styled.InputWrapper>
         <Styled.HourEntries>
           <Styled.InputWrapper>
-            <Styled.FormInputName>FROM</Styled.FormInputName>
-            <Styled.FormInput
-              onChange={(e) => {
-                setFormInput({ ...formInput, startTime: e.target.value });
-              }}
+            <Styled.InputLabel>FROM</Styled.InputLabel>
+            <Styled.Input
+              onChange={handleChange}
               type="time"
               required
               value={formInput.startTime}
@@ -137,9 +138,9 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
             />
           </Styled.InputWrapper>
           <Styled.InputWrapper>
-            <Styled.FormInputName>TO</Styled.FormInputName>
-            <Styled.FormInput
-              onChange={(e) => setFormInput({ ...formInput, endTime: e.target.value })}
+            <Styled.InputLabel>TO</Styled.InputLabel>
+            <Styled.Input
+              onChange={handleChange}
               type="time"
               required
               value={formInput.endTime}
@@ -150,13 +151,13 @@ function TimeEntryForm({ updateTimeEntries, isLoading, setIsLoading, isOpen }: T
           </Styled.InputWrapper>
         </Styled.HourEntries>
         <Styled.FormButton isLoading={isLoading} disabled={!isFormValid} onClick={addTimeEntry}>
-          {isFormValid ? <p>Add</p> : <p>Please complete form</p>}
+          {isFormValid ? "Add" : "Please complete form"}
         </Styled.FormButton>
       </Styled.TimeEntryForm>
 
-      <Styled.NewEntryButton openForm={isOpenForm} onClick={openForm}>
+      <Styled.NewEntryButton isFormVisible={isFormVisible} onClick={openForm}>
         <PlusIcon />
-        <p>New time entry</p>
+        New time entry
       </Styled.NewEntryButton>
     </>
   );

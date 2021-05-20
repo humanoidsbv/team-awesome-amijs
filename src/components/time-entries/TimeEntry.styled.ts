@@ -4,7 +4,7 @@ export const Entry = styled.div`
   align-items: center;
   background-color: #ffffff;
   border-radius: 4px;
-  border: solid 1px #e6eaee;
+  border: ${({ theme }) => theme.borderPrimary};
   border-left: solid 4px #4f88ef;
   display: flex;
   font-size: 16px;
@@ -15,22 +15,22 @@ export const Entry = styled.div`
   ${(props) =>
     props.firstEntry &&
     `
-        border-bottom: none;
-        border-radius: 4px 4px 0 0;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
     `}
 
   ${(props) =>
     props.middleEntry &&
     `
-        border-bottom: none;
-        border-radius: 0;
+      border-bottom: none;
+      border-radius: 0;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.lastEntry &&
     `
-        border-radius: 0 0 4px 4px;
-        margin-top: 0;
+      border-radius: 0 0 4px 4px;
+      margin-top: 0;
     `}
 `;
 
@@ -53,6 +53,7 @@ export const DeleteButton = styled.button`
 
   svg {
     padding: 0 5px 0 0;
+    box-sizing: content-box;
   }
 `;
 

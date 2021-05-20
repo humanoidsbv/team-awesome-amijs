@@ -5,7 +5,7 @@ export const PageContainer = styled.div`
   overflow-y: ${(props) => (props.isOpen ? "visible" : "hidden")};
 `;
 
-export const TimeEntryWrapper = styled.div`
+export const EntryWrapper = styled.div`
   @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
     display: flex;

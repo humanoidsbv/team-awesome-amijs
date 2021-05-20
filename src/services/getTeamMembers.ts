@@ -1,8 +1,8 @@
 import * as Types from "../types/types";
 
-export async function getTimeEntries(): Promise<[Types.TimeEntry]> {
+export async function getTeamMembers(): Promise<[Types.TeamMember]> {
   const response = await fetch(
-    "https://my-json-server.typicode.com/humanoidsbv/team-awesome-amijs/time-entries/",
+    "https://my-json-server.typicode.com/humanoidsbv/team-awesome-amijs/team-members/",
     {
       method: "GET",
       headers: {

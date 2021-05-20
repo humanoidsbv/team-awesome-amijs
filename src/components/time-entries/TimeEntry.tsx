@@ -2,7 +2,7 @@ import React from "react";
 
 import * as Styled from "./TimeEntry.styled";
 
-import DeleteIcon from "../../public/assets/forbid.svg";
+import DeleteIcon from "../../../public/assets/forbid.svg";
 
 interface TimeEntryProps {
   firstEntry?: boolean;

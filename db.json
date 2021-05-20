@@ -3,23 +3,57 @@
     {
       "client": "Humanoids",
       "id": 1,
-      "activity": "dev",
-      "startTime": "2021-05-17T07:00:00.002Z",
-      "endTime": "2021-05-17T11:00:00.002Z"
+      "activity": "bla",
+      "startTime": "2021-05-19T07:00:00.002Z",
+      "endTime": "2021-05-19T15:00:00.002Z"
     },
     {
       "client": "MijnING",
       "id": 2,
-      "activity": "dev",
-      "startTime": "2021-05-17T11:00:00.002Z",
-      "endTime": "2021-05-17T15:00:00.002Z"
+      "activity": "Bankieren",
+      "startTime": "2021-05-18T07:00:00.002Z",
+      "endTime": "2021-05-18T15:00:00.002Z"
+    }
+  ],
+  "team-members": [
+    {
+      "firstName": "Amijs",
+      "lastName": "Breunesse",
+      "jobFunction": "Front-end developer",
+      "employer": "Humanoids",
+      "startingDate": "2021-04-29T00:00:00.000Z",
+      "id": 1,
+      "address": "Eerste Tuindwarsstraat 19 ",
+      "zipCode": "1015RT",
+      "city": "Amsterdam",
+      "email": "amijs.breunesse@humanoids.nl",
+      "bio": "The <textarea> tag defines a multi-line text input control.\n\nThe <textarea> element is often used in a form, to collect user inputs like comments or reviews.\n\nA text area can hold an unlimited number of characters, and the text renders in a fixed-width font (usually Courier).\n\nThe size of a text area is specified by the <cols> and <rows> attributes (or with CSS).\n\nThe name attribute is needed to reference the form data after the form is submitted (if you omit the name attribute, no data from the text area will be submitted).\nThe id attribute is needed to associate the text area with a label. \nTip: Always add the <label> tag for best accessibility practices!"
     },
     {
-      "client": "bla",
+      "firstName": "Bla",
+      "lastName": "Bla",
+      "jobFunction": "bla",
+      "employer": "Bla",
+      "startingDate": "2021-05-19T00:00:00.000Z",
+      "id": 2,
+      "address": "bla",
+      "zipCode": "bla",
+      "city": "bla",
+      "email": "bla",
+      "bio": "blablabla"
+    },
+    {
+      "firstName": "asdas",
+      "lastName": "dads",
+      "jobFunction": "asd",
+      "employer": "da",
+      "startingDate": "2021-05-19T00:00:00.000Z",
       "id": 3,
-      "activity": "bla",
-      "startTime": "2021-05-16T07:00:00.002Z",
-      "endTime": "2021-05-16T15:00:00.002Z"
+      "address": "ad",
+      "zipCode": "as",
+      "city": "asd",
+      "email": "as",
+      "bio": "asd"
     }
   ]
 }

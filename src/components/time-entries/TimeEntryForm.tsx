@@ -1,17 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 
 import PlusIcon from "../../../public/assets/plus-icon.svg";
 import CrossIcon from "../../../public/assets/shape.svg";
 import { postTimeEntry } from "../../services/postTimeEntries";
+import { StoreContext } from "../../stores/StoreProvider";
 
 import * as Styled from "./TimeEntryForm.styled";
 
 interface TimeEntryFormProps {
-  updateTimeEntries: Function;
   isOpen: boolean;
 }
 
-function TimeEntryForm({ updateTimeEntries, isOpen }: TimeEntryFormProps) {
+function TimeEntryForm({ isOpen }: TimeEntryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -27,6 +27,9 @@ function TimeEntryForm({ updateTimeEntries, isOpen }: TimeEntryFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [isFormVisible, setIsFormVisible] = useState(true);
+
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
 
   const [formInput, setFormInput] = useState({
     client: "",
@@ -53,17 +56,19 @@ function TimeEntryForm({ updateTimeEntries, isOpen }: TimeEntryFormProps) {
 
     setIsLoading(true);
 
-    await postTimeEntry({
+    const newTimeEntry = {
       client: formInput.client,
       id: null,
       activity: formInput.activity,
       startTime: new Date(`${formInput.entryDate}T${formInput.startTime}:00.002`),
       endTime: new Date(`${formInput.entryDate}T${formInput.endTime}:00.002`),
-    });
+    };
+
+    await postTimeEntry(newTimeEntry);
 
     setIsLoading(false);
 
-    updateTimeEntries();
+    setTimeEntries([...timeEntries, newTimeEntry]);
 
     setFormInput({
       client: "",

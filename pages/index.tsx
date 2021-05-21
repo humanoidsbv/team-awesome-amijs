@@ -23,7 +23,7 @@ function HomePage() {
     <Styled.PageContainer isOpen={isOpen}>
       <Header page="index" isOpen={isOpen} setIsOpen={setIsOpen} />
       <Styled.EntryWrapper>
-        <TimeEntryForm updateTimeEntries={updateTimeEntries} isOpen={isOpen} />
+        <TimeEntryForm isOpen={isOpen} />
         <TimeEntries updateTimeEntries={updateTimeEntries} />
       </Styled.EntryWrapper>
     </Styled.PageContainer>

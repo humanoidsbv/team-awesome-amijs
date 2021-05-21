@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import * as Styled from "./TeamMemberForm.styled";
 
@@ -10,21 +10,19 @@ import TwitterIcon from "../../../public/assets/twitter-icon.svg";
 import FacebookIcon from "../../../public/assets/facebook-icon.svg";
 
 import { postTeamMember } from "../../services/postTeamMembers";
+import { StoreContext } from "../../stores/StoreProvider";
 
 interface TeamMemberFormProps {
   isFormVisible: boolean;
   setIsFormVisible: Function;
   isOpen: boolean;
-  updateTeamMembers: Function;
 }
 
-function TeamMemberForm({
-  isFormVisible,
-  setIsFormVisible,
-  isOpen,
-  updateTeamMembers,
-}: TeamMemberFormProps) {
+function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
+
+  const state = useContext(StoreContext);
+  const [teamMembers, setTeamMembers] = state.teamMembers;
 
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -69,7 +67,7 @@ function TeamMemberForm({
   const addTeamMember = async (event) => {
     event.preventDefault();
 
-    await postTeamMember({
+    const newTeamMember = {
       firstName: formInput.firstName,
       lastName: formInput.lastName,
       jobFunction: formInput.jobFunction,
@@ -81,9 +79,11 @@ function TeamMemberForm({
       city: formInput.city,
       email: formInput.email,
       bio: formInput.bio,
-    });
+    };
 
-    updateTeamMembers();
+    await postTeamMember(newTeamMember);
+
+    setTeamMembers([...teamMembers, newTeamMember]);
 
     setFormInput({
       firstName: "",

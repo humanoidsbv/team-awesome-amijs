@@ -26,7 +26,6 @@ function TeamMembersPage() {
       <Header page="team-members" isOpen={isOpen} setIsOpen={setIsOpen} />
       <Styled.EntryWrapper>
         <TeamMemberForm
-          updateTeamMembers={updateTeamMembers}
           isOpen={isOpen}
           isFormVisible={isFormVisible}
           setIsFormVisible={setIsFormVisible}

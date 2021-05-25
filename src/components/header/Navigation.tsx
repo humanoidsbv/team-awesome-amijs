@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from "react";
 import Link from "next/link";
 
@@ -13,12 +15,12 @@ function Navigation({ isOpen, page }: NavigationProps): React.ReactElement {
     <nav>
       <Styled.NavList isOpen={isOpen}>
         <Styled.ListItem isActive={page === "index"}>
-          <Link href="/">
+          <Link href="/" passHref>
             <a>Timesheets</a>
           </Link>
         </Styled.ListItem>
         <Styled.ListItem isActive={page === "team-members"}>
-          <Link href="/team-members">
+          <Link href="/team-members" passHref>
             <a>Team members</a>
           </Link>
         </Styled.ListItem>

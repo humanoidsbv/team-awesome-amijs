@@ -8,6 +8,7 @@ import * as Styled from "../page-styling/PageContainer.styled";
 
 import { getTeamMembers } from "../src/services/getTeamMembers";
 import { StoreContext } from "../src/stores/StoreProvider";
+import SearchBar from "../src/components/search-bar/SearchBar";
 
 function TeamMembersPage() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -15,22 +16,29 @@ function TeamMembersPage() {
   const [isFormVisible, setIsFormVisible] = useState(true);
 
   const state = useContext(StoreContext);
-  const [, setTeamMembers] = state.teamMembers;
+  const [teamMembers, setTeamMembers] = state.teamMembers;
 
-  async function updateTeamMembers() {
+  const entryCount = teamMembers.length;
+
+  async function retrieveTeamMembers() {
     setTeamMembers(await getTeamMembers());
   }
+
+  React.useEffect(() => {
+    retrieveTeamMembers();
+  }, []);
 
   return (
     <Styled.PageContainer isOpen={isOpen}>
       <Header page="team-members" isOpen={isOpen} setIsOpen={setIsOpen} />
+      <SearchBar clearFilters={retrieveTeamMembers} count={entryCount} pageTitle="Team members" />
       <Styled.EntryWrapper>
         <TeamMemberForm
           isOpen={isOpen}
           isFormVisible={isFormVisible}
           setIsFormVisible={setIsFormVisible}
         />
-        <TeamMembers updateTeamMembers={updateTeamMembers} />
+        <TeamMembers teamMembers={teamMembers} />
       </Styled.EntryWrapper>
     </Styled.PageContainer>
   );

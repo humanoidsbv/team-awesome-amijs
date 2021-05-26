@@ -154,6 +154,10 @@ export const NameWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+
+  > div {
+    margin-left: 10px;
+  }
 `;
 
 export const AvatarWrapper = styled.div`
@@ -220,11 +224,57 @@ export const AddButton = styled.button`
   height: 36px;
   justify-content: center;
   margin: 0 0 0 12px;
-  width: auto;
   padding: 0 20px;
 
   > svg {
     margin: 0 14px 0 0;
+  }
+`;
+
+export const SortButton = styled.div`
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: ${(props) => (props.isListVisible ? "4px 4px 0 0" : "4px")};
+  border: ${({ theme }) => theme.borderPrimary};
+  color: #7f8fa4;
+  cursor: pointer;
+  display: ${(props) => (props.isFormVisible ? "flex" : "none")};
+  font-size: 14px;
+  height: 36px;
+  justify-content: space-between;
+  padding: 0 14px;
+  width: 120px;
+`;
+
+export const SortList = styled.div`
+  display: ${(props) => (props.isListVisible ? "block" : "none")};
+  border-radius: 0 0 4px 4px;
+  border: ${({ theme }) => theme.borderPrimary};
+  border-top: none;
+  color: #7f8fa4;
+  background-color: #ffffff;
+  position: absolute;
+  min-width: 120px;
+
+  > li {
+    font-size: 14px;
+    list-style: none;
+    border-bottom: ${({ theme }) => theme.borderPrimary};
+    background-color: #ffffff;
+    cursor: pointer;
+
+    :last-child {
+      border-bottom: none;
+    }
+
+    > button {
+      padding: 10px 14px;
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+      font: inherit;
+      color: inherit;
+    }
   }
 `;
 

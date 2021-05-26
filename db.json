@@ -1,18 +1,60 @@
 {
   "time-entries": [
     {
-      "client": "Humanoids",
-      "id": 1,
-      "activity": "bla",
-      "startTime": "2021-05-19T07:00:00.002Z",
-      "endTime": "2021-05-19T15:00:00.002Z"
-    },
-    {
       "client": "MijnING",
       "id": 2,
       "activity": "Bankieren",
       "startTime": "2021-05-18T07:00:00.002Z",
       "endTime": "2021-05-18T15:00:00.002Z"
+    },
+    {
+      "client": "Port of Rotterdam",
+      "id": 3,
+      "activity": "Lalala",
+      "startTime": "2021-05-25T07:00:00.002Z",
+      "endTime": "2021-05-25T15:00:00.002Z"
+    },
+    {
+      "client": "Rabobank",
+      "id": 4,
+      "activity": "geld tellen",
+      "startTime": "2021-05-25T07:00:00.002Z",
+      "endTime": "2021-05-25T15:00:00.002Z"
+    },
+    {
+      "client": "Efteling",
+      "id": 5,
+      "activity": "sprookjesbos",
+      "startTime": "2021-05-19T07:00:00.002Z",
+      "endTime": "2021-05-19T15:00:00.002Z"
+    },
+    {
+      "client": "Humanoids",
+      "id": 6,
+      "activity": "sdf",
+      "startTime": "2021-05-25T07:00:00.002Z",
+      "endTime": "2021-05-25T15:00:00.002Z"
+    },
+    {
+      "client": "Ahold",
+      "id": 7,
+      "activity": "boodschappen",
+      "startTime": "2021-05-25T07:00:00.002Z",
+      "endTime": "2021-05-25T15:00:00.002Z"
+    },
+    {
+      "client": "St. Bernardus",
+      "id": 8,
+      "activity": "bier",
+      "startTime": "2021-05-25T07:00:00.002Z",
+      "endTime": "2021-05-25T15:00:00.002Z"
+    },
+    {
+      "client": "Delirium",
+      "id": 9,
+      "activity": "bier",
+      "startTime": "2021-05-25T07:00:00.002Z",
+      "endTime": "2021-05-25T15:00:00.002Z"
     }
   ],
   "team-members": [
@@ -67,6 +109,58 @@
       "city": "",
       "email": "",
       "bio": "ads"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Verheij",
+      "jobFunction": "Java / Front-end developer",
+      "employer": "Humanoids",
+      "startingDate": "2021-05-25T00:00:00.000Z",
+      "id": 5,
+      "address": "Straat 1",
+      "zipCode": "1011AA",
+      "city": "Amsterdam",
+      "email": "mock.email@email.com",
+      "bio": "Bla bla"
+    },
+    {
+      "firstName": "Zeno",
+      "lastName": "Bla",
+      "jobFunction": "",
+      "employer": "",
+      "startingDate": "2021-05-25T00:00:00.000Z",
+      "id": 6,
+      "address": "",
+      "zipCode": "",
+      "city": "",
+      "email": "",
+      "bio": ""
+    },
+    {
+      "firstName": "Aagje ",
+      "lastName": "Vraagje",
+      "jobFunction": "",
+      "employer": "",
+      "startingDate": "2021-05-25T00:00:00.000Z",
+      "id": 7,
+      "address": "",
+      "zipCode": "",
+      "city": "",
+      "email": "",
+      "bio": ""
+    },
+    {
+      "firstName": "sasa",
+      "lastName": "sd",
+      "jobFunction": "",
+      "employer": "",
+      "startingDate": "2021-05-25T00:00:00.000Z",
+      "id": 8,
+      "address": "",
+      "zipCode": "",
+      "city": "",
+      "email": "",
+      "bio": ""
     }
   ]
 }

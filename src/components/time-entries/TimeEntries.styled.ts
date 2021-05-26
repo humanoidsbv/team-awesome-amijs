@@ -6,6 +6,6 @@ export const TimeEntries = styled.div`
 
   @media screen and (${({ theme }) => theme.desktop}) {
     width: calc(100% - 32px);
-    padding: 0;
+    padding: 0 0 32px 0;
   }
 `;

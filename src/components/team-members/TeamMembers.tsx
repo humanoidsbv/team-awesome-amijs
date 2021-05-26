@@ -1,22 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
+
 import TeamMember from "./TeamMember";
+import * as Types from "../../types/types";
 
 import * as Styled from "./TeamMembers.styled";
 
-import { StoreContext } from "../../stores/StoreProvider";
-
 interface TeamMembersProps {
-  updateTeamMembers: Function;
+  teamMembers: Types.TeamMember[];
 }
 
-function TeamMembers({ updateTeamMembers }: TeamMembersProps) {
-  const state = useContext(StoreContext);
-  const [teamMembers] = state.teamMembers;
-
-  useEffect(() => {
-    updateTeamMembers();
-  }, []);
-
+function TeamMembers({ teamMembers }: TeamMembersProps) {
   return (
     <Styled.TeamMembers>
       {teamMembers.map((teamMember) => {
@@ -36,6 +29,7 @@ function TeamMembers({ updateTeamMembers }: TeamMembersProps) {
             zipCode={teamMember.zipCode}
             city={teamMember.city}
             email={teamMember.email}
+            key={teamMember.id}
           />
         );
       })}

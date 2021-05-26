@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "json-server": "json-server --watch db.json --port 3006",
-    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to ./node_modules/@humanoids/eslint-config"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
     "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "zustand": "^3.5.1"
   },
   "devDependencies": {
     "@humanoids/eslint-config": "0.0.8",

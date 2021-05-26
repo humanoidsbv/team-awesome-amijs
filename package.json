@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/humanoidsbv/team-awesome-amijs#readme",
   "dependencies": {
-    "@humanoids/prettier-config": "^0.0.3",
+    "@humanoids/prettier-config": "0.0.3",
     "json-server": "^0.16.3",
     "next": "^10.2.0",
     "node-fetch": "^2.6.1",
@@ -31,7 +31,7 @@
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
-    "@humanoids/eslint-config": "^0.0.8",
+    "@humanoids/eslint-config": "0.0.8",
     "@svgr/webpack": "^5.5.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",

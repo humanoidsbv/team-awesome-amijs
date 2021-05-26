@@ -19,8 +19,6 @@ function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
   const state = useContext(StoreContext);
   const [timeEntries, setTimeEntries] = state.timeEntries;
 
-  const selectClients = timeEntries.map((timeEntry) => timeEntry.client).sort();
-
   const entryFilter = (event) => {
     setTimeEntries([
       ...timeEntries.filter((timeEntry) => timeEntry.client === event.target.getAttribute("name")),
@@ -28,23 +26,25 @@ function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
     setIsListVisible(!isListVisible);
   };
 
-  const noFilters = () => {
-    clearFilters();
-    setIsListVisible(!isListVisible);
-  };
+  const selectClients = timeEntries.map((timeEntry) => timeEntry.client).sort();
 
   const clientSet = new Set(selectClients);
   const clientArray = Array.from(clientSet);
 
-  const clientList = clientArray.map((client) => {
+  const clientList = clientArray.map((client, index) => {
     return (
-      <li key={timeEntries.id}>
+      <li key={timeEntries[index].id}>
         <button type="button" name={client} onClick={entryFilter}>
           {client}
         </button>
       </li>
     );
   });
+
+  const noFilters = () => {
+    clearFilters();
+    setIsListVisible(!isListVisible);
+  };
 
   return (
     <Styled.SearchBar>

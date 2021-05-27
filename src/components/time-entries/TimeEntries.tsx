@@ -9,89 +9,92 @@ import * as Styled from "./TimeEntries.styled";
 interface TimeEntriesProps {
   timeEntries: Types.TimeEntry[];
   deleteEntry: Function;
+  searchInput: string;
 }
 
-function TimeEntries({ timeEntries, deleteEntry }: TimeEntriesProps) {
+function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps) {
   return (
     <Styled.TimeEntries>
-      {timeEntries.map((timeEntry, index) => {
-        const startTimeObject = new Date(timeEntry.startTime);
-        const startTime = startTimeObject.toLocaleTimeString("nl-NL", {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
+      {timeEntries
+        .filter((timeEntry) => timeEntry.client.toLowerCase().includes(searchInput.toLowerCase()))
+        .map((timeEntry, index) => {
+          const startTimeObject = new Date(timeEntry.startTime);
+          const startTime = startTimeObject.toLocaleTimeString("nl-NL", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
 
-        const endTimeObject = new Date(timeEntry.endTime);
-        const endTime = endTimeObject.toLocaleTimeString("nl-NL", {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
+          const endTimeObject = new Date(timeEntry.endTime);
+          const endTime = endTimeObject.toLocaleTimeString("nl-NL", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
 
-        const today = new Date();
-        const yesterday = new Date(today);
+          const today = new Date();
+          const yesterday = new Date(today);
 
-        yesterday.setDate(yesterday.getDate() - 1);
+          yesterday.setDate(yesterday.getDate() - 1);
 
-        const dateStringToday = today.toLocaleDateString("nl-NL");
-        const dateStringYesterday = yesterday.toLocaleDateString("nl-NL");
+          const dateStringToday = today.toLocaleDateString("nl-NL");
+          const dateStringYesterday = yesterday.toLocaleDateString("nl-NL");
 
-        const dateObject = new Date(timeEntry.startTime);
-        const currentDate = dateObject.toLocaleDateString("nl-NL");
+          const dateObject = new Date(timeEntry.startTime);
+          const currentDate = dateObject.toLocaleDateString("nl-NL");
 
-        const nextTimeEntry = timeEntries?.[index + 1];
-        const nextDateObject = new Date(nextTimeEntry?.startTime);
-        const nextDate = nextDateObject?.toLocaleDateString("nl-NL");
+          const nextTimeEntry = timeEntries?.[index + 1];
+          const nextDateObject = new Date(nextTimeEntry?.startTime);
+          const nextDate = nextDateObject?.toLocaleDateString("nl-NL");
 
-        const previousTimeEntry = timeEntries?.[index - 1];
-        const previousDateObject = new Date(previousTimeEntry?.startTime);
-        const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
+          const previousTimeEntry = timeEntries?.[index - 1];
+          const previousDateObject = new Date(previousTimeEntry?.startTime);
+          const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
 
-        function isSameDay() {
-          if (currentDate === dateStringToday) {
-            return "(Today)";
+          function isSameDay() {
+            if (currentDate === dateStringToday) {
+              return "(Today)";
+            }
+
+            if (currentDate === dateStringYesterday) {
+              return "(Yesterday)";
+            }
+
+            return "";
           }
 
-          if (currentDate === dateStringYesterday) {
-            return "(Yesterday)";
+          if (index >= 1 && currentDate === previousDate) {
+            return (
+              <TimeEntry
+                client={timeEntry.client}
+                deleteTimeEntry={deleteEntry}
+                endTime={endTime}
+                id={timeEntry.id}
+                key={timeEntry.id}
+                lastEntry={currentDate !== nextDate}
+                middleEntry={currentDate === nextDate}
+                startTime={startTime}
+              />
+            );
           }
 
-          return "";
-        }
-
-        if (index >= 1 && currentDate === previousDate) {
           return (
-            <TimeEntry
-              client={timeEntry.client}
-              deleteTimeEntry={deleteEntry}
-              endTime={endTime}
-              id={timeEntry.id}
-              key={timeEntry.id}
-              lastEntry={currentDate !== nextDate}
-              middleEntry={currentDate === nextDate}
-              startTime={startTime}
-            />
+            <div key={timeEntry.id}>
+              <EntryDate
+                weekday={dateObject.toLocaleDateString("nl-NL", { weekday: "long" })}
+                date={dateObject.toLocaleDateString("nl-NL", { day: "numeric" })}
+                month={dateObject.toLocaleDateString("nl-NL", { month: "numeric" })}
+                weekdayName={isSameDay()}
+              />
+              <TimeEntry
+                client={timeEntry.client}
+                deleteTimeEntry={deleteEntry}
+                endTime={endTime}
+                firstEntry={currentDate === nextDate}
+                id={timeEntry.id}
+                startTime={startTime}
+              />
+            </div>
           );
-        }
-
-        return (
-          <div key={timeEntry.id}>
-            <EntryDate
-              weekday={dateObject.toLocaleDateString("nl-NL", { weekday: "long" })}
-              date={dateObject.toLocaleDateString("nl-NL", { day: "numeric" })}
-              month={dateObject.toLocaleDateString("nl-NL", { month: "numeric" })}
-              weekdayName={isSameDay()}
-            />
-            <TimeEntry
-              client={timeEntry.client}
-              deleteTimeEntry={deleteEntry}
-              endTime={endTime}
-              firstEntry={currentDate === nextDate}
-              id={timeEntry.id}
-              startTime={startTime}
-            />
-          </div>
-        );
-      })}
+        })}
     </Styled.TimeEntries>
   );
 }

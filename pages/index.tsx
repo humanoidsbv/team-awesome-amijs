@@ -14,6 +14,7 @@ import SearchBar from "../src/components/search-bar/SearchBar";
 function HomePage() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const [isVisible] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
 
   const timeEntries = useStore((state) => state.timeEntries);
   const setTimeEntries = useStore((state) => state.setTimeEntries);
@@ -39,10 +40,16 @@ function HomePage() {
         count={timeEntries.length}
         pageTitle="Timesheets"
         isVisible={isVisible}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       <Styled.EntryWrapper>
         <TimeEntryForm isOpen={isOpen} />
-        <TimeEntries timeEntries={timeEntries} deleteEntry={deleteEntry} />
+        <TimeEntries
+          timeEntries={timeEntries}
+          deleteEntry={deleteEntry}
+          searchInput={searchInput}
+        />
       </Styled.EntryWrapper>
     </Styled.PageContainer>
   );

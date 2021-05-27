@@ -11,10 +11,20 @@ interface SearchBarProps {
   count: number;
   clearFilters: Function;
   isVisible: boolean;
+  searchInput: string;
+  setSearchInput: Function;
 }
 
-function SearchBar({ pageTitle, count, clearFilters, isVisible }: SearchBarProps) {
+function SearchBar({
+  pageTitle,
+  count,
+  clearFilters,
+  isVisible,
+  setSearchInput,
+  searchInput,
+}: SearchBarProps) {
   const [isListVisible, setIsListVisible] = useState(false);
+
   const handleClick = () => setIsListVisible(!isListVisible);
 
   const timeEntries = useStore((state) => state.timeEntries);
@@ -47,6 +57,10 @@ function SearchBar({ pageTitle, count, clearFilters, isVisible }: SearchBarProps
     setIsListVisible(!isListVisible);
   };
 
+  const handleChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
   return (
     <Styled.SearchBar>
       <Styled.PageTitle>
@@ -68,7 +82,12 @@ function SearchBar({ pageTitle, count, clearFilters, isVisible }: SearchBarProps
             </li>
           </Styled.ClientList>
         </Styled.FilterOption>
-        <Styled.SearchField placeholder="Search" />
+        <Styled.SearchField
+          onChange={handleChange}
+          value={searchInput}
+          type="text"
+          placeholder="Search"
+        />
         <SearchIcon />
       </Styled.ButtonWrapper>
     </Styled.SearchBar>

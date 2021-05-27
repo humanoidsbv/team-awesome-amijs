@@ -13,6 +13,7 @@ import SearchBar from "../src/components/search-bar/SearchBar";
 function TeamMembersPage() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const [isVisible] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
 
   const [isFormVisible, setIsFormVisible] = useState(true);
 
@@ -35,6 +36,8 @@ function TeamMembersPage() {
         count={teamMembers.length}
         pageTitle="Team members"
         isVisible={!isVisible}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       <Styled.EntryWrapper>
         <TeamMemberForm
@@ -42,7 +45,7 @@ function TeamMembersPage() {
           isFormVisible={isFormVisible}
           setIsFormVisible={setIsFormVisible}
         />
-        <TeamMembers teamMembers={teamMembers} />
+        <TeamMembers searchInput={searchInput} teamMembers={teamMembers} />
       </Styled.EntryWrapper>
     </Styled.PageContainer>
   );

@@ -10,6 +10,8 @@ export const MemberEntry = styled.div`
 `;
 
 export const BasicMemberInformation = styled.div`
+  align-items: center;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   height: 82px;
@@ -50,10 +52,7 @@ export const MemberFunction = styled.p`
   padding: 2px 0 0 0;
 `;
 
-export const MemberButton = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
+export const ArrowIcon = styled.div`
   margin: 0 16px 0 0;
   padding: 0;
 `;

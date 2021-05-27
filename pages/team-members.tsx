@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import Header from "../src/components/header/Header";
 import TeamMembers from "../src/components/team-members/TeamMembers";
@@ -7,18 +7,17 @@ import TeamMemberForm from "../src/components/team-members/TeamMemberForm";
 import * as Styled from "../page-styling/PageContainer.styled";
 
 import { getTeamMembers } from "../src/services/getTeamMembers";
-import { StoreContext } from "../src/stores/StoreProvider";
+import { useStore } from "../src/stores/ZustandStore";
 import SearchBar from "../src/components/search-bar/SearchBar";
 
 function TeamMembersPage() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isVisible] = useState(true);
 
   const [isFormVisible, setIsFormVisible] = useState(true);
 
-  const state = useContext(StoreContext);
-  const [teamMembers, setTeamMembers] = state.teamMembers;
-
-  const entryCount = teamMembers.length;
+  const teamMembers = useStore((state) => state.teamMembers);
+  const setTeamMembers = useStore((state) => state.setTeamMembers);
 
   async function retrieveTeamMembers() {
     setTeamMembers(await getTeamMembers());
@@ -31,7 +30,12 @@ function TeamMembersPage() {
   return (
     <Styled.PageContainer isOpen={isOpen}>
       <Header page="team-members" isOpen={isOpen} setIsOpen={setIsOpen} />
-      <SearchBar clearFilters={retrieveTeamMembers} count={entryCount} pageTitle="Team members" />
+      <SearchBar
+        clearFilters={retrieveTeamMembers}
+        count={teamMembers.length}
+        pageTitle="Team members"
+        isVisible={!isVisible}
+      />
       <Styled.EntryWrapper>
         <TeamMemberForm
           isOpen={isOpen}

@@ -43,10 +43,10 @@ export const MemberFormHeader = styled.div`
 `;
 
 export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 19px 0 0 0;
   position: relative;
-  flex-direction: column;
-  display: flex;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     :first-child {
@@ -154,29 +154,6 @@ export const NameWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-
-  > div {
-    margin-left: 10px;
-  }
-`;
-
-export const AvatarWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-
-  p {
-    color: #354052;
-    font-size: 12px;
-    padding-top: 4px;
-  }
-
-  @media screen and (${({ theme }) => theme.desktop}) {
-    p {
-      font-size: 14px;
-      padding-top: 10px;
-    }
-  }
 `;
 
 export const CancelButton = styled.button`
@@ -223,7 +200,7 @@ export const AddButton = styled.button`
   font-size: 14px;
   height: 36px;
   justify-content: center;
-  margin: 0 0 0 12px;
+  margin: 0 12px 0 0;
   padding: 0 20px;
 
   > svg {
@@ -247,33 +224,33 @@ export const SortButton = styled.div`
 `;
 
 export const SortList = styled.div`
-  display: ${(props) => (props.isListVisible ? "block" : "none")};
-  border-radius: 0 0 4px 4px;
+  background-color: #ffffff;
   border: ${({ theme }) => theme.borderPrimary};
+  border-radius: 0 0 4px 4px;
   border-top: none;
   color: #7f8fa4;
-  background-color: #ffffff;
-  position: absolute;
+  display: ${(props) => (props.isListVisible ? "block" : "none")};
   min-width: 120px;
+  position: absolute;
 
   > li {
+    background-color: #ffffff;
+    border-bottom: ${({ theme }) => theme.borderPrimary};
     font-size: 14px;
     list-style: none;
-    border-bottom: ${({ theme }) => theme.borderPrimary};
-    background-color: #ffffff;
-    cursor: pointer;
 
     :last-child {
       border-bottom: none;
     }
 
     > button {
-      padding: 10px 14px;
-      margin: 0;
-      border: 0;
       background-color: transparent;
-      font: inherit;
+      border: 0;
       color: inherit;
+      cursor: pointer;
+      font: inherit;
+      margin: 0;
+      padding: 10px 14px;
     }
   }
 `;
@@ -344,6 +321,25 @@ export const CloseButton = styled.div`
       display: none;
     }
   } ;
+`;
+
+export const AvatarWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    color: #354052;
+    font-size: 12px;
+    padding-top: 4px;
+  }
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    p {
+      font-size: 14px;
+      padding-top: 10px;
+    }
+  }
 `;
 
 export const FormButton = styled.button`

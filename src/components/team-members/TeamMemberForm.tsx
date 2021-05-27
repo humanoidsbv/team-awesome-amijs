@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import * as Styled from "./TeamMemberForm.styled";
 
@@ -11,7 +11,7 @@ import FacebookIcon from "../../../public/assets/facebook-icon.svg";
 import ArrowDown from "../../../public/assets/arrow-down.svg";
 
 import { postTeamMember } from "../../services/postTeamMembers";
-import { StoreContext } from "../../stores/StoreProvider";
+import { useStore } from "../../stores/ZustandStore";
 
 interface TeamMemberFormProps {
   isFormVisible: boolean;
@@ -21,12 +21,12 @@ interface TeamMemberFormProps {
 
 function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberFormProps) {
   const [isListVisible, setIsListVisible] = useState(false);
-  const visibilityToggle = () => setIsListVisible(!isListVisible);
+  const toggleVisibility = () => setIsListVisible(!isListVisible);
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const state = useContext(StoreContext);
-  const [teamMembers, setTeamMembers] = state.teamMembers;
+  const teamMembers = useStore((state) => state.teamMembers);
+  const setTeamMembers = useStore((state) => state.setTeamMembers);
 
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -137,7 +137,7 @@ function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberF
           </Styled.AddButton>
           <div>
             <Styled.SortButton
-              onClick={visibilityToggle}
+              onClick={toggleVisibility}
               isListVisible={isListVisible}
               isFormVisible={isFormVisible}
             >

@@ -30,9 +30,9 @@ export const MemberAvatar = styled.img`
     ${(props) =>
       props.insideForm &&
       `
-        width: 100px;
-        height: 100px;
         border-radius: 50px;
+        height: 100px;
+        width: 100px;
       `}
   }
 `;
@@ -96,15 +96,15 @@ export const InformationSection = styled.section`
   padding: 0 30px;
 
   :last-of-type {
-    padding: 0 0 0 30px;
     border-left: 1px solid #dfe3e9;
     display: none;
+    padding: 0 0 0 30px;
   }
 
   @media screen and (${({ theme }) => theme.desktop}) {
     :last-of-type {
-      padding: 0 0 0 30px;
       display: block;
+      padding: 0 0 0 30px;
     }
   }
 `;

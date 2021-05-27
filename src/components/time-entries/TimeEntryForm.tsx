@@ -1,9 +1,9 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 
 import PlusIcon from "../../../public/assets/plus-icon.svg";
 import CrossIcon from "../../../public/assets/shape.svg";
 import { postTimeEntry } from "../../services/postTimeEntries";
-import { StoreContext } from "../../stores/StoreProvider";
+import { useStore } from "../../stores/ZustandStore";
 
 import * as Styled from "./TimeEntryForm.styled";
 
@@ -28,8 +28,8 @@ function TimeEntryForm({ isOpen }: TimeEntryFormProps) {
 
   const [isFormVisible, setIsFormVisible] = useState(true);
 
-  const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
+  const timeEntries = useStore((state) => state.timeEntries);
+  const setTimeEntries = useStore((state) => state.setTimeEntries);
 
   const [formInput, setFormInput] = useState({
     client: "",

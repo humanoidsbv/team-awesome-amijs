@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import * as Styled from "./SearchBar.styled";
-import { StoreContext } from "../../stores/StoreProvider";
+import { useStore } from "../../stores/ZustandStore";
 
 import ArrowDown from "../../../public/assets/arrow-down.svg";
 import SearchIcon from "../../../public/assets/magnifying-glass.svg";
@@ -10,14 +10,15 @@ interface SearchBarProps {
   pageTitle: "Timesheets" | "Team members";
   count: number;
   clearFilters: Function;
+  isVisible: boolean;
 }
 
-function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
+function SearchBar({ pageTitle, count, clearFilters, isVisible }: SearchBarProps) {
   const [isListVisible, setIsListVisible] = useState(false);
   const handleClick = () => setIsListVisible(!isListVisible);
 
-  const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
+  const timeEntries = useStore((state) => state.timeEntries);
+  const setTimeEntries = useStore((state) => state.setTimeEntries);
 
   const entryFilter = (event) => {
     setTimeEntries([
@@ -26,12 +27,12 @@ function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
     setIsListVisible(!isListVisible);
   };
 
-  const selectClients = timeEntries.map((timeEntry) => timeEntry.client).sort();
+  const sortedClientNames = timeEntries.map((timeEntry) => timeEntry.client).sort();
 
-  const clientSet = new Set(selectClients);
-  const clientArray = Array.from(clientSet);
+  const clientSet = new Set(sortedClientNames);
+  const clientNames = Array.from(clientSet);
 
-  const clientList = clientArray.map((client, index) => {
+  const clientList = clientNames.map((client, index) => {
     return (
       <li key={timeEntries[index].id}>
         <button type="button" name={client} onClick={entryFilter}>
@@ -41,7 +42,7 @@ function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
     );
   });
 
-  const noFilters = () => {
+  const resetFilters = () => {
     clearFilters();
     setIsListVisible(!isListVisible);
   };
@@ -53,7 +54,7 @@ function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
         <span>{`${count} entries`}</span>
       </Styled.PageTitle>
       <Styled.ButtonWrapper>
-        <Styled.FilterOption isVisible={pageTitle === "Timesheets"}>
+        <Styled.FilterOption isVisible={isVisible}>
           <Styled.FilterButton isListVisible={isListVisible} onClick={handleClick}>
             <p>All clients</p>
             <ArrowDown />
@@ -61,7 +62,7 @@ function SearchBar({ pageTitle, count, clearFilters }: SearchBarProps) {
           <Styled.ClientList isListVisible={isListVisible}>
             {clientList}
             <li>
-              <button type="button" onClick={noFilters}>
+              <button type="button" onClick={resetFilters}>
                 Clear filters
               </button>
             </li>

@@ -14,21 +14,21 @@ export const SearchBar = styled.div`
 `;
 
 export const PageTitle = styled.p`
-  font-size: 18px;
   color: #354052;
+  font-size: 18px;
 
   > span {
-    font-size: 14px;
-    color: #7f8fa4;
     border-left: ${({ theme }) => theme.borderPrimary};
-    padding-left: 12px;
+    color: #7f8fa4;
+    font-size: 14px;
     margin-left: 12px;
+    padding-left: 12px;
   }
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
 
   > svg {
     position: absolute;
@@ -60,35 +60,35 @@ export const FilterButton = styled.div`
 `;
 
 export const ClientList = styled.div`
-  display: ${(props) => (props.isListVisible ? "block" : "none")};
+  background-color: #ffffff;
   border-radius: 0 0 4px 4px;
   border: ${({ theme }) => theme.borderPrimary};
   border-top: none;
   color: #7f8fa4;
-  background-color: #ffffff;
+  display: ${(props) => (props.isListVisible ? "block" : "none")};
   position: absolute;
   width: 200px;
 
   > li {
+    background-color: #ffffff;
+    border-bottom: ${({ theme }) => theme.borderPrimary};
     font-size: 14px;
     list-style: none;
-    border-bottom: ${({ theme }) => theme.borderPrimary};
-    background-color: #ffffff;
-    cursor: pointer;
 
     :last-child {
-      border-top: 2px solid black;
       border-bottom: none;
+      border-top: 2px solid black;
       text-align: center;
     }
 
     > button {
-      padding: 10px 14px;
-      margin: 0;
-      border: 0;
       background-color: transparent;
-      font: inherit;
+      border: 0;
       color: inherit;
+      cursor: pointer;
+      font: inherit;
+      margin: 0;
+      padding: 10px 14px;
     }
   }
 `;

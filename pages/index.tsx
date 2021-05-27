@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import TimeEntryForm from "../src/components/time-entries/TimeEntryForm";
 import Header from "../src/components/header/Header";
@@ -8,16 +8,15 @@ import * as Styled from "../page-styling/PageContainer.styled";
 
 import { getTimeEntries } from "../src/services/getTimeEntries";
 import { deleteTimeEntry } from "../src/services/deleteTimeEntries";
-import { StoreContext } from "../src/stores/StoreProvider";
+import { useStore } from "../src/stores/ZustandStore";
 import SearchBar from "../src/components/search-bar/SearchBar";
 
 function HomePage() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isVisible] = useState(true);
 
-  const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
-
-  const entryCount = timeEntries.length;
+  const timeEntries = useStore((state) => state.timeEntries);
+  const setTimeEntries = useStore((state) => state.setTimeEntries);
 
   async function retrieveTimeEntries() {
     setTimeEntries(await getTimeEntries());
@@ -35,7 +34,12 @@ function HomePage() {
   return (
     <Styled.PageContainer isOpen={isOpen}>
       <Header page="index" isOpen={isOpen} setIsOpen={setIsOpen} />
-      <SearchBar clearFilters={retrieveTimeEntries} count={entryCount} pageTitle="Timesheets" />
+      <SearchBar
+        clearFilters={retrieveTimeEntries}
+        count={timeEntries.length}
+        pageTitle="Timesheets"
+        isVisible={isVisible}
+      />
       <Styled.EntryWrapper>
         <TimeEntryForm isOpen={isOpen} />
         <TimeEntries timeEntries={timeEntries} deleteEntry={deleteEntry} />

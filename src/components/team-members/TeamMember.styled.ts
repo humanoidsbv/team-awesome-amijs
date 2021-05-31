@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MemberEntry = styled.div`
   background-color: #ffffff;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   border-left: solid 4px #4f88ef;
   border-radius: 4px;
   font-size: 16px;
@@ -63,7 +63,7 @@ export const ExtraMemberInformation = styled.div`
 
 export const DetailedInformation = styled.div`
   background-color: #f5f8fa;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   color: #7f8fa4;
   font-size: 14px;
   padding: 10px 30px;

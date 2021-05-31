@@ -5,7 +5,7 @@ export const SearchBar = styled.div`
 
   @media screen and (${({ theme }) => theme.desktop}) {
     align-items: center;
-    border: ${({ theme }) => theme.borderPrimary};
+    border: ${({ theme }) => theme.borderLightGrey};
     display: flex;
     height: 70px;
     justify-content: space-between;
@@ -18,7 +18,7 @@ export const PageTitle = styled.p`
   font-size: 18px;
 
   > span {
-    border-left: ${({ theme }) => theme.borderPrimary};
+    border-left: ${({ theme }) => theme.borderLightGrey};
     color: #7f8fa4;
     font-size: 14px;
     margin-left: 12px;
@@ -44,7 +44,7 @@ export const FilterButton = styled.div`
   align-items: center;
   background-color: #ffffff;
   border-radius: ${(props) => (props.isListVisible ? "4px 4px 0 0" : "4px")};
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   color: #7f8fa4;
   cursor: pointer;
   display: flex;
@@ -62,7 +62,7 @@ export const FilterButton = styled.div`
 export const ClientList = styled.div`
   background-color: #ffffff;
   border-radius: 0 0 4px 4px;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   border-top: none;
   color: #7f8fa4;
   display: ${(props) => (props.isListVisible ? "block" : "none")};
@@ -71,7 +71,7 @@ export const ClientList = styled.div`
 
   > li {
     background-color: #ffffff;
-    border-bottom: ${({ theme }) => theme.borderPrimary};
+    border-bottom: ${({ theme }) => theme.borderLightGrey};
     font-size: 14px;
     list-style: none;
 
@@ -95,7 +95,7 @@ export const ClientList = styled.div`
 
 export const SearchField = styled.input`
   border-radius: 4px;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   color: #354052;
   height: 36px;
   margin: 0 0 0 10px;

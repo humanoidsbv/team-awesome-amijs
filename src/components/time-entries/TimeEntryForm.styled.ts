@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const TimeEntryForm = styled.form`
   background-color: #f5f8fa;
   border-radius: 4px;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   display: ${(props) => (props.openForm ? "none" : "flex")};
   flex-direction: column;
-  font-family: ProximaNova;
   margin: 24px 16px 0 16px;
   max-width: 1170px;
   padding: 16px 16px 32px 16px;
@@ -80,7 +79,7 @@ export const Input = styled.input`
   border-radius: 4px;
   border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
   cursor: text;
-  font-family: ProximaNova;
+  font-family: inherit;
   height: 36px;
   margin: 12px 0 16px 0;
   padding: 0 10px 0 15px;
@@ -106,7 +105,6 @@ export const FormButton = styled.button`
   color: #ffffff;
   cursor: pointer;
   display: flex;
-  font-family: ProximaNova;
   height: 36px;
   justify-content: center;
   margin: 26px 0 0 0;
@@ -130,7 +128,6 @@ export const NewEntryButton = styled.div`
   color: #ffffff;
   cursor: pointer;
   display: ${(props) => (props.isFormVisible ? "flex" : "none")};
-  font-family: ProximaNova;
   height: 36px;
   justify-content: center;
   margin: 24px 16px 0 16px;

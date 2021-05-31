@@ -4,7 +4,7 @@ export const Entry = styled.div`
   align-items: center;
   background-color: #ffffff;
   border-radius: 4px;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   border-left: solid 4px #4f88ef;
   display: flex;
   font-size: 16px;
@@ -47,7 +47,6 @@ export const DeleteButton = styled.button`
   color: white;
   cursor: pointer;
   display: flex;
-  font-family: ProximaNova;
   margin: 0 0 0 32px;
   padding: 6px 7px 7px;
 

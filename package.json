@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "json-server": "json-server --watch db.json --port 3006",
-    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to ./node_modules/@humanoids/eslint-config"
+    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to ./node_modules/@humanoids/eslint-config",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -32,12 +34,18 @@
     "zustand": "^3.5.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
     "@humanoids/eslint-config": "0.0.8",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "@svgr/webpack": "^5.5.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.25.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "typescript": "^4.2.4"

@@ -23,6 +23,7 @@
   "homepage": "https://github.com/humanoidsbv/team-awesome-amijs#readme",
   "dependencies": {
     "@humanoids/prettier-config": "0.0.3",
+    "@svgr/webpack": "^5.5.0",
     "json-server": "^0.16.3",
     "next": "^10.2.3",
     "node-fetch": "^2.6.1",

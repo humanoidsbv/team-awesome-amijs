@@ -29,6 +29,11 @@ export const ListItem = styled.li`
     margin: 0;
   }
 
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
   @media screen and (${({ theme }) => theme.desktop}) {
     margin: 0 0 0 14px;
     padding: 7px 18px;

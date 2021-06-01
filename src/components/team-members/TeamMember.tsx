@@ -23,7 +23,7 @@ function TeamMember({
 
   return (
     <Styled.MemberEntry isOpenEntry={isOpenEntry}>
-      <Styled.BasicMemberInformation>
+      <Styled.BasicMemberInformation onClick={openEntry}>
         <Styled.MemberWrapper>
           <Styled.MemberAvatar src="/assets/antje.jpg" alt="" />
           <div>
@@ -31,9 +31,7 @@ function TeamMember({
             <Styled.MemberFunction>{jobFunction}</Styled.MemberFunction>
           </div>
         </Styled.MemberWrapper>
-        <Styled.MemberButton onClick={openEntry}>
-          {isOpenEntry ? <ArrowUpIcon /> : <ArrowDownIcon />}
-        </Styled.MemberButton>
+        <Styled.ArrowIcon>{isOpenEntry ? <ArrowUpIcon /> : <ArrowDownIcon />}</Styled.ArrowIcon>
       </Styled.BasicMemberInformation>
       <Styled.ExtraMemberInformation isOpenEntry={isOpenEntry}>
         <Styled.DetailedInformation>

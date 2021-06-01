@@ -8,23 +8,25 @@ import PlusIcon from "../../../public/assets/plus-icon.svg";
 import CrossIcon from "../../../public/assets/shape.svg";
 import TwitterIcon from "../../../public/assets/twitter-icon.svg";
 import FacebookIcon from "../../../public/assets/facebook-icon.svg";
+import ArrowDown from "../../../public/assets/arrow-down.svg";
 
 import { postTeamMember } from "../../services/postTeamMembers";
+import { useStore } from "../../stores/ZustandStore";
 
 interface TeamMemberFormProps {
   isFormVisible: boolean;
   setIsFormVisible: Function;
   isOpen: boolean;
-  updateTeamMembers: Function;
 }
 
-function TeamMemberForm({
-  isFormVisible,
-  setIsFormVisible,
-  isOpen,
-  updateTeamMembers,
-}: TeamMemberFormProps) {
+function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberFormProps) {
+  const [isListVisible, setIsListVisible] = useState(false);
+  const toggleVisibility = () => setIsListVisible(!isListVisible);
+
   const formRef = useRef<HTMLFormElement>(null);
+
+  const teamMembers = useStore((state) => state.teamMembers);
+  const setTeamMembers = useStore((state) => state.setTeamMembers);
 
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -54,6 +56,20 @@ function TeamMemberForm({
     bio: "",
   });
 
+  function sortFunction(event) {
+    const inputValue = event.target.value;
+
+    setTeamMembers([
+      ...teamMembers.sort((a, b) => {
+        const nameA = a[inputValue].toUpperCase();
+        const nameB = b[inputValue].toUpperCase();
+
+        return nameA > nameB ? 1 : -1;
+      }),
+    ]);
+    setIsListVisible(!isListVisible);
+  }
+
   const openForm = () => setIsFormVisible(!isFormVisible);
 
   const handleBlur = (event) => {
@@ -69,7 +85,7 @@ function TeamMemberForm({
   const addTeamMember = async (event) => {
     event.preventDefault();
 
-    await postTeamMember({
+    const newTeamMember = {
       firstName: formInput.firstName,
       lastName: formInput.lastName,
       jobFunction: formInput.jobFunction,
@@ -81,9 +97,11 @@ function TeamMemberForm({
       city: formInput.city,
       email: formInput.email,
       bio: formInput.bio,
-    });
+    };
 
-    updateTeamMembers();
+    await postTeamMember(newTeamMember);
+
+    setTeamMembers([...teamMembers, newTeamMember]);
 
     setFormInput({
       firstName: "",
@@ -117,6 +135,38 @@ function TeamMemberForm({
             <PlusIcon />
             New Humanoid
           </Styled.AddButton>
+          <div>
+            <Styled.SortButton
+              onClick={toggleVisibility}
+              isListVisible={isListVisible}
+              isFormVisible={isFormVisible}
+            >
+              Sort by:
+              <ArrowDown />
+            </Styled.SortButton>
+            <Styled.SortList isListVisible={isListVisible}>
+              <li>
+                <button type="button" value="firstName" onClick={sortFunction}>
+                  First name
+                </button>
+              </li>
+              <li>
+                <button type="button" value="lastName" onClick={sortFunction}>
+                  Last name
+                </button>
+              </li>
+              <li>
+                <button type="button" value="employer" onClick={sortFunction}>
+                  Current employer
+                </button>
+              </li>
+              <li>
+                <button type="button" value="jobFunction" onClick={sortFunction}>
+                  Function
+                </button>
+              </li>
+            </Styled.SortList>
+          </div>
         </Styled.ButtonWrapper>
       </Styled.MemberFormHeader>
 

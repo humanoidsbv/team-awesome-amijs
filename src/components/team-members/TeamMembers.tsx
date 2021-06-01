@@ -1,44 +1,44 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
+
 import TeamMember from "./TeamMember";
+import * as Types from "../../types/types";
 
 import * as Styled from "./TeamMembers.styled";
 
-import { StoreContext } from "../../stores/StoreProvider";
-
 interface TeamMembersProps {
-  updateTeamMembers: Function;
+  teamMembers: Types.TeamMember[];
+  searchInput: string;
 }
 
-function TeamMembers({ updateTeamMembers }: TeamMembersProps) {
-  const state = useContext(StoreContext);
-  const [teamMembers] = state.teamMembers;
-
-  useEffect(() => {
-    updateTeamMembers();
-  }, []);
-
+function TeamMembers({ teamMembers, searchInput }: TeamMembersProps) {
   return (
     <Styled.TeamMembers>
-      {teamMembers.map((teamMember) => {
-        const dateObject = new Date(teamMember.startingDate);
-        const currentDate = dateObject.toLocaleDateString("nl-NL");
+      {teamMembers
+        .filter(
+          (teamMember) => teamMember.firstName.toLowerCase().includes(searchInput.toLowerCase()),
+          (teamMember) => teamMember.lastName.toLowerCase().includes(searchInput.toLowerCase()),
+        )
+        .map((teamMember) => {
+          const dateObject = new Date(teamMember.startingDate);
+          const currentDate = dateObject.toLocaleDateString("nl-NL");
 
-        return (
-          <TeamMember
-            firstName={teamMember.firstName}
-            lastName={teamMember.lastName}
-            jobFunction={teamMember.jobFunction}
-            employer={teamMember.employer}
-            startingDate={currentDate}
-            id={teamMember.id}
-            bio={teamMember.bio}
-            address={teamMember.address}
-            zipCode={teamMember.zipCode}
-            city={teamMember.city}
-            email={teamMember.email}
-          />
-        );
-      })}
+          return (
+            <TeamMember
+              firstName={teamMember.firstName}
+              lastName={teamMember.lastName}
+              jobFunction={teamMember.jobFunction}
+              employer={teamMember.employer}
+              startingDate={currentDate}
+              id={teamMember.id}
+              bio={teamMember.bio}
+              address={teamMember.address}
+              zipCode={teamMember.zipCode}
+              city={teamMember.city}
+              email={teamMember.email}
+              key={teamMember.id}
+            />
+          );
+        })}
     </Styled.TeamMembers>
   );
 }

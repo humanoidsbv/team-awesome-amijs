@@ -7,7 +7,8 @@
     "dev": "next & npm run json-server",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server --watch db.json --port 3004"
+    "json-server": "json-server --watch db.json --port 3006",
+    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to ./node_modules/@humanoids/eslint-config"
   },
   "repository": {
     "type": "git",
@@ -20,17 +21,18 @@
   },
   "homepage": "https://github.com/humanoidsbv/team-awesome-amijs#readme",
   "dependencies": {
-    "@humanoids/prettier-config": "^0.0.3",
+    "@humanoids/prettier-config": "0.0.3",
     "json-server": "^0.16.3",
     "next": "^10.2.0",
     "node-fetch": "^2.6.1",
     "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "zustand": "^3.5.1"
   },
   "devDependencies": {
-    "@humanoids/eslint-config": "^0.0.8",
+    "@humanoids/eslint-config": "0.0.8",
     "@svgr/webpack": "^5.5.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",

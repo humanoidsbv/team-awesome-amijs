@@ -10,6 +10,8 @@ export const MemberEntry = styled.div`
 `;
 
 export const BasicMemberInformation = styled.div`
+  align-items: center;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   height: 82px;
@@ -30,9 +32,9 @@ export const MemberAvatar = styled.img`
     ${(props) =>
       props.insideForm &&
       `
-        width: 100px;
-        height: 100px;
         border-radius: 50px;
+        height: 100px;
+        width: 100px;
       `}
   }
 `;
@@ -50,10 +52,7 @@ export const MemberFunction = styled.p`
   padding: 2px 0 0 0;
 `;
 
-export const MemberButton = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
+export const ArrowIcon = styled.div`
   margin: 0 16px 0 0;
   padding: 0;
 `;
@@ -96,15 +95,15 @@ export const InformationSection = styled.section`
   padding: 0 30px;
 
   :last-of-type {
-    padding: 0 0 0 30px;
     border-left: 1px solid #dfe3e9;
     display: none;
+    padding: 0 0 0 30px;
   }
 
   @media screen and (${({ theme }) => theme.desktop}) {
     :last-of-type {
-      padding: 0 0 0 30px;
       display: block;
+      padding: 0 0 0 30px;
     }
   }
 `;

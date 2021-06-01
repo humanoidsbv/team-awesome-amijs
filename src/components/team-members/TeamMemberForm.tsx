@@ -131,12 +131,14 @@ function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberF
             onClick={openForm}
             label="Cancel"
             type="Secondary"
+            icon
           />
           <Button
             isFormVisible={isFormVisible}
             onClick={addTeamMember}
             label="Save"
             type="Primary"
+            icon
           />
           <Button
             isFormVisible={!isFormVisible}
@@ -145,11 +147,6 @@ function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberF
             type="Primary"
             icon={<PlusIcon />}
           />
-
-          {/* <Styled.AddButton isFormVisible={isFormVisible} onClick={openForm}>
-            <PlusIcon />
-            New Humanoid
-          </Styled.AddButton> */}
           <div>
             <Styled.SortButton
               onClick={toggleVisibility}

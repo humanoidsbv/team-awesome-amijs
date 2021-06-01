@@ -7,7 +7,7 @@ interface ButtonProps {
   label?: string;
   onClick: Function;
   type?: "Primary" | "Secondary" | "Tertiary";
-  icon: SVGElement;
+  icon: any;
 }
 
 function Button({ isFormVisible, label, onClick, type, icon }: ButtonProps) {

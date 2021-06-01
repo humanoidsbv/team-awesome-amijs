@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "json-server": "json-server --watch db.json --port 3006",
-    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to ./node_modules/@humanoids/eslint-config",
+    "test-lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

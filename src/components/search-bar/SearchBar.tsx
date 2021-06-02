@@ -25,12 +25,12 @@ function SearchBar({
 }: SearchBarProps) {
   const [isListVisible, setIsListVisible] = useState(false);
 
-  const handleClick = () => setIsListVisible(!isListVisible);
-
   const timeEntries = useStore((state) => state.timeEntries);
   const setTimeEntries = useStore((state) => state.setTimeEntries);
 
-  const entryFilter = (event) => {
+  const handleClick = () => setIsListVisible(!isListVisible);
+
+  const filterTimeEntries = (event) => {
     setTimeEntries([
       ...timeEntries.filter((timeEntry) => timeEntry.client === event.target.getAttribute("name")),
     ]);
@@ -45,7 +45,7 @@ function SearchBar({
   const clientList = clientNames.map((client, index) => {
     return (
       <li key={timeEntries[index].id}>
-        <button type="button" name={client} onClick={entryFilter}>
+        <button type="button" name={client} onClick={filterTimeEntries}>
           {client}
         </button>
       </li>

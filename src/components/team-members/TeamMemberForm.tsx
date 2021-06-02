@@ -12,6 +12,7 @@ import ArrowDown from "../../../public/assets/arrow-down.svg";
 
 import { postTeamMember } from "../../services/postTeamMembers";
 import { useStore } from "../../stores/ZustandStore";
+import Button from "../shared/button/Button";
 
 interface TeamMemberFormProps {
   isFormVisible: boolean;
@@ -125,16 +126,27 @@ function TeamMemberForm({ isFormVisible, setIsFormVisible, isOpen }: TeamMemberF
       <Styled.MemberFormHeader>
         <h1>{isFormVisible ? "All Humanoids" : "Add new team member"}</h1>
         <Styled.ButtonWrapper>
-          <Styled.CancelButton isFormVisible={isFormVisible} onClick={openForm}>
-            Cancel
-          </Styled.CancelButton>
-          <Styled.SaveButton isFormVisible={isFormVisible} onClick={addTeamMember}>
-            Save
-          </Styled.SaveButton>
-          <Styled.AddButton isFormVisible={isFormVisible} onClick={openForm}>
-            <PlusIcon />
-            New Humanoid
-          </Styled.AddButton>
+          <Button
+            isFormVisible={isFormVisible}
+            onClick={openForm}
+            label="Cancel"
+            type="Secondary"
+            icon
+          />
+          <Button
+            isFormVisible={isFormVisible}
+            onClick={addTeamMember}
+            label="Save"
+            type="Primary"
+            icon
+          />
+          <Button
+            isFormVisible={!isFormVisible}
+            onClick={openForm}
+            label="New Humanoid"
+            type="Primary"
+            icon={<PlusIcon />}
+          />
           <div>
             <Styled.SortButton
               onClick={toggleVisibility}

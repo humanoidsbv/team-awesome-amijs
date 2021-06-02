@@ -1,5 +1,6 @@
 export const theme = {
-  borderPrimary: "solid 1px #e6eaee",
+  borderLightGrey: "solid 1px #e6eaee",
+  borderGreen: "solid 1px #249533",
 
   // Breakpoints
   tablet: "min-width: 720px",

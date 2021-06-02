@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const TeamMemberForm = styled.form`
   background-color: #f5f8fa;
   border-radius: 4px;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   display: ${(props) => (props.isFormVisible ? "none" : "flex")};
   flex-direction: column;
-  font-family: ProximaNova;
   margin: 24px 16px 0 16px;
   max-width: 1170px;
   padding: 16px 16px 32px 16px;
@@ -14,10 +13,9 @@ export const TeamMemberForm = styled.form`
   @media screen and (${({ theme }) => theme.desktop}) {
     background-color: #ffffff;
     border-radius: 0 4px 4px 4px;
-    border: ${({ theme }) => theme.borderPrimary};
+    border: ${({ theme }) => theme.borderLightGrey};
     border-left: solid 4px #4f88ef;
     flex-direction: row;
-    font-family: ProximaNova;
     padding: 42px 32px;
     margin-top: 0;
     width: calc(100% - 32px);
@@ -66,7 +64,6 @@ export const Input = styled.input`
   border-radius: 4px;
   border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
   cursor: text;
-  font-family: ProximaNova;
   height: 36px;
   margin: 7px 0 0 0;
   padding: 0 10px 0 15px;
@@ -101,7 +98,6 @@ export const TextArea = styled.textarea`
   border-radius: 4px;
   border: solid 1px #ced0da;
   cursor: text;
-  font-family: ProximaNova;
   margin: 7px 0 0 0;
   padding: 10px 10px 6px 15px;
   resize: none;
@@ -154,57 +150,12 @@ export const NameWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-`;
 
-export const CancelButton = styled.button`
-  align-items: center;
-  background-color: #f5f7f9;
-  border-radius: 4px;
-  border: solid 1px #ced0da;
-  color: #4b5464;
-  cursor: pointer;
-  display: ${(props) => (props.isFormVisible ? "none" : "flex")};
-  font-family: ProximaNova;
-  font-size: 14px;
-  height: 36px;
-  justify-content: center;
-  padding: 10px 0;
-  width: 100px;
-`;
-
-export const SaveButton = styled.button`
-  align-items: center;
-  background-color: #35ac45;
-  border-radius: 4px;
-  border: solid 1px #249533;
-  color: #ffffff;
-  cursor: pointer;
-  display: ${(props) => (props.isFormVisible ? "none" : "flex")};
-  font-family: ProximaNova;
-  font-size: 14px;
-  height: 36px;
-  justify-content: center;
-  margin: 0 0 0 12px;
-  width: 100px;
-`;
-
-export const AddButton = styled.button`
-  align-items: center;
-  background-color: #35ac45;
-  border-radius: 4px;
-  border: solid 1px #249533;
-  color: #ffffff;
-  cursor: pointer;
-  display: ${(props) => (props.isFormVisible ? "flex" : "none")};
-  font-family: ProximaNova;
-  font-size: 14px;
-  height: 36px;
-  justify-content: center;
-  margin: 0 12px 0 0;
-  padding: 0 20px;
-
-  > svg {
-    margin: 0 14px 0 0;
+  > button {
+    :first-of-type,
+    :last-of-type {
+      margin-right: 12px;
+    }
   }
 `;
 
@@ -212,7 +163,7 @@ export const SortButton = styled.div`
   align-items: center;
   background-color: #ffffff;
   border-radius: ${(props) => (props.isListVisible ? "4px 4px 0 0" : "4px")};
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   color: #7f8fa4;
   cursor: pointer;
   display: ${(props) => (props.isFormVisible ? "flex" : "none")};
@@ -225,7 +176,7 @@ export const SortButton = styled.div`
 
 export const SortList = styled.div`
   background-color: #ffffff;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   border-radius: 0 0 4px 4px;
   border-top: none;
   color: #7f8fa4;
@@ -235,7 +186,7 @@ export const SortList = styled.div`
 
   > li {
     background-color: #ffffff;
-    border-bottom: ${({ theme }) => theme.borderPrimary};
+    border-bottom: ${({ theme }) => theme.borderLightGrey};
     font-size: 14px;
     list-style: none;
 
@@ -271,7 +222,7 @@ export const Fliebel = styled.div`
   align-self: flex-start;
   background-color: #ffffff;
   border-radius: 4px 4px 0 0;
-  border: ${({ theme }) => theme.borderPrimary};
+  border: ${({ theme }) => theme.borderLightGrey};
   border-bottom: solid 0 #ffffff;
   border-left: solid 4px #4f88ef;
   color: #354052;
@@ -350,7 +301,6 @@ export const FormButton = styled.button`
   color: #ffffff;
   cursor: pointer;
   display: flex;
-  font-family: ProximaNova;
   height: 36px;
   justify-content: center;
   margin: 26px 0 0 0;
@@ -385,11 +335,10 @@ export const NewEntryButton = styled.div`
   align-items: center;
   background-image: linear-gradient(to bottom, #39b54a, #34aa44 98%);
   border-radius: 4px;
-  border: solid 1px #249533;
+  border: ${({ theme }) => theme.borderGreen};
   color: #ffffff;
   cursor: pointer;
   display: ${(props) => (props.openForm ? "flex" : "none")};
-  font-family: ProximaNova;
   height: 36px;
   justify-content: center;
   margin: 24px 16px 0 16px;

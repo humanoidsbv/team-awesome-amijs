@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
       }
     }
 
+		input {
+			font-family: inherit;
+		}
+
 		* {
 			box-sizing: border-box;
 		}

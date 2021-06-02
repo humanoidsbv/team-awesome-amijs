@@ -19,7 +19,7 @@ function Navigation({ isOpen, page }: NavigationProps): React.ReactElement {
             <a>Timesheets</a>
           </Link>
         </Styled.ListItem>
-        <Styled.ListItem isActive={page === "team-members"}>
+        <Styled.ListItem data-cy="team-member-page" isActive={page === "team-members"}>
           <Link href="/team-members">
             <a>Team members</a>
           </Link>

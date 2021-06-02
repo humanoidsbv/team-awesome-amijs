@@ -4,4 +4,8 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
   },
+  env: {
+    jest: true,
+    cypress: true,
+  },
 };

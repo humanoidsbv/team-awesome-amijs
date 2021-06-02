@@ -50,8 +50,8 @@ function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps
             minute: "2-digit",
           });
 
-          const newDate = new Date(timeEntry.startTime);
-          const currentDate = newDate.toLocaleDateString("nl-NL");
+          const timeEntryDate = new Date(timeEntry.startTime);
+          const currentDate = timeEntryDate.toLocaleDateString("nl-NL");
 
           const nextTimeEntry = timeEntries?.[index + 1];
           const nextDateObject = new Date(nextTimeEntry?.startTime);
@@ -82,9 +82,9 @@ function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps
           return (
             <React.Fragment key={timeEntry.id}>
               <EntryDate
-                weekday={newDate.toLocaleDateString("nl-NL", { weekday: "long" })}
-                date={newDate.toLocaleDateString("nl-NL", { day: "numeric" })}
-                month={newDate.toLocaleDateString("nl-NL", { month: "numeric" })}
+                weekday={timeEntryDate.toLocaleDateString("nl-NL", { weekday: "long" })}
+                date={timeEntryDate.toLocaleDateString("nl-NL", { day: "numeric" })}
+                month={timeEntryDate.toLocaleDateString("nl-NL", { month: "numeric" })}
                 weekdayName={isSameDay(currentDate)}
               />
               <TimeEntry

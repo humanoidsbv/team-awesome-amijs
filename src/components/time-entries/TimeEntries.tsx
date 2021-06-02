@@ -12,6 +12,26 @@ interface TimeEntriesProps {
   searchInput: string;
 }
 
+const today = new Date();
+const yesterday = new Date(today);
+
+yesterday.setDate(yesterday.getDate() - 1);
+
+function isSameDay(currentDate) {
+  const dateStringToday = today.toLocaleDateString("nl-NL");
+  const dateStringYesterday = yesterday.toLocaleDateString("nl-NL");
+
+  if (currentDate === dateStringToday) {
+    return "(Today)";
+  }
+
+  if (currentDate === dateStringYesterday) {
+    return "(Yesterday)";
+  }
+
+  return "";
+}
+
 function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps) {
   return (
     <Styled.TimeEntries>
@@ -30,16 +50,8 @@ function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps
             minute: "2-digit",
           });
 
-          const today = new Date();
-          const yesterday = new Date(today);
-
-          yesterday.setDate(yesterday.getDate() - 1);
-
-          const dateStringToday = today.toLocaleDateString("nl-NL");
-          const dateStringYesterday = yesterday.toLocaleDateString("nl-NL");
-
-          const dateObject = new Date(timeEntry.startTime);
-          const currentDate = dateObject.toLocaleDateString("nl-NL");
+          const newDate = new Date(timeEntry.startTime);
+          const currentDate = newDate.toLocaleDateString("nl-NL");
 
           const nextTimeEntry = timeEntries?.[index + 1];
           const nextDateObject = new Date(nextTimeEntry?.startTime);
@@ -49,17 +61,8 @@ function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps
           const previousDateObject = new Date(previousTimeEntry?.startTime);
           const previousDate = previousDateObject?.toLocaleDateString("nl-NL");
 
-          function isSameDay() {
-            if (currentDate === dateStringToday) {
-              return "(Today)";
-            }
-
-            if (currentDate === dateStringYesterday) {
-              return "(Yesterday)";
-            }
-
-            return "";
-          }
+          const firstOrMiddleEntry = currentDate === nextDate;
+          const lastEntry = currentDate !== nextDate;
 
           if (index >= 1 && currentDate === previousDate) {
             return (
@@ -69,30 +72,30 @@ function TimeEntries({ timeEntries, deleteEntry, searchInput }: TimeEntriesProps
                 endTime={endTime}
                 id={timeEntry.id}
                 key={timeEntry.id}
-                lastEntry={currentDate !== nextDate}
-                middleEntry={currentDate === nextDate}
+                lastEntry={lastEntry}
+                middleEntry={firstOrMiddleEntry}
                 startTime={startTime}
               />
             );
           }
 
           return (
-            <div key={timeEntry.id}>
+            <React.Fragment key={timeEntry.id}>
               <EntryDate
-                weekday={dateObject.toLocaleDateString("nl-NL", { weekday: "long" })}
-                date={dateObject.toLocaleDateString("nl-NL", { day: "numeric" })}
-                month={dateObject.toLocaleDateString("nl-NL", { month: "numeric" })}
-                weekdayName={isSameDay()}
+                weekday={newDate.toLocaleDateString("nl-NL", { weekday: "long" })}
+                date={newDate.toLocaleDateString("nl-NL", { day: "numeric" })}
+                month={newDate.toLocaleDateString("nl-NL", { month: "numeric" })}
+                weekdayName={isSameDay(currentDate)}
               />
               <TimeEntry
                 client={timeEntry.client}
                 deleteTimeEntry={deleteEntry}
                 endTime={endTime}
-                firstEntry={currentDate === nextDate}
+                firstEntry={firstOrMiddleEntry}
                 id={timeEntry.id}
                 startTime={startTime}
               />
-            </div>
+            </React.Fragment>
           );
         })}
     </Styled.TimeEntries>

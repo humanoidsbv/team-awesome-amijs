@@ -15,11 +15,6 @@ export const Primary = styled.button`
   min-width: 100px;
   padding: 0 20px;
 
-  :first-of-type,
-  :last-of-type {
-    margin-right: 12px;
-  }
-
   > svg {
     margin: 0 15px 0 0;
   }

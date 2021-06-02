@@ -79,7 +79,6 @@ export const Input = styled.input`
   border-radius: 4px;
   border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
   cursor: text;
-  font-family: inherit;
   height: 36px;
   margin: 12px 0 16px 0;
   padding: 0 10px 0 15px;

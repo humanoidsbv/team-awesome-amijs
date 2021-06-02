@@ -64,7 +64,6 @@ export const Input = styled.input`
   border-radius: 4px;
   border: solid 1px ${(props) => (props.isInputValid ? "#ced0da" : "#fb6375")};
   cursor: text;
-  font-family: inherit;
   height: 36px;
   margin: 7px 0 0 0;
   padding: 0 10px 0 15px;
@@ -151,6 +150,13 @@ export const NameWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+
+  > button {
+    :first-of-type,
+    :last-of-type {
+      margin-right: 12px;
+    }
+  }
 `;
 
 export const SortButton = styled.div`

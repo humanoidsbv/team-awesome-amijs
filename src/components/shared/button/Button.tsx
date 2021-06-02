@@ -6,7 +6,7 @@ interface ButtonProps {
   isFormVisible: boolean;
   label?: string;
   onClick: Function;
-  type?: "Primary" | "Secondary" | "Tertiary";
+  type?: "Primary" | "Secondary";
   icon: any;
 }
 

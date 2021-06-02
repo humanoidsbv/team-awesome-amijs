@@ -13,7 +13,7 @@ export const SearchBar = styled.div`
   }
 `;
 
-export const PageTitle = styled.p`
+export const PageTitle = styled.h1`
   color: #354052;
   font-size: 18px;
 
@@ -40,7 +40,7 @@ export const FilterOption = styled.div`
   display: ${(props) => (props.isVisible ? "block" : "none")};
 `;
 
-export const FilterButton = styled.div`
+export const FilterButton = styled.button`
   align-items: center;
   background-color: #ffffff;
   border-radius: ${(props) => (props.isListVisible ? "4px 4px 0 0" : "4px")};

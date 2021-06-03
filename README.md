@@ -10,10 +10,11 @@ This app is used for registering working hours. As Kanye West once said:
 
 ## 🐉 The technologies being used
 
+- Cypress
+- Jest
 - Next.js
 - Storybook
-- Jest
-- Cypress
+- Zustand
 
 ## 🌈 How to run this application
 
@@ -33,6 +34,12 @@ or
 
 ```
 npm run cypress
+```
+
+To run Storybook, use
+
+```
+npm run storybook
 ```
 
 ## ❤️ Contributions

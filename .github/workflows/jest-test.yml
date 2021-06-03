@@ -1,10 +1,9 @@
-name: Build application
+name: Jest Tests
 
 on: push
 
 jobs:
   build:
-    name: Build application
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -13,7 +12,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-      - name: Install and build
-        run: |
-          npm ci
-          npm run build
+      - name: Install modules
+        run: npm ci
+      - name: Run Jest tests
+        run: npx --yes jest

@@ -1,6 +1,6 @@
 # ✨✨✨ TEAM 💫 AWESOME 💫 AMIJS ✨✨✨
 
-A _majestic_ hour registration app
+A _majestic_ hour registration app.
 
 ## ☄️ The purpose of this app
 
@@ -11,9 +11,30 @@ This app is used for registering working hours. As Kanye West once said:
 
 ## 🐉 The technologies being used
 
+- Next.js
+- Storybook
+- Jest
+- Cypress
+
 ## 🌈 How to run this application
 
-## 🧽 How to run Storybook
+To run Team Awesome, checkout the repository and use
+
+```
+npm run dev
+```
+
+To run tests using Cypress and Jest, run either
+
+```
+npm run test
+```
+
+or
+
+```
+npm run cypress
+```
 
 ```
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⣶⠀

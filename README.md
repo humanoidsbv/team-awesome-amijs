@@ -36,6 +36,14 @@ or
 npm run cypress
 ```
 
+## ❤️ Contributions
+
+Massive thanks to ** Our Lord And Saviour ** Kiprund and ** Creator of Good Vibes ** Bob Verheij.
+
+And last but not least the whole Humanoids team for being amazingly supportive and helpful.
+
+The End.
+
 ```
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⣶⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⡀⠀⢰⣿⣄

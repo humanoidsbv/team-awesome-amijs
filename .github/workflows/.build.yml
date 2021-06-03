@@ -1,3 +1,5 @@
+name: Build application
+
 on: push
 
 jobs:

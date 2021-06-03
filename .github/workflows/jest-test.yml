@@ -1,3 +1,5 @@
+name: Jest Tests
+
 on: push
 
 jobs:
@@ -14,5 +16,3 @@ jobs:
         run: npm ci
       - name: Run Jest tests
         run: npx --yes jest
-      - name: Run Cypress tests
-        run: npm run cypress

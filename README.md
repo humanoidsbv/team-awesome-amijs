@@ -7,7 +7,6 @@ A _majestic_ hour registration app.
 This app is used for registering working hours. As Kanye West once said:
 
 > Work it, make it, do it
-> Makes us harder, better, faster, stronger
 
 ## 🐉 The technologies being used
 
@@ -38,7 +37,7 @@ npm run cypress
 
 ## ❤️ Contributions
 
-Massive thanks to ** Our Lord And Saviour ** Kiprund and ** Creator of Good Vibes ** Bob Verheij.
+Massive thanks to **Our Lord And Saviour** Kiprund and **Creator of Good Vibes** Bob Verheij.
 
 And last but not least the whole Humanoids team for being amazingly supportive and helpful.
 

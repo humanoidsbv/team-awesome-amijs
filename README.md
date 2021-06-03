@@ -10,35 +10,30 @@ This app is used for registering working hours. As Kanye West once said:
 
 ## 🐉 The technologies being used
 
+- [Next.js](https://nextjs.org/)
+- [Zustand](https://github.com/pmndrs/zustand)
 - [Cypress](https://www.cypress.io/)
 - [Jest](https://jestjs.io/)
-- [Next.js](https://nextjs.org/)
 - [Storybook](https://storybook.js.org/)
-- [Zustand](https://github.com/pmndrs/zustand)
 
 ## 🌈 How to run this application
 
-To run Team Awesome, checkout the repository and use
+To run Team Awesome, install `node_modules`, checkout the repository and use
 
-```
+```js
 npm run dev
 ```
 
-To run tests using Cypress and Jest, use either
+To run tests, use
 
-```
-npm run test
-```
-
-or
-
-```
-npm run cypress
+```js
+npm run cypress    //this command runs Cypress
+npm run test       //this command runs Jest
 ```
 
-To run Storybook, use
+To run Storybook, launch the app (using `npm run dev`) and use
 
-```
+```js
 npm run storybook
 ```
 

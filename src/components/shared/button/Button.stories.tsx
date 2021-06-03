@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import React, { ComponentProps } from "react";
 
 import { Story, Meta } from "@storybook/react";

@@ -10,11 +10,11 @@ This app is used for registering working hours. As Kanye West once said:
 
 ## 🐉 The technologies being used
 
-- Cypress
-- Jest
-- Next.js
-- Storybook
-- Zustand
+- [Cypress] (https://www.cypress.io/)
+- [Jest] (https://jestjs.io/)
+- [Next.js] (https://nextjs.org/)
+- [Storybook] (https://storybook.js.org/)
+- [Zustand] (https://github.com/pmndrs/zustand)
 
 ## 🌈 How to run this application
 
@@ -24,7 +24,7 @@ To run Team Awesome, checkout the repository and use
 npm run dev
 ```
 
-To run tests using Cypress and Jest, run either
+To run tests using Cypress and Jest, use either
 
 ```
 npm run test
@@ -44,9 +44,21 @@ npm run storybook
 
 ## ❤️ Contributions
 
-Massive thanks to **Our Lord And Saviour** Kiprund and **Creator of Good Vibes** Bob Verheij.
+Massive thanks to **Our Lord And Saviour** Kiprund and **Creator Of Good Vibes** Bob Verheij.
 
-And last but not least the whole Humanoids team for being amazingly supportive and helpful.
+And last but not least the whole Humanoids team
+
+### 🧠 Ruben Werdmuller
+
+### 🕵️‍♀️ Sabine Westerdijk
+
+### 👩‍🔬 Doenja Maris
+
+### 👨‍🚀 Dylan Jongbloed
+
+### 🥷 Robbin Habermehl
+
+for being amazingly supportive and helpful.
 
 The End.
 

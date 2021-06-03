@@ -46,9 +46,9 @@ npm run storybook
 
 Massive thanks to
 
-### Our Lord And Saviour **Kiprund**,
+### 🐓🐄 Our Lord And Saviour _Kiprund_
 
-### Creator Of Good Vibes **Bob Verheij**,
+### 🔥 Creator Of Good Vibes _Bob Verheij_
 
 and the whole Humanoids team
 
